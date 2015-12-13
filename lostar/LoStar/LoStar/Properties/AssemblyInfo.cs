@@ -51,13 +51,13 @@ using System.Windows;
 //
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.3")]
-[assembly: AssemblyFileVersion("1.0.0.3")]
+// [assembly: AssemblyVersion("0.1.*")]
+[assembly: AssemblyVersion("0.1.0.3")]
+[assembly: AssemblyFileVersion("0.1.0.3")]
 
-////  "1.0.0.3"  Compiled 13.12.2015 21:36
-////  "1.0.0.2"  Compiled 13.12.2015 21:35
-////  "1.0.0.1"  Compiled 13.12.2015 21:34
+////  "0.1.0.3"  Compiled 13.12.2015 21:36
+////  "0.1.0.2"  Compiled 13.12.2015 21:35
+////  "0.1.0.1"  Compiled 13.12.2015 21:34
 //// First gitted version.
 //// DigitalTimelineTest finished and passed
 //// 
