@@ -1,8 +1,10 @@
 ﻿<Window x:Class="LoStar.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:control="clr-namespace:LoStar"        
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+        <control:DigitalStripe x:Name="Stripe0" />
+        <control:DigitalStripe x:Name="Stripe1" />
+    </StackPanel>
 </Window>

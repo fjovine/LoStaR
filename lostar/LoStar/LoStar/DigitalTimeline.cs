@@ -50,12 +50,20 @@ namespace LoStar
         }
 
         /// <summary>
-        /// Gets a value indicating whether the state the digital timeline was true or false **after** the first transition has taken place. (Not before!)
+        /// Initializes a new instance of the <see cref="DigitalTimeline" /> class.
+        /// </summary>
+        public DigitalTimeline()
+        {
+            this.Transitions = new List<double>();
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the state the digital timeline was true or false **after** the first transition has taken place. (Not before!)
         /// </summary>
         public bool InitialState
         {
             get;
-            private set;
+            set;
         }
 
         /// <summary>
