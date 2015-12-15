@@ -41,12 +41,18 @@ namespace LoStar
         /// <summary>
         /// Gets or sets the maximum time shown on the timeline.
         /// </summary>
-        double MaxTimeShown
+        double MaxShownTime
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Event to be supported by the class 
+        /// </summary>
+        event ZoomHandler OnZoom;
+
+        /*
         /// <summary>
         /// Zooms in the timeline, i.e. shows a more detailed view.
         /// </summary>
@@ -61,5 +67,6 @@ namespace LoStar
         /// Shows all the timeline on the available data.
         /// </summary>
         void ZoomAll();
+         */
     }
 }

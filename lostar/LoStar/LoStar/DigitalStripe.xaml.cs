@@ -17,6 +17,11 @@ namespace LoStar
     public partial class DigitalStripe : Canvas
     {
         /// <summary>
+        /// Backing property of the TimelineSegment property.
+        /// </summary>
+        private ITimelineSegment timelineSegment;
+
+        /// <summary>
         /// Height of the caption area in pixels.
         /// </summary>
         private double captionHeight;
@@ -36,21 +41,19 @@ namespace LoStar
         }
 
         /// <summary>
-        /// Gets or sets the initial time of the shown timespan.
+        /// Gets or sets the Interface governing the interface with the timeline parameters.
         /// </summary>
-        public double InitialTime
+        public ITimelineSegment TimelineSegment
         {
-            private get;
-            set;
-        }
-
-        /// <summary>
-        /// Gets or sets the final time of the shown timespan.
-        /// </summary>
-        public double FinalTime
-        {
-            private get;
-            set;
+            get 
+            {
+                return timelineSegment;
+            }
+            set
+            {
+                this.timelineSegment = value;
+                this.timelineSegment.OnZoom += () => FillComponent();
+            }
         }
 
         /// <summary>
@@ -106,6 +109,7 @@ namespace LoStar
             bool lastState = false;
             double lastWhen = 0;
 
+            this.Children.Clear();
             if (this.IsSelected)
             {
                 var selectedCaption = new Rectangle() { Fill = Brushes.LightGray, Width = this.ActualWidth, Height = this.Margin.Top * 0.7 };
@@ -120,8 +124,8 @@ namespace LoStar
             this.Children.Add(caption);
 
             this.Timeline.ForEach(
-                this.InitialTime, 
-                this.FinalTime,
+                this.TimelineSegment.MinShownTime,
+                this.TimelineSegment.MaxShownTime,
                 (state, when) =>
                 {
                     if (isFirst)
@@ -156,7 +160,7 @@ namespace LoStar
         /// <returns>The horizontal position correspondent to the passed value.</returns>
         private double ScaleX(double time)
         {
-            return this.ActualWidth * (time - this.InitialTime) / (this.FinalTime - this.InitialTime);
+            return this.ActualWidth * (time - this.TimelineSegment.MinShownTime) / (this.TimelineSegment.MaxShownTime - this.TimelineSegment.MinShownTime);
         }
 
         /// <summary>

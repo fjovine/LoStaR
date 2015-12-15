@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AxisTickGenerator.cs" />
     <Compile Include="DigitalTimeline.cs" />
     <Compile Include="ITimelineSegment.cs" />
     <Compile Include="DigitalStripe.xaml.cs">

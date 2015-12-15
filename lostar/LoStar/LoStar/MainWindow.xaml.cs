@@ -6,19 +6,34 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
+    using System.Diagnostics;
+    using System.Threading;
     using System.Windows;
+
+    /// <summary>
+    /// Delegate used to manage the Zoom event.
+    /// </summary>
+    public delegate void ZoomHandler();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MainWindow" /> class.
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, ITimelineSegment
     {
+        /// <summary>
+        /// Event triggered following a zoom request.
+        /// </summary>
+        public event ZoomHandler OnZoom;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow" /> class.
         /// </summary>
         public MainWindow()
         {
             this.InitializeComponent();
+
+            this.MinShownTime = 1.35;
+            this.MaxShownTime = 2.1;
 
             DigitalTimeline timeline = new DigitalTimeline();
             timeline.InitialState = false;
@@ -29,8 +44,7 @@ namespace LoStar
 
             this.Stripe0.Caption = "Stripe 0";
             this.Stripe0.Timeline = timeline;
-            this.Stripe0.InitialTime = 0;
-            this.Stripe0.FinalTime = 10;
+            this.Stripe0.TimelineSegment = this;
 
             timeline = new DigitalTimeline();
             for (double transition = 0; transition < 10; transition += 0.5)
@@ -41,8 +55,64 @@ namespace LoStar
             this.Stripe1.Caption = "Stripe 1";
             this.Stripe1.IsSelected = true;
             this.Stripe1.Timeline = timeline;
-            this.Stripe1.InitialTime = 0;
-            this.Stripe1.FinalTime = 10;
+            this.Stripe1.TimelineSegment = this;
+
+            bool state = false;
+
+            this.MouseDoubleClick += (o, a) =>
+                {
+                    if (state)
+                    {
+                        this.MinShownTime = 0;
+                        this.MaxShownTime = 10;
+                    }
+                    else
+                    {
+                        this.MinShownTime = 1.35;
+                        this.MaxShownTime = 2.1;
+                    }
+                    state = !state;
+                    if (this.OnZoom != null)
+                    {
+                        OnZoom();
+                    }
+                };
+        }
+
+        /// <summary>
+        /// Gets or sets the minimum time in seconds for which data is available.
+        /// </summary>
+        public double MinTime
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the maximum time in seconds for which data is available.
+        /// </summary>
+        public double MaxTime
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the minimum time shown on the timeline.
+        /// </summary>
+        public double MinShownTime
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the maximum time shown on the timeline.
+        /// </summary>
+        public double MaxShownTime
+        {
+            get;
+            set;
         }
     }
 }

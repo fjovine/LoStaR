@@ -52,9 +52,66 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.47")]
-[assembly: AssemblyFileVersion("0.1.0.47")]
+[assembly: AssemblyVersion("0.1.0.98")]
+[assembly: AssemblyFileVersion("0.1.0.98")]
 
+////  "0.1.0.98"  Compiled 15.12.2015 23:44
+////  "0.1.0.97"  Compiled 15.12.2015 23:39
+////  "0.1.0.96"  Compiled 15.12.2015 23:38
+////  "0.1.0.95"  Compiled 15.12.2015 23:38
+////  "0.1.0.94"  Compiled 15.12.2015 23:37
+////  "0.1.0.93"  Compiled 15.12.2015 23:36
+////  "0.1.0.92"  Compiled 15.12.2015 23:35
+////  "0.1.0.91"  Compiled 15.12.2015 23:34
+////  "0.1.0.90"  Compiled 15.12.2015 22:32
+////  "0.1.0.89"  Compiled 15.12.2015 22:32
+////  "0.1.0.88"  Compiled 15.12.2015 22:15
+////  "0.1.0.87"  Compiled 15.12.2015 22:11
+////  "0.1.0.86"  Compiled 15.12.2015 22:09
+////  "0.1.0.85"  Compiled 15.12.2015 22:08
+////  "0.1.0.84"  Compiled 15.12.2015 22:07
+////  "0.1.0.83"  Compiled 15.12.2015 22:05
+////  "0.1.0.82"  Compiled 15.12.2015 21:51
+////  "0.1.0.81"  Compiled 15.12.2015 21:47
+////  "0.1.0.80"  Compiled 15.12.2015 21:46
+////  "0.1.0.79"  Compiled 15.12.2015 21:17
+//// Added Zoom event to DigitalStripe.
+
+////  "0.1.0.78"  Compiled 15.12.2015 20:58
+////  "0.1.0.77"  Compiled 15.12.2015 20:57
+////  "0.1.0.76"  Compiled 15.12.2015 20:55
+////  "0.1.0.75"  Compiled 15.12.2015 20:54
+////  "0.1.0.74"  Compiled 15.12.2015 20:53
+////  "0.1.0.73"  Compiled 15.12.2015 20:53
+////  "0.1.0.72"  Compiled 15.12.2015 20:46
+////  "0.1.0.71"  Compiled 15.12.2015 20:42
+////  "0.1.0.70"  Compiled 15.12.2015 20:41
+////  "0.1.0.69"  Compiled 15.12.2015 20:24
+////  "0.1.0.68"  Compiled 15.12.2015 11:19
+//// Added ITimelineSegment interface to disseminate zoom events
+
+////  "0.1.0.67"  Compiled 15.12.2015 08:32
+////  "0.1.0.66"  Compiled 15.12.2015 08:31
+////  "0.1.0.65"  Compiled 15.12.2015 08:29
+////  "0.1.0.64"  Compiled 15.12.2015 08:28
+////  "0.1.0.63"  Compiled 15.12.2015 08:27
+////  "0.1.0.62"  Compiled 15.12.2015 08:24
+////  "0.1.0.61"  Compiled 15.12.2015 08:24
+////  "0.1.0.60"  Compiled 15.12.2015 08:23
+////  "0.1.0.59"  Compiled 15.12.2015 08:07
+////  "0.1.0.58"  Compiled 15.12.2015 08:07
+////  "0.1.0.57"  Compiled 15.12.2015 08:06
+////  "0.1.0.56"  Compiled 15.12.2015 08:06
+////  "0.1.0.55"  Compiled 15.12.2015 08:04
+////  "0.1.0.54"  Compiled 15.12.2015 08:03
+////  "0.1.0.53"  Compiled 15.12.2015 07:59
+//// Corrected DigitalTimeline.ForEach
+
+////  "0.1.0.52"  Compiled 15.12.2015 07:56
+////  "0.1.0.51"  Compiled 15.12.2015 07:32
+////  "0.1.0.50"  Compiled 15.12.2015 07:29
+////  "0.1.0.49"  Compiled 15.12.2015 07:29
+////  "0.1.0.48"  Compiled 15.12.2015 06:41
 ////  "0.1.0.47"  Compiled 14.12.2015 22:53
 ////  "0.1.0.46"  Compiled 14.12.2015 22:52
 ////  "0.1.0.45"  Compiled 14.12.2015 22:51

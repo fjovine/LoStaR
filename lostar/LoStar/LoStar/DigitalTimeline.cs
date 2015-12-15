@@ -116,9 +116,25 @@ namespace LoStar
 
             if (visitor != null)
             {
+                double lastTransition = fromSec;
+
+                // The visit starts from the intial time if it does not coincide with the first transition
+                if (fromSec < this.Transitions[startIndex])
+                {
+                    visitor(this.StateAt(startIndex - 1), fromSec);
+                }
+
+                // Visit the real transitions
                 for (int i = startIndex; i < endIndex; i++)
                 {
-                    visitor(this.StateAt(i), this.Transitions[i]);
+                    lastTransition = this.Transitions[i];
+                    visitor(this.StateAt(i), lastTransition);
+                }
+
+                // the visit ends with the final time if it does not coincide with the last transition
+                if (toSec > lastTransition)
+                {
+                    visitor(this.StateAt(endIndex), toSec);
                 }
             }
 
