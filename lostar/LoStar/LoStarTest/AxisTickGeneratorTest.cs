@@ -18,7 +18,7 @@ namespace LoStarTest
         public void AxisTickGenerator_Test(double min, double max, double wid)
         {
             var a = new AxisTickGenerator(min, max, wid);
-            a.ForEachTick((d) =>
+            a.ForEachTick((d,x) =>
             {
                 Console.Write(d+" ");
             });

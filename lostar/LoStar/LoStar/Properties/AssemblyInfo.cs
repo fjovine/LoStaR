@@ -52,9 +52,44 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.98")]
-[assembly: AssemblyFileVersion("0.1.0.98")]
+[assembly: AssemblyVersion("0.1.0.131")]
+[assembly: AssemblyFileVersion("0.1.0.131")]
 
+////  "0.1.0.131"  Compiled 16.12.2015 09:06
+////  "0.1.0.130"  Compiled 16.12.2015 09:04
+////  "0.1.0.129"  Compiled 16.12.2015 09:03
+////  "0.1.0.128"  Compiled 16.12.2015 09:00
+////  "0.1.0.127"  Compiled 16.12.2015 08:58
+////  "0.1.0.126"  Compiled 16.12.2015 08:57
+////  "0.1.0.125"  Compiled 16.12.2015 08:57
+////  "0.1.0.124"  Compiled 16.12.2015 08:54
+////  "0.1.0.123"  Compiled 16.12.2015 08:51
+////  "0.1.0.122"  Compiled 16.12.2015 08:49
+////  "0.1.0.121"  Compiled 16.12.2015 08:43
+////  "0.1.0.120"  Compiled 16.12.2015 08:41
+////  "0.1.0.119"  Compiled 16.12.2015 08:40
+////  "0.1.0.118"  Compiled 16.12.2015 08:40
+////  "0.1.0.117"  Compiled 16.12.2015 08:39
+////  "0.1.0.116"  Compiled 16.12.2015 08:38
+////  "0.1.0.115"  Compiled 16.12.2015 08:37
+////  "0.1.0.114"  Compiled 16.12.2015 08:37
+////  "0.1.0.113"  Compiled 16.12.2015 08:37
+////  "0.1.0.112"  Compiled 16.12.2015 08:34
+////  "0.1.0.111"  Compiled 16.12.2015 08:34
+////  "0.1.0.110"  Compiled 16.12.2015 08:29
+////  "0.1.0.109"  Compiled 16.12.2015 08:28
+////  "0.1.0.108"  Compiled 16.12.2015 08:28
+//// Added TimeAxisStripe widget
+
+////  "0.1.0.107"  Compiled 16.12.2015 08:24
+////  "0.1.0.106"  Compiled 16.12.2015 08:22
+////  "0.1.0.105"  Compiled 16.12.2015 08:21
+////  "0.1.0.104"  Compiled 16.12.2015 08:20
+////  "0.1.0.103"  Compiled 16.12.2015 08:19
+////  "0.1.0.102"  Compiled 16.12.2015 08:17
+////  "0.1.0.101"  Compiled 16.12.2015 08:15
+////  "0.1.0.100"  Compiled 16.12.2015 08:09
+////  "0.1.0.99"  Compiled 16.12.2015 08:07
 ////  "0.1.0.98"  Compiled 15.12.2015 23:44
 ////  "0.1.0.97"  Compiled 15.12.2015 23:39
 ////  "0.1.0.96"  Compiled 15.12.2015 23:38

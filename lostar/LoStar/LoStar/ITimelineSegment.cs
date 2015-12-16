@@ -14,6 +14,11 @@ namespace LoStar
     public interface ITimelineSegment
     {
         /// <summary>
+        /// Event to be supported by the class 
+        /// </summary>
+        event ZoomHandler OnZoom;
+
+        /// <summary>
         /// Gets the minimum time in seconds from which data is available.
         /// </summary>
         double MinTime
@@ -46,11 +51,6 @@ namespace LoStar
             get;
             set;
         }
-
-        /// <summary>
-        /// Event to be supported by the class 
-        /// </summary>
-        event ZoomHandler OnZoom;
 
         /*
         /// <summary>

@@ -21,11 +21,6 @@ namespace LoStar
     public partial class MainWindow : Window, ITimelineSegment
     {
         /// <summary>
-        /// Event triggered following a zoom request.
-        /// </summary>
-        public event ZoomHandler OnZoom;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow" /> class.
         /// </summary>
         public MainWindow()
@@ -41,6 +36,9 @@ namespace LoStar
             {
                 timeline.Transitions.Add(transition);
             }
+
+            this.TimeAxis.Timeline = timeline;
+            this.TimeAxis.TimelineSegment = this;
 
             this.Stripe0.Caption = "Stripe 0";
             this.Stripe0.Timeline = timeline;
@@ -71,6 +69,7 @@ namespace LoStar
                         this.MinShownTime = 1.35;
                         this.MaxShownTime = 2.1;
                     }
+
                     state = !state;
                     if (this.OnZoom != null)
                     {
@@ -78,6 +77,11 @@ namespace LoStar
                     }
                 };
         }
+
+        /// <summary>
+        /// Event triggered following a zoom request.
+        /// </summary>
+        public event ZoomHandler OnZoom;
 
         /// <summary>
         /// Gets or sets the minimum time in seconds for which data is available.

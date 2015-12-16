@@ -4,6 +4,7 @@
         xmlns:control="clr-namespace:LoStar"        
         Title="MainWindow" Height="350" Width="525">
     <StackPanel>
+        <control:TimeAxisStripe x:Name ="TimeAxis"/>
         <control:DigitalStripe x:Name="Stripe0" />
         <control:DigitalStripe x:Name="Stripe1" />
     </StackPanel>

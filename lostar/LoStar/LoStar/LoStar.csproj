@@ -54,11 +54,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AxisTickGenerator.cs" />
+    <Compile Include="DigitalStripe.cs" />
     <Compile Include="DigitalTimeline.cs" />
     <Compile Include="ITimelineSegment.cs" />
-    <Compile Include="DigitalStripe.xaml.cs">
-      <DependentUpon>DigitalStripe.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Stripe.cs" />
+    <Compile Include="TimeAxisStripe.cs" />
     <Compile Include="Transition.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -73,10 +73,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="DigitalStripe.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

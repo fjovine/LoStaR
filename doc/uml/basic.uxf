@@ -48,7 +48,7 @@
       <w>130</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>AnalogStripe
+    <panel_attributes>DigitalStripe
 
 </panel_attributes>
     <additional_attributes/>
@@ -74,7 +74,7 @@
       <w>130</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>TimeAxis
+    <panel_attributes>TimeAxisStripe
 
 </panel_attributes>
     <additional_attributes/>

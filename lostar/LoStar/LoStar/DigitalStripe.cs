@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="DigitalStripe.xaml.cs" company="hiLab">
+// <copyright file="DigitalStripe.cs" company="hiLab">
 //     Copyright (c) Francesco Iovine.
 // </copyright>
 // <author>Francesco Iovine iovinemeccanica@gmail.com</author>
@@ -14,9 +14,8 @@ namespace LoStar
     /// <summary>
     /// Interaction logic for <c>Stripe.xaml</c>
     /// </summary>
-    public partial class DigitalStripe : Stripe
+    public class DigitalStripe : Stripe
     {
-
         /// <summary>
         /// Height of the caption area in pixels.
         /// </summary>
@@ -29,11 +28,6 @@ namespace LoStar
         {
             this.CaptionHeight = 15;
             this.Height = 40;
-            this.InitializeComponent();
-            this.Loaded += (s, a) =>
-            {
-                this.FillComponent();
-            };
         }
 
         /// <summary>
@@ -74,13 +68,12 @@ namespace LoStar
         /// <summary>
         /// Fills the component with the waveform
         /// </summary>
-        public void FillComponent()
+        public override void Redraw()
         {
             bool isFirst = true;
             bool lastState = false;
             double lastWhen = 0;
 
-            this.Children.Clear();
             if (this.IsSelected)
             {
                 var selectedCaption = new Rectangle() { Fill = Brushes.LightGray, Width = this.ActualWidth, Height = this.Margin.Top * 0.7 };
@@ -89,10 +82,13 @@ namespace LoStar
                 this.Children.Add(selectedCaption);
             }
 
+            /*
             var caption = new TextBlock() { Text = this.Caption, FontSize = 8 };
             Canvas.SetLeft(caption, 0);
             Canvas.SetTop(caption, -this.Margin.Top);
             this.Children.Add(caption);
+             * */
+            this.AddText(0, -this.Margin.Top, this.Caption);
 
             this.Timeline.ForEach(
                 this.TimelineSegment.MinShownTime,
@@ -107,13 +103,19 @@ namespace LoStar
                     {
                         this.Children.Add(new Line()
                         {
-                            X1 = ScaleX(lastWhen), X2 = ScaleX(when), Y1 = ScaleY(lastState), Y2 = ScaleY(lastState),
+                            X1 = ScaleX(lastWhen),
+                            X2 = ScaleX(when),
+                            Y1 = ScaleY(lastState),
+                            Y2 = ScaleY(lastState),
                             Stroke = Brushes.Black,
                             StrokeThickness = lastState ? 0.8 : 2.5
                         });
-                        this.Children.Add(new Line() 
+                        this.Children.Add(new Line()
                         {
-                            X1 = ScaleX(when), X2 = ScaleX(when), Y1 = ScaleY(lastState), Y2 = ScaleY(state),
+                            X1 = ScaleX(when),
+                            X2 = ScaleX(when),
+                            Y1 = ScaleY(lastState),
+                            Y2 = ScaleY(state),
                             Stroke = Brushes.LightGray,
                             StrokeThickness = 1
                         });
@@ -123,6 +125,5 @@ namespace LoStar
                     lastWhen = when;
                 });
         }
-
     }
 }
