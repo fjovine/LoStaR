@@ -25,6 +25,8 @@ namespace LoStar
         /// </summary>
         private const double MinimumTickDistance = 50;
 
+        private const double MinimumTickTolerance = 0.8;
+
         /// <summary>
         /// Scale factor between logical coordinate and pixels for the axis.
         /// </summary>
@@ -64,13 +66,19 @@ namespace LoStar
             this.deltaTick = Math.Pow(10, order);
 
             int nextDivisor = 5;
+            int lastDivisor = 5;
 
             while (this.ComputeNuberOfTicks(this.deltaTick) < 10 && this.DistanceBetweenTicks(this.deltaTick) > MinimumTickDistance)
             {
                 this.deltaTick /= nextDivisor;
+                lastDivisor = nextDivisor;
                 nextDivisor = (nextDivisor == 5) ? 2 : 5;
             }
 
+            if (this.DistanceBetweenTicks(this.deltaTick) < MinimumTickDistance * MinimumTickTolerance)
+            {
+                this.deltaTick *= lastDivisor;
+            }
             this.minTick = Math.Ceiling(this.Min / this.deltaTick) * this.deltaTick;
             this.maxTick = Math.Floor(this.Max / this.deltaTick) * this.deltaTick;
         }

@@ -52,8 +52,22 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.131")]
-[assembly: AssemblyFileVersion("0.1.0.131")]
+[assembly: AssemblyVersion("0.1.0.141")]
+[assembly: AssemblyFileVersion("0.1.0.141")]
+
+////  "0.1.0.141"  Compiled 17.12.2015 20:57
+//// Centered numbers on TimeAxisStrip and added vertical ticks
+
+////  "0.1.0.140"  Compiled 17.12.2015 20:15
+////  "0.1.0.139"  Compiled 17.12.2015 20:14
+////  "0.1.0.138"  Compiled 17.12.2015 20:09
+////  "0.1.0.137"  Compiled 17.12.2015 20:08
+////  "0.1.0.136"  Compiled 17.12.2015 20:04
+////  "0.1.0.135"  Compiled 17.12.2015 20:03
+////  "0.1.0.134"  Compiled 17.12.2015 20:01
+////  "0.1.0.133"  Compiled 17.12.2015 20:01
+////  "0.1.0.132"  Compiled 17.12.2015 19:54
+//// Added tolerance on minimum tick distance (AxisTickGenerator)
 
 ////  "0.1.0.131"  Compiled 16.12.2015 09:06
 ////  "0.1.0.130"  Compiled 16.12.2015 09:04

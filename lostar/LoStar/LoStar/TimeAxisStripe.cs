@@ -5,7 +5,10 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
+    using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Shapes;
 
     /// <summary>
     /// Interaction logic for <c>TimeAxisStripe.xaml</c>
@@ -32,7 +35,18 @@ namespace LoStar
             tickGenerator.ForEachTick(
                 (s, x) =>
                 {
-                    this.AddText(this.ScaleX(x), 0, s);
+                    double xScaled = this.ScaleX(x);
+                    this.AddText(xScaled, 0, s, HorizontalAlignment.Center);
+                    this.Children.Add(
+                        new Line()
+                        {
+                            X1 = xScaled,
+                            X2 = xScaled,
+                            Y1 = this.Height / 2,
+                            Y2 = this.Height,
+                            Stroke = Brushes.Black,
+                            StrokeThickness = 0.5
+                        });
                 });
         }
     }

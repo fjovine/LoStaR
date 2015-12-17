@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
+    using System.Windows;
     using System.Windows.Controls;
 
     /// <summary>
@@ -89,12 +90,28 @@ namespace LoStar
         /// <param name="pixelY">Y coordinate of the text to show in pixels.</param>
         /// <param name="text">Text to show.</param>
         /// <param name="fontSize">Font size to be used.</param>
-        protected void AddText(double pixelX, double pixelY, string text, double fontSize = 8)
+        protected void AddText(double pixelX, double pixelY, string text, HorizontalAlignment horizontalAlignment = HorizontalAlignment.Left, double fontSize = 8)
         {
-            var caption = new TextBlock() { Text = text, FontSize = fontSize };
-            Canvas.SetLeft(caption, pixelX);
-            Canvas.SetTop(caption, pixelY);
+            var caption = new TextBlock() { Text = text, FontSize = fontSize, HorizontalAlignment = horizontalAlignment };
+            double xStart = pixelX;
+
             this.Children.Add(caption);
+            caption.Loaded += (s, a) =>
+            {
+                switch (horizontalAlignment)
+                {
+                    case HorizontalAlignment.Right:
+                        xStart -= caption.ActualWidth;
+                        break;
+                    case HorizontalAlignment.Center:
+                        xStart -= caption.ActualWidth / 2;
+                        break;
+                    default:
+                        break;
+                }
+                Canvas.SetLeft(caption, xStart);
+                Canvas.SetTop(caption, pixelY);
+            };
         }
 
         /// <summary>
