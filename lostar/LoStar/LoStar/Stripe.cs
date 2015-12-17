@@ -89,11 +89,12 @@ namespace LoStar
         /// <param name="pixelX">X coordinate of the text to show in pixels.</param>
         /// <param name="pixelY">Y coordinate of the text to show in pixels.</param>
         /// <param name="text">Text to show.</param>
+        /// <param name="horizontalAlignment">Horizontal alignment of the text with respect to the passed x coordinate.</param>
         /// <param name="fontSize">Font size to be used.</param>
         protected void AddText(double pixelX, double pixelY, string text, HorizontalAlignment horizontalAlignment = HorizontalAlignment.Left, double fontSize = 8)
         {
             var caption = new TextBlock() { Text = text, FontSize = fontSize, HorizontalAlignment = horizontalAlignment };
-            double xStart = pixelX;
+            double startX = pixelX;
 
             this.Children.Add(caption);
             caption.Loaded += (s, a) =>
@@ -101,15 +102,16 @@ namespace LoStar
                 switch (horizontalAlignment)
                 {
                     case HorizontalAlignment.Right:
-                        xStart -= caption.ActualWidth;
+                        startX -= caption.ActualWidth;
                         break;
                     case HorizontalAlignment.Center:
-                        xStart -= caption.ActualWidth / 2;
+                        startX -= caption.ActualWidth / 2;
                         break;
                     default:
                         break;
                 }
-                Canvas.SetLeft(caption, xStart);
+
+                Canvas.SetLeft(caption, startX);
                 Canvas.SetTop(caption, pixelY);
             };
         }

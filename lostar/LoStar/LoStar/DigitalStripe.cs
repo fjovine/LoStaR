@@ -82,12 +82,6 @@ namespace LoStar
                 this.Children.Add(selectedCaption);
             }
 
-            /*
-            var caption = new TextBlock() { Text = this.Caption, FontSize = 8 };
-            Canvas.SetLeft(caption, 0);
-            Canvas.SetTop(caption, -this.Margin.Top);
-            this.Children.Add(caption);
-             * */
             this.AddText(0, -this.Margin.Top, this.Caption);
 
             this.Timeline.ForEach(

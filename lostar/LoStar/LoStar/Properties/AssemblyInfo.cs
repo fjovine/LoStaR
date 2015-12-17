@@ -52,8 +52,32 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.141")]
-[assembly: AssemblyFileVersion("0.1.0.141")]
+[assembly: AssemblyVersion("0.1.0.159")]
+[assembly: AssemblyFileVersion("0.1.0.159")]
+
+////  "0.1.0.159"  Compiled 17.12.2015 21:55
+////  "0.1.0.158"  Compiled 17.12.2015 21:55
+////  "0.1.0.157"  Compiled 17.12.2015 21:54
+////  "0.1.0.156"  Compiled 17.12.2015 21:54
+////  "0.1.0.155"  Compiled 17.12.2015 21:50
+////  "0.1.0.154"  Compiled 17.12.2015 21:47
+////  "0.1.0.153"  Compiled 17.12.2015 21:45
+////  "0.1.0.152"  Compiled 17.12.2015 21:44
+////  "0.1.0.151"  Compiled 17.12.2015 21:43
+//// Added multiple cursor support
+
+////  "0.1.0.150"  Compiled 17.12.2015 21:36
+////  "0.1.0.149"  Compiled 17.12.2015 21:35
+////  "0.1.0.148"  Compiled 17.12.2015 21:34
+////  "0.1.0.147"  Compiled 17.12.2015 21:33
+////  "0.1.0.146"  Compiled 17.12.2015 21:33
+////  "0.1.0.145"  Compiled 17.12.2015 21:31
+////  "0.1.0.144"  Compiled 17.12.2015 21:30
+////  "0.1.0.143"  Compiled 17.12.2015 21:29
+//// Added CursorOverlay cursor widget
+
+////  "0.1.0.142"  Compiled 17.12.2015 21:06
+//// Added Superimposed cavas to show the cursor
 
 ////  "0.1.0.141"  Compiled 17.12.2015 20:57
 //// Centered numbers on TimeAxisStrip and added vertical ticks

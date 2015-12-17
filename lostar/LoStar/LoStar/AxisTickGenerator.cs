@@ -25,6 +25,10 @@ namespace LoStar
         /// </summary>
         private const double MinimumTickDistance = 50;
 
+        /// <summary>
+        /// Tick tolerance: if the distance between the ticks results less than the MinimumTickDistance multiplied
+        /// by this factor, the distance between ticks is incremented.
+        /// </summary>
         private const double MinimumTickTolerance = 0.8;
 
         /// <summary>
@@ -79,6 +83,7 @@ namespace LoStar
             {
                 this.deltaTick *= lastDivisor;
             }
+
             this.minTick = Math.Ceiling(this.Min / this.deltaTick) * this.deltaTick;
             this.maxTick = Math.Floor(this.Max / this.deltaTick) * this.deltaTick;
         }

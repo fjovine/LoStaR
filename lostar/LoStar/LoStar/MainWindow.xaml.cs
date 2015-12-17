@@ -9,6 +9,7 @@ namespace LoStar
     using System.Diagnostics;
     using System.Threading;
     using System.Windows;
+    using System.Windows.Media;
 
     /// <summary>
     /// Delegate used to manage the Zoom event.
@@ -55,6 +56,9 @@ namespace LoStar
             this.Stripe1.Timeline = timeline;
             this.Stripe1.TimelineSegment = this;
 
+            this.CursorCanvas.Timeline = timeline;
+            this.CursorCanvas.TimelineSegment = this;
+
             bool state = false;
 
             this.MouseDoubleClick += (o, a) =>
@@ -63,11 +67,19 @@ namespace LoStar
                     {
                         this.MinShownTime = 0;
                         this.MaxShownTime = 10;
+                        this.CursorCanvas.CursorPosition = 5;
+                        this.CursorCanvas.ClearAuxiliaryCursors();
+                        for (double x = 5.1; x < 6; x += 0.1)
+                        {
+                            this.CursorCanvas.AddAuxiliaryCursor(x, Brushes.Green);
+                        }
                     }
                     else
                     {
                         this.MinShownTime = 1.35;
                         this.MaxShownTime = 2.1;
+                        this.CursorCanvas.CursorPosition = 1.6;
+                        this.CursorCanvas.ClearAuxiliaryCursors();
                     }
 
                     state = !state;
