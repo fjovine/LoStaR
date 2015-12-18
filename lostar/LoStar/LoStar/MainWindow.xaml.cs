@@ -28,6 +28,14 @@ namespace LoStar
         {
             this.InitializeComponent();
 
+            this.StripeContainer.SizeChanged += (s, a) =>
+                {
+                    if (this.OnZoom != null)
+                    {
+                        OnZoom();
+                    }
+                };
+
             this.MinShownTime = 1.35;
             this.MaxShownTime = 2.1;
 
@@ -58,36 +66,6 @@ namespace LoStar
 
             this.CursorCanvas.Timeline = timeline;
             this.CursorCanvas.TimelineSegment = this;
-
-            bool state = false;
-
-            this.MouseDoubleClick += (o, a) =>
-                {
-                    if (state)
-                    {
-                        this.MinShownTime = 0;
-                        this.MaxShownTime = 10;
-                        this.CursorCanvas.CursorPosition = 5;
-                        this.CursorCanvas.ClearAuxiliaryCursors();
-                        for (double x = 5.1; x < 6; x += 0.1)
-                        {
-                            this.CursorCanvas.AddAuxiliaryCursor(x, Brushes.Green);
-                        }
-                    }
-                    else
-                    {
-                        this.MinShownTime = 1.35;
-                        this.MaxShownTime = 2.1;
-                        this.CursorCanvas.CursorPosition = 1.6;
-                        this.CursorCanvas.ClearAuxiliaryCursors();
-                    }
-
-                    state = !state;
-                    if (this.OnZoom != null)
-                    {
-                        OnZoom();
-                    }
-                };
         }
 
         /// <summary>

@@ -8,6 +8,8 @@ namespace LoStar
 {
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Shapes;
 
     /// <summary>
     /// A Stripe is a graphic widget that shows some time-dependent value or quantity.
@@ -28,8 +30,11 @@ namespace LoStar
         {
             this.Loaded += (s, a) =>
             {
-                this.Redraw();
+                this.UpdateComponent();
             };
+
+            // The transparent background i needed. If we do not this way, the events do not get routed correctly.
+            this.Background = Brushes.Transparent;
         }
 
         /// <summary>
@@ -45,7 +50,7 @@ namespace LoStar
             set
             {
                 this.timelineSegment = value;
-                this.timelineSegment.OnZoom += () => this.DrawComponent();
+                this.timelineSegment.OnZoom += () => this.UpdateComponent();
             }
         }
 
@@ -71,6 +76,16 @@ namespace LoStar
         protected double ScaleX(double time)
         {
             return this.ActualWidth * (time - this.TimelineSegment.MinShownTime) / (this.TimelineSegment.MaxShownTime - this.TimelineSegment.MinShownTime);
+        }
+
+        /// <summary>
+        /// Computes the position in pixel starting from the logic position.
+        /// </summary>
+        /// <param name="pixelPosition">Coordinate in pixel.</param>
+        /// <returns>Coordinate in logical position.</returns>
+        protected double DescaleX(double pixelPosition)
+        {
+            return ((pixelPosition / this.ActualWidth) * (this.TimelineSegment.MaxShownTime - this.TimelineSegment.MinShownTime)) + this.TimelineSegment.MinShownTime;
         }
 
         /// <summary>
@@ -119,7 +134,7 @@ namespace LoStar
         /// <summary>
         /// Clears what previously was on the canvas and draws the new content.
         /// </summary>
-        private void DrawComponent()
+        protected void UpdateComponent()
         {
             this.Children.Clear();
             this.Redraw();

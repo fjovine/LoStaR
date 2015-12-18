@@ -2,12 +2,17 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:control="clr-namespace:LoStar"        
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="MainWindow" Height="350" Width="525"
+        >
+    <Grid x:Name="StripeContainer">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/> 
         </Grid.RowDefinitions>
-        <control:CursorOverlay x:Name="CursorCanvas"  Grid.Row="0" Grid.ZIndex="2"/>
+        <control:CursorOverlay 
+            x:Name="CursorCanvas"  
+            Grid.Row="0" 
+            Grid.ZIndex="2"
+            />
         <StackPanel Grid.Row="0" Grid.ZIndex="1">
             <control:TimeAxisStripe x:Name ="TimeAxis"/>
             <control:DigitalStripe x:Name="Stripe0" />

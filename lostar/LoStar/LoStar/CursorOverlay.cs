@@ -7,6 +7,7 @@
 namespace LoStar
 {
     using System.Collections.Generic;
+    using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Shapes;
 
@@ -19,17 +20,50 @@ namespace LoStar
     public class CursorOverlay : Stripe
     {
         /// <summary>
+        /// Backup field of the CursorPosition property.
+        /// </summary>
+        private double cursorPosition;
+
+        /// <summary>
         /// List of the auxiliary cursors.
         /// </summary>
         private List<AuxiliaryCursor> auxiliaryCursors = new List<AuxiliaryCursor>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CursorOverlay" /> class.
+        /// </summary>
+        public CursorOverlay()
+        {
+            this.MouseDown += (s, a) =>
+                {
+                    CursorPosition = this.DescaleX(a.GetPosition(this).X);
+                    a.Handled = true;
+                };
+            this.MouseMove += (s, a) =>
+                {
+                    if (a.LeftButton == MouseButtonState.Pressed)
+                    {
+                        CursorPosition = this.DescaleX(a.GetPosition(this).X);
+                        a.Handled = true;
+                    }
+                };
+        }
 
         /// <summary>
         /// Gets or sets the position of the cursor in seconds.
         /// </summary>
         public double CursorPosition
         {
-            get;
-            set;
+            get
+            {
+                return this.cursorPosition;
+            }
+
+            set
+            {
+                this.cursorPosition = value;
+                this.UpdateComponent();
+            }
         }
 
         /// <summary>

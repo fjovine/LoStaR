@@ -52,8 +52,68 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.159")]
-[assembly: AssemblyFileVersion("0.1.0.159")]
+[assembly: AssemblyVersion("0.1.0.209")]
+[assembly: AssemblyFileVersion("0.1.0.209")]
+
+////  "0.1.0.209"  Compiled 18.12.2015 21:06
+////  "0.1.0.208"  Compiled 18.12.2015 21:05
+////  "0.1.0.207"  Compiled 18.12.2015 21:05
+////  "0.1.0.206"  Compiled 18.12.2015 21:04
+////  "0.1.0.205"  Compiled 18.12.2015 21:02
+////  "0.1.0.204"  Compiled 18.12.2015 21:02
+////  "0.1.0.203"  Compiled 18.12.2015 21:01
+//// The Window adapts itself to the Window Size
+
+////  "0.1.0.202"  Compiled 18.12.2015 21:00
+////  "0.1.0.201"  Compiled 18.12.2015 20:59
+//// Added SizeChanged event handler
+
+////  "0.1.0.200"  Compiled 18.12.2015 20:57
+////  "0.1.0.199"  Compiled 18.12.2015 20:45
+//// Added MouseMove element
+
+////  "0.1.0.198"  Compiled 18.12.2015 20:44
+////  "0.1.0.197"  Compiled 18.12.2015 20:42
+////  "0.1.0.196"  Compiled 18.12.2015 20:41
+////  "0.1.0.195"  Compiled 18.12.2015 20:40
+////  "0.1.0.194"  Compiled 18.12.2015 20:40
+////  "0.1.0.193"  Compiled 18.12.2015 20:39
+////  "0.1.0.192"  Compiled 18.12.2015 20:36
+////  "0.1.0.191"  Compiled 18.12.2015 20:28
+////  "0.1.0.190"  Compiled 18.12.2015 20:21
+////  "0.1.0.189"  Compiled 18.12.2015 20:21
+////  "0.1.0.188"  Compiled 18.12.2015 20:18
+////  "0.1.0.187"  Compiled 18.12.2015 20:16
+//// Added MouseDown event to the stripe container
+
+////  "0.1.0.186"  Compiled 18.12.2015 20:15
+////  "0.1.0.185"  Compiled 18.12.2015 20:14
+////  "0.1.0.184"  Compiled 18.12.2015 19:47
+////  "0.1.0.183"  Compiled 18.12.2015 19:47
+////  "0.1.0.182"  Compiled 18.12.2015 18:51
+////  "0.1.0.181"  Compiled 18.12.2015 18:50
+////  "0.1.0.180"  Compiled 18.12.2015 18:46
+////  "0.1.0.179"  Compiled 18.12.2015 18:46
+////  "0.1.0.178"  Compiled 18.12.2015 18:46
+////  "0.1.0.177"  Compiled 18.12.2015 18:36
+////  "0.1.0.176"  Compiled 18.12.2015 18:36
+////  "0.1.0.175"  Compiled 18.12.2015 18:36
+////  "0.1.0.174"  Compiled 18.12.2015 18:35
+////  "0.1.0.173"  Compiled 18.12.2015 18:32
+////  "0.1.0.172"  Compiled 18.12.2015 18:32
+////  "0.1.0.171"  Compiled 18.12.2015 18:30
+////  "0.1.0.170"  Compiled 18.12.2015 18:30
+////  "0.1.0.169"  Compiled 18.12.2015 18:29
+////  "0.1.0.168"  Compiled 18.12.2015 18:28
+////  "0.1.0.167"  Compiled 18.12.2015 18:26
+////  "0.1.0.166"  Compiled 18.12.2015 18:19
+////  "0.1.0.165"  Compiled 18.12.2015 18:18
+////  "0.1.0.164"  Compiled 18.12.2015 18:08
+////  "0.1.0.163"  Compiled 18.12.2015 18:06
+////  "0.1.0.162"  Compiled 18.12.2015 11:58
+////  "0.1.0.161"  Compiled 18.12.2015 11:58
+////  "0.1.0.160"  Compiled 18.12.2015 11:57
+//// Added Mouse manipulation in CursorOverlay
 
 ////  "0.1.0.159"  Compiled 17.12.2015 21:55
 ////  "0.1.0.158"  Compiled 17.12.2015 21:55
