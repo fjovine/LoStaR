@@ -52,9 +52,34 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.209")]
-[assembly: AssemblyFileVersion("0.1.0.209")]
+[assembly: AssemblyVersion("0.1.0.232")]
+[assembly: AssemblyFileVersion("0.1.0.232")]
 
+////  "0.1.0.232"  Compiled 19.12.2015 20:22
+//// Added toolbox
+
+////  "0.1.0.231"  Compiled 19.12.2015 16:55
+////  "0.1.0.230"  Compiled 19.12.2015 16:55
+////  "0.1.0.229"  Compiled 19.12.2015 16:55
+////  "0.1.0.228"  Compiled 19.12.2015 16:52
+////  "0.1.0.227"  Compiled 19.12.2015 16:49
+////  "0.1.0.226"  Compiled 19.12.2015 15:27
+////  "0.1.0.225"  Compiled 19.12.2015 15:25
+////  "0.1.0.224"  Compiled 19.12.2015 15:25
+////  "0.1.0.223"  Compiled 19.12.2015 15:24
+////  "0.1.0.222"  Compiled 19.12.2015 15:23
+////  "0.1.0.221"  Compiled 19.12.2015 15:20
+////  "0.1.0.220"  Compiled 19.12.2015 14:15
+////  "0.1.0.219"  Compiled 19.12.2015 14:13
+////  "0.1.0.218"  Compiled 19.12.2015 13:59
+////  "0.1.0.217"  Compiled 19.12.2015 13:57
+////  "0.1.0.216"  Compiled 19.12.2015 13:54
+////  "0.1.0.215"  Compiled 19.12.2015 13:48
+////  "0.1.0.214"  Compiled 19.12.2015 13:47
+////  "0.1.0.213"  Compiled 19.12.2015 13:45
+////  "0.1.0.212"  Compiled 19.12.2015 13:45
+////  "0.1.0.211"  Compiled 19.12.2015 13:44
+////  "0.1.0.210"  Compiled 19.12.2015 10:30
 ////  "0.1.0.209"  Compiled 18.12.2015 21:06
 ////  "0.1.0.208"  Compiled 18.12.2015 21:05
 ////  "0.1.0.207"  Compiled 18.12.2015 21:05

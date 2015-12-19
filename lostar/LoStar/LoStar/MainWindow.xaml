@@ -4,11 +4,14 @@
         xmlns:control="clr-namespace:LoStar"        
         Title="MainWindow" Height="350" Width="525"
         >
+
+  <DockPanel>
+    <control:ToolBar DockPanel.Dock ="Top" />
     <Grid x:Name="StripeContainer">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/> 
-        </Grid.RowDefinitions>
-        <control:CursorOverlay 
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <control:CursorOverlay 
             x:Name="CursorCanvas"  
             Grid.Row="0" 
             Grid.ZIndex="2"
@@ -19,4 +22,5 @@
             <control:DigitalStripe x:Name="Stripe1" />
         </StackPanel>
     </Grid>
+  </DockPanel>
 </Window>
