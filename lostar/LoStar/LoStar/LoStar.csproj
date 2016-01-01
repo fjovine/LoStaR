@@ -78,32 +78,36 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="Resources\anchor.xaml">
+    <EmbeddedResource Include="Resources\leftStopArrow.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\compass.xaml">
+    <EmbeddedResource Include="Resources\rightArrow.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Page Include="Resources\gobookmark.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <EmbeddedResource Include="Resources\rightDarrow.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\gotime.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\rightStopArrow.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\home.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\leftArrow.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\leftArrow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\leftDarrow.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\leftDarrow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\home.xaml">
       <SubType>Designer</SubType>
-    </Page>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\zoomIn.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\zoomInMax.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\zoomOut.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Page Include="ToolBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -52,9 +52,33 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.232")]
-[assembly: AssemblyFileVersion("0.1.0.232")]
+[assembly: AssemblyVersion("0.1.0.252")]
+[assembly: AssemblyFileVersion("0.1.0.252")]
 
+////  "0.1.0.252"  Compiled 01.01.2016 21:40
+////  "0.1.0.251"  Compiled 01.01.2016 21:39
+////  "0.1.0.250"  Compiled 01.01.2016 21:37
+////  "0.1.0.249"  Compiled 01.01.2016 21:36
+////  "0.1.0.248"  Compiled 01.01.2016 21:31
+////  "0.1.0.247"  Compiled 01.01.2016 21:28
+////  "0.1.0.246"  Compiled 01.01.2016 21:26
+////  "0.1.0.245"  Compiled 01.01.2016 21:21
+//// Complete toolbar
+
+////  "0.1.0.244"  Compiled 01.01.2016 19:36
+////  "0.1.0.243"  Compiled 01.01.2016 19:10
+////  "0.1.0.242"  Compiled 01.01.2016 19:05
+////  "0.1.0.241"  Compiled 01.01.2016 18:44
+//// Implemented standard WPF toolbar
+
+////  "0.1.0.240"  Compiled 01.01.2016 18:02
+////  "0.1.0.239"  Compiled 01.01.2016 18:01
+////  "0.1.0.238"  Compiled 22.12.2015 17:44
+////  "0.1.0.237"  Compiled 20.12.2015 20:37
+////  "0.1.0.236"  Compiled 20.12.2015 20:34
+////  "0.1.0.235"  Compiled 20.12.2015 20:32
+////  "0.1.0.234"  Compiled 20.12.2015 20:28
+////  "0.1.0.233"  Compiled 20.12.2015 20:25
 ////  "0.1.0.232"  Compiled 19.12.2015 20:22
 //// Added toolbox
 

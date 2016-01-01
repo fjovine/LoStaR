@@ -8,10 +8,30 @@
     <UserControl.Resources>
       <control:XamlToUIElementConverter x:Key="xamlToUiConverter" />
     </UserControl.Resources>
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="left" DockPanel.Dock ="Top" Margin="0,0,0,4">
-        <Button x:Name="Anchor" Height="32" Width="32" 
-            Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=anchor.xaml}" BorderThickness="0" />
-        <Button x:Name="Compass" Height="32" Width="32"
-            Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=compass.xaml}" BorderThickness="0" />
-    </StackPanel>
+    <ToolBarTray>
+        <ToolBar Height="28">
+            <Button x:Name="Anchor"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftStopArrow.xaml}" BorderThickness="0" />
+            <Button x:Name="Compass"
+              Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightStopArrow.xaml}" BorderThickness="0" />
+            <Separator />
+            <Button x:Name="LeftDArrow"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftDarrow.xaml}" BorderThickness="0" />
+            <Button x:Name="LeftArrow"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftArrow.xaml}" BorderThickness="0" />
+            <Button x:Name="ZoomAll"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=home.xaml}" BorderThickness="0" />
+            <Button x:Name="RightArrow"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightArrow.xaml}" BorderThickness="0" />
+            <Button x:Name="RightDArrow"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightDarrow.xaml}" BorderThickness="0" />
+            <Separator />
+            <Button x:Name="ZoomIn"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomIn.xaml}" BorderThickness="0" />
+            <Button x:Name="ZoomOut"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomOut.xaml}" BorderThickness="0" />            
+            <Button x:Name="ZoomInMax"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomInMax.xaml}" BorderThickness="0" />
+        </ToolBar>
+    </ToolBarTray>
 </UserControl>
