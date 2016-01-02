@@ -10,28 +10,37 @@
     </UserControl.Resources>
     <ToolBarTray>
         <ToolBar Height="28">
-            <Button x:Name="Anchor"
-              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftStopArrow.xaml}" BorderThickness="0" />
-            <Button x:Name="Compass"
-              Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightStopArrow.xaml}" BorderThickness="0" />
+            <Button x:Name="LeftSignificance"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftStopArrow.xaml}" BorderThickness="0" 
+              ToolTip="Moves the cursor to the previous meaningful point"/>
+            <Button x:Name="RightSignificance"
+              Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightStopArrow.xaml}" BorderThickness="0" 
+              ToolTip="Moves the cursor to the following meaningful point"/>
             <Separator />
             <Button x:Name="LeftDArrow"
-              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftDarrow.xaml}" BorderThickness="0" />
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftDarrow.xaml}" BorderThickness="0"
+              ToolTip="Scroll the window to the left (past) half of its duration" />
             <Button x:Name="LeftArrow"
-              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftArrow.xaml}" BorderThickness="0" />
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftArrow.xaml}" BorderThickness="0"
+              ToolTip="Move the cursor to the left 1/40th of the window duration"/>
             <Button x:Name="ZoomAll"
-              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=home.xaml}" BorderThickness="0" />
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=home.xaml}" BorderThickness="0"
+              ToolTip="Expands the window to show all the available duration"/>
             <Button x:Name="RightArrow"
-              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightArrow.xaml}" BorderThickness="0" />
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightArrow.xaml}" BorderThickness="0"
+              ToolTip="Move the cursor to the right 1/40th of the window duration"/>
             <Button x:Name="RightDArrow"
               Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightDarrow.xaml}" BorderThickness="0" />
             <Separator />
-            <Button x:Name="ZoomIn"
-              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomIn.xaml}" BorderThickness="0" />
-            <Button x:Name="ZoomOut"
-              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomOut.xaml}" BorderThickness="0" />            
-            <Button x:Name="ZoomInMax"
-              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomInMax.xaml}" BorderThickness="0" />
+            <Button x:Name="ZoomIn" Click="ZoomIn_Click"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomIn.xaml}" BorderThickness="0"
+              ToolTip="Zoom the window in (more datail) keeping the cursor in the same position on screen"/>
+            <Button x:Name="ZoomOut" Click="ZoomOut_Click"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomOut.xaml}" BorderThickness="0"
+              ToolTip="Zoom the window out (less datail) keeping the cursor in the same position on screen."/>
+            <Button x:Name="ZoomInMax" Click="ZoomInMax_Click"
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomInMax.xaml}" BorderThickness="0"
+              ToolTip="Zoom the window in to the maximum detail keeping the cursor in the same position on screen"/>
         </ToolBar>
     </ToolBarTray>
 </UserControl>

@@ -7,6 +7,8 @@
 namespace LoStar
 {
     using System.Collections.Generic;
+    using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Input;
     using System.Windows.Media;
     using System.Windows.Shapes;
@@ -16,9 +18,22 @@ namespace LoStar
     /// The main cursor is normally modifiable directly with the cursor.
     /// The auxiliary cursor are normally less dynamic than the main cursor
     /// and show some computed information on the stripes.
+    /// On top of this canvas, there is a stripe that represents the position of the current window in the whole string of available data.
+    /// An "absolute cursor" is shown in this widget, representing the position of the cursor in absolute coordinates, 
+    /// i.e. with respect to the whole period of time available.
     /// </summary>
     public class CursorOverlay : Stripe
     {
+        /// <summary>
+        /// Stat of the top cursor expressed as a percentage of the top stripe.
+        /// </summary>
+        private const double StartTopCursor = 0.4;
+
+        /// <summary>
+        /// Height of the top cursor expressed as a percentage of the top stripe.
+        /// </summary>
+        private const double HeightTopCursor = 0.4;
+
         /// <summary>
         /// Backup field of the CursorPosition property.
         /// </summary>
@@ -62,7 +77,30 @@ namespace LoStar
             set
             {
                 this.cursorPosition = value;
+                this.TimelineSegment.CursorTime = value;
                 this.UpdateComponent();
+            }
+        }
+
+        /// <summary>
+        /// Gets the height of the top stripe in pixels.
+        /// </summary>
+        public double TopStripeHeight
+        {
+            get
+            {
+                // This gets the Attached Proprty
+                int row = Grid.GetRow(this);
+
+                Grid parentGrid = this.Parent as Grid;
+                if (parentGrid != null)
+                {
+                    return parentGrid.RowDefinitions[row].ActualHeight;
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -92,34 +130,43 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Scales the passed time in absolute time, so that the position in pixels is similar to the relative position in seconds.
+        /// </summary>
+        /// <param name="x">Time expressed in second.</param>
+        /// <returns>Position on screen expressed in pixel.</returns>
+        public double AbsoluteScaleX(double x)
+        {
+            return this.ActualWidth * (x - this.TimelineSegment.MinTime) / (this.TimelineSegment.MaxTime - this.TimelineSegment.MinTime);
+        }
+
+        /// <summary>
         /// Redraws the main cursor and the auxiliary cursors
         /// </summary>
         public override void Redraw()
         {
-            double scaledPosition = this.ScaleX(this.CursorPosition);
-            this.Children.Add(
-                new Line()
-                {
-                    X1 = scaledPosition,
-                    X2 = scaledPosition,
-                    Y1 = 0,
-                    Y2 = this.ActualHeight,
-                    Stroke = Brushes.Red,
-                    StrokeThickness = 0.7
-                });
+            double endTopCursor = this.TopStripeHeight * (StartTopCursor + HeightTopCursor);
+            double startTopCursor = this.TopStripeHeight * StartTopCursor;
+            double scaledMin = this.AbsoluteScaleX(this.TimelineSegment.MinShownTime);
+            double scaledMax = this.AbsoluteScaleX(this.TimelineSegment.MaxShownTime);
+            var timeCursor = new TimeCursor(this, StartTopCursor, HeightTopCursor);
+
+            // Draws the portion of shown window with respect to all
+            Polyline shownWidget = new Polyline();
+            shownWidget.Stroke = Brushes.DarkBlue;
+            shownWidget.StrokeThickness = 2;
+            shownWidget.Points.Add(new Point(0, endTopCursor));
+            shownWidget.Points.Add(new Point(scaledMin, endTopCursor));
+            shownWidget.Points.Add(new Point(scaledMin, startTopCursor));
+            shownWidget.Points.Add(new Point(scaledMax, startTopCursor));
+            shownWidget.Points.Add(new Point(scaledMax, endTopCursor));
+            shownWidget.Points.Add(new Point(this.ActualWidth, endTopCursor));
+            this.Children.Add(shownWidget);
+
+            // Draws the cursor and the axiliary cursors
+            this.Children.Add(timeCursor.GetCursor(this.cursorPosition, Brushes.Red));
             foreach (var cursor in this.auxiliaryCursors)
             {
-                scaledPosition = this.ScaleX(cursor.Position);
-                this.Children.Add(
-                    new Line()
-                    {
-                        X1 = scaledPosition,
-                        X2 = scaledPosition,
-                        Y1 = 0,
-                        Y2 = this.ActualHeight,
-                        Stroke = cursor.CursorBrush,
-                        StrokeThickness = 0.7
-                    });
+                this.Children.Add(timeCursor.GetCursor(cursor.Position, Brushes.Red));
             }
         }
 

@@ -6,17 +6,18 @@
         >
 
   <DockPanel>
-    <control:ToolBar DockPanel.Dock ="Top" />
+    <control:ToolBar x:Name="ToolBar" DockPanel.Dock ="Top" />
     <Grid x:Name="StripeContainer">
       <Grid.RowDefinitions>
+        <RowDefinition Height="50" />
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
       <control:CursorOverlay 
             x:Name="CursorCanvas"  
-            Grid.Row="0" 
+            Grid.Row="0" Grid.RowSpan="2"
             Grid.ZIndex="2"
             />
-        <StackPanel Grid.Row="0" Grid.ZIndex="1">
+        <StackPanel Grid.Row="1" Grid.ZIndex="1">
             <control:TimeAxisStripe x:Name ="TimeAxis"/>
             <control:DigitalStripe x:Name="Stripe0" />
             <control:DigitalStripe x:Name="Stripe1" />

@@ -52,8 +52,57 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.252")]
-[assembly: AssemblyFileVersion("0.1.0.252")]
+[assembly: AssemblyVersion("0.1.0.293")]
+[assembly: AssemblyFileVersion("0.1.0.293")]
+
+////  "0.1.0.293"  Compiled 02.01.2016 22:21
+////  "0.1.0.292"  Compiled 02.01.2016 22:19
+////  "0.1.0.291"  Compiled 02.01.2016 22:19
+////  "0.1.0.290"  Compiled 02.01.2016 22:19
+////  "0.1.0.289"  Compiled 02.01.2016 22:18
+////  "0.1.0.288"  Compiled 02.01.2016 22:15
+////  "0.1.0.287"  Compiled 02.01.2016 22:13
+////  "0.1.0.286"  Compiled 02.01.2016 22:10
+////  "0.1.0.285"  Compiled 02.01.2016 22:07
+////  "0.1.0.284"  Compiled 02.01.2016 22:04
+////  "0.1.0.283"  Compiled 02.01.2016 22:03
+////  "0.1.0.282"  Compiled 02.01.2016 22:00
+////  "0.1.0.281"  Compiled 02.01.2016 21:55
+////  "0.1.0.280"  Compiled 02.01.2016 21:28
+////  "0.1.0.279"  Compiled 02.01.2016 21:24
+//// Implemented all blends of zoom
+
+////  "0.1.0.278"  Compiled 02.01.2016 21:22
+////  "0.1.0.277"  Compiled 02.01.2016 21:19
+////  "0.1.0.276"  Compiled 02.01.2016 21:18
+////  "0.1.0.275"  Compiled 02.01.2016 21:18
+////  "0.1.0.274"  Compiled 02.01.2016 21:16
+////  "0.1.0.273"  Compiled 02.01.2016 21:02
+////  "0.1.0.272"  Compiled 02.01.2016 21:01
+////  "0.1.0.271"  Compiled 02.01.2016 21:00
+////  "0.1.0.270"  Compiled 02.01.2016 20:46
+////  "0.1.0.269"  Compiled 02.01.2016 18:39
+////  "0.1.0.268"  Compiled 02.01.2016 18:17
+////  "0.1.0.267"  Compiled 02.01.2016 17:42
+////  "0.1.0.266"  Compiled 02.01.2016 17:42
+////  "0.1.0.265"  Compiled 02.01.2016 17:41
+////  "0.1.0.264"  Compiled 02.01.2016 17:40
+////  "0.1.0.263"  Compiled 02.01.2016 17:38
+////  "0.1.0.262"  Compiled 02.01.2016 17:36
+////  "0.1.0.261"  Compiled 02.01.2016 16:55
+////  "0.1.0.260"  Compiled 02.01.2016 16:53
+////  "0.1.0.259"  Compiled 02.01.2016 16:48
+////  "0.1.0.258"  Compiled 02.01.2016 16:47
+//// Refactored TimeCursor from CursorOverlay to draw the cursor (s)
+
+////  "0.1.0.257"  Compiled 02.01.2016 15:05
+//// Added Global timeline widget on top of CursorOverlay
+
+////  "0.1.0.256"  Compiled 02.01.2016 14:20
+////  "0.1.0.255"  Compiled 02.01.2016 13:51
+////  "0.1.0.254"  Compiled 02.01.2016 13:51
+////  "0.1.0.253"  Compiled 02.01.2016 13:48
+//// CursorOverlay has a top row containing the whole time span
 
 ////  "0.1.0.252"  Compiled 01.01.2016 21:40
 ////  "0.1.0.251"  Compiled 01.01.2016 21:39

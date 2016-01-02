@@ -73,7 +73,7 @@ namespace LoStar
         /// </summary>
         /// <param name="time">Time in seconds.</param>
         /// <returns>The horizontal position correspondent to the passed value.</returns>
-        protected double ScaleX(double time)
+        public double ScaleX(double time)
         {
             return this.ActualWidth * (time - this.TimelineSegment.MinShownTime) / (this.TimelineSegment.MaxShownTime - this.TimelineSegment.MinShownTime);
         }
@@ -83,7 +83,7 @@ namespace LoStar
         /// </summary>
         /// <param name="pixelPosition">Coordinate in pixel.</param>
         /// <returns>Coordinate in logical position.</returns>
-        protected double DescaleX(double pixelPosition)
+        public double DescaleX(double pixelPosition)
         {
             return ((pixelPosition / this.ActualWidth) * (this.TimelineSegment.MaxShownTime - this.TimelineSegment.MinShownTime)) + this.TimelineSegment.MinShownTime;
         }
@@ -93,7 +93,7 @@ namespace LoStar
         /// </summary>
         /// <param name="state">Logical level.</param>
         /// <returns>The vertical coordinate of the logical level.</returns>
-        protected double ScaleY(bool state)
+        public double ScaleY(bool state)
         {
             return state ? 0 : this.ActualHeight;
         }
@@ -106,7 +106,7 @@ namespace LoStar
         /// <param name="text">Text to show.</param>
         /// <param name="horizontalAlignment">Horizontal alignment of the text with respect to the passed x coordinate.</param>
         /// <param name="fontSize">Font size to be used.</param>
-        protected void AddText(double pixelX, double pixelY, string text, HorizontalAlignment horizontalAlignment = HorizontalAlignment.Left, double fontSize = 8)
+        public void AddText(double pixelX, double pixelY, string text, HorizontalAlignment horizontalAlignment = HorizontalAlignment.Left, double fontSize = 8)
         {
             var caption = new TextBlock() { Text = text, FontSize = fontSize, HorizontalAlignment = horizontalAlignment };
             double startX = pixelX;
@@ -134,7 +134,7 @@ namespace LoStar
         /// <summary>
         /// Clears what previously was on the canvas and draws the new content.
         /// </summary>
-        protected void UpdateComponent()
+        public void UpdateComponent()
         {
             this.Children.Clear();
             this.Redraw();

@@ -52,7 +52,15 @@ namespace LoStar
             set;
         }
 
-        /*
+        /// <summary>
+        /// Gets or sets the time position of the cursor on screen.
+        /// </summary>
+        double CursorTime
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Zooms in the timeline, i.e. shows a more detailed view.
         /// </summary>
@@ -67,6 +75,5 @@ namespace LoStar
         /// Shows all the timeline on the available data.
         /// </summary>
         void ZoomAll();
-         */
     }
 }

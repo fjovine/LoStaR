@@ -60,6 +60,7 @@
     <Compile Include="ITimelineSegment.cs" />
     <Compile Include="Stripe.cs" />
     <Compile Include="TimeAxisStripe.cs" />
+    <Compile Include="TimeCursor.cs" />
     <Compile Include="ToolBar.xaml.cs">
       <DependentUpon>ToolBar.xaml</DependentUpon>
     </Compile>

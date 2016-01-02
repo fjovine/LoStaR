@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
+    using System;
     using System.Diagnostics;
     using System.Threading;
     using System.Windows;
@@ -28,6 +29,8 @@ namespace LoStar
         {
             this.InitializeComponent();
 
+            this.ToolBar.TimelineSegment = this;
+
             this.StripeContainer.SizeChanged += (s, a) =>
                 {
                     if (this.OnZoom != null)
@@ -36,8 +39,10 @@ namespace LoStar
                     }
                 };
 
+            this.MinTime = 0;
             this.MinShownTime = 1.35;
             this.MaxShownTime = 2.1;
+            this.MaxTime = 5;
 
             DigitalTimeline timeline = new DigitalTimeline();
             timeline.InitialState = false;
@@ -107,6 +112,55 @@ namespace LoStar
         {
             get;
             set;
+        }
+
+        /// <summary>
+        /// Gets or sets the time position of the cursor on screen in seconds.
+        /// </summary>
+        public double CursorTime
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Zooms in the timeline, i.e. shows a more detailed view.
+        /// </summary>
+        public void ZoomIn()
+        {
+            this.PerformZoom(0.5);
+        }
+
+        /// <summary>
+        /// Zooms out the timeline, i.e. shows a less detailed view.
+        /// </summary>
+        public void ZoomOut()
+        {
+            this.PerformZoom(-2);
+        }
+
+        /// <summary>
+        /// Shows all the timeline on the available data.
+        /// </summary>
+        public void ZoomAll()
+        {
+            this.MinShownTime = this.MinTime;
+            this.MaxShownTime = this.MaxTime;
+            this.OnZoom();
+        }
+
+        /// <summary>
+        /// Computes the new extremes of the window so that the cursor stays where it is and the scale factor is changed according to the passed parameter.
+        /// </summary>
+        /// <param name="factor">Zoom factor used to compute the new extremes of the window.</param>
+        private void PerformZoom(double factor)
+        {
+            double deltaBefore = this.CursorTime - this.MinShownTime;
+            double deltaAfter = this.MaxShownTime - this.CursorTime;
+
+            this.MinShownTime += deltaBefore * factor;
+            this.MaxShownTime -= deltaAfter * factor;
+            this.OnZoom();
         }
     }
 }
