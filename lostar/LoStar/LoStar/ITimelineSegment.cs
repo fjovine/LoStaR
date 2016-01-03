@@ -14,9 +14,14 @@ namespace LoStar
     public interface ITimelineSegment
     {
         /// <summary>
-        /// Event to be supported by the class 
+        /// Zoom event to be supported by the class 
         /// </summary>
         event ZoomHandler OnZoom;
+
+        /// <summary>
+        /// CursorChange event to be supported by the class.
+        /// </summary>
+        event CursorHandler OnCursorChange;
 
         /// <summary>
         /// Gets the minimum time in seconds from which data is available.
@@ -53,6 +58,14 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Gets the duration of the window in seconds.
+        /// </summary>
+        double WindowDuration
+        {
+            get;
+        }
+
+        /// <summary>
         /// Gets or sets the time position of the cursor on screen.
         /// </summary>
         double CursorTime
@@ -62,18 +75,27 @@ namespace LoStar
         }
 
         /// <summary>
-        /// Zooms in the timeline, i.e. shows a more detailed view.
+        /// Zooms the timeline around the cursor, i.e. keeping unchanged the
+        /// visual position of the cursor.
         /// </summary>
-        void ZoomIn();
-
-        /// <summary>
-        /// Zooms out the timeline, i.e. shows a less detailed view.
-        /// </summary>
-        void ZoomOut();
+        /// <param name="factor">If positive contracts the limits (more detail) if negative expands the limits (less details)
+        /// of the shown window</param>
+        void PerformZoom(double factor);
 
         /// <summary>
         /// Shows all the timeline on the available data.
         /// </summary>
         void ZoomAll();
+
+        /// <summary>
+        /// Scrolls the current window moving to the right or to the left the current
+        /// window.
+        /// The factor determines how the scroll is performed: a negative value scrolls leftwards (towards
+        /// the past) a positive value scrolls rightwards (towards the future).
+        /// </summary>
+        /// <param name="factor">Determines the scrolling percentage. It ranges from -1 to 1. 
+        /// -1 means that the window is scrolled completely to the left
+        /// +1 means that the window is scrolled completely to the right</param>
+        void Scroll(double factor);
     }
 }

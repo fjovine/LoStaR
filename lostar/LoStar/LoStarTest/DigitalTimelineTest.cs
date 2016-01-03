@@ -48,13 +48,13 @@ namespace LoStarTest
             Assert.AreEqual(true, result);
         }
 
-        [TestCase(0.0, 2.0, 0, true, new bool[] { false, true, false }, new double[] {1, 1.1, 1.3})]
-        [TestCase(0.0, 1.25, 0, true, new bool[] { false, true }, new double[] { 1, 1.1 })]
-        [TestCase(0.0, 1.3, 0, true, new bool[] { false, true }, new double[] { 1, 1.1 })]
-        [TestCase(0.0, 1.3001, 0, true, new bool[] { false, true, false }, new double[] { 1, 1.1, 1.3 })]
-        [TestCase(1.05, 1.25, 0, false, new bool[] { true }, new double[] { 1.1 })]
-        [TestCase(1.25, 1.26, 0, true, new bool[] { }, new double[] { })]
-        [TestCase(0.0, 2.0, 1, false, new bool[] { true, false, true, false }, new double[] { 1, 1.1, 1.2, 1.4 })]
+        [TestCase(0.0, 2.0, 0, true, new bool[] { true, false, true, false, false }, new double[] {0.0, 1, 1.1, 1.3, 2.0})]
+        [TestCase(0.0, 1.25, 0, true, new bool[] { true, false, true, false}, new double[] {0, 1, 1.1, 1.25})]
+        [TestCase(0.0, 1.3, 0, true, new bool[] { true, false, true, false }, new double[] { 0, 1, 1.1, 1.3 })]
+        [TestCase(0.0, 1.3001, 0, true, new bool[] { true, false, true, false,false }, new double[] {0, 1, 1.1, 1.3, 1.3001 })]
+        [TestCase(1.05, 1.25, 0, false, new bool[] { false, true, false}, new double[] {1.05, 1.1, 1.25 })]
+        [TestCase(1.25, 1.26, 0, true, new bool[] { true , false }, new double[] { 1.25, 1.26 })]
+        [TestCase(0.0, 2.0, 1, false, new bool[] { false, true, false, true, false, false }, new double[] {0.0, 1, 1.1, 1.2, 1.4, 2.0 })]
         public void ForEach_ReturnsAllTransitions_ForDifferentRanges(double from, double to, int bit, bool expectedResult, bool[] expectedStates, double[] expectedTimes)
         {
             List<double> transitionTimes = new List<double>();

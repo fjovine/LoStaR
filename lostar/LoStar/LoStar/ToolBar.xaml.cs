@@ -39,7 +39,7 @@ namespace LoStar
         /// <param name="e">The parameter is not used.</param>
         private void ZoomIn_Click(object sender, RoutedEventArgs e)
         {
-            this.TimelineSegment.ZoomIn();
+            this.TimelineSegment.PerformZoom(0.5);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace LoStar
         /// <param name="e">The parameter is not used.</param>
         private void ZoomOut_Click(object sender, RoutedEventArgs e)
         {
-            this.TimelineSegment.ZoomOut();
+            this.TimelineSegment.PerformZoom(-2);
         }
 
         /// <summary>
@@ -60,7 +60,58 @@ namespace LoStar
         /// <param name="e">The parameter is not used.</param>
         private void ZoomInMax_Click(object sender, RoutedEventArgs e)
         {
+        }
+
+        /// <summary>
+        /// Scrolls the window leftwards half of its duration.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void LeftDArrow_Click(object sender, RoutedEventArgs e)
+        {
+            this.TimelineSegment.Scroll(-0.5);
+        }
+
+        /// <summary>
+        /// Scrolls the window rightwards half of its duration.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void RightDArrow_Click(object sender, RoutedEventArgs e)
+        {
+            this.TimelineSegment.Scroll(0.5);
+        }
+
+        /// <summary>
+        /// Zooms the window to contain all the available time period.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void ZoomAll_Click(object sender, RoutedEventArgs e)
+        {
             this.TimelineSegment.ZoomAll();
+        }
+
+        /// <summary>
+        /// Moves the cursor 1/40 of the windows duration leftwards.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void LeftArrow_Click(object sender, RoutedEventArgs e)
+        {
+            this.TimelineSegment.CursorTime -= this.TimelineSegment.WindowDuration / 40;
+            this.TimelineSegment.PerformZoom(0);
+        }
+
+        /// <summary>
+        /// Moves the cursor 1/40 of the windows duration rightwards.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void RightArrow_Click(object sender, RoutedEventArgs e)
+        {
+            this.TimelineSegment.CursorTime += this.TimelineSegment.WindowDuration / 40;
+            this.TimelineSegment.PerformZoom(0);
         }
     }
 }

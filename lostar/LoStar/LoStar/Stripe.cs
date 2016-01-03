@@ -40,7 +40,7 @@ namespace LoStar
         /// <summary>
         /// Gets or sets the Interface governing the interface with the timeline parameters.
         /// </summary>
-        public ITimelineSegment TimelineSegment
+        public virtual ITimelineSegment TimelineSegment
         {
             get
             {

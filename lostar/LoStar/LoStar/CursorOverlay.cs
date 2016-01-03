@@ -51,17 +51,38 @@ namespace LoStar
         {
             this.MouseDown += (s, a) =>
                 {
-                    CursorPosition = this.DescaleX(a.GetPosition(this).X);
+                    this.TimelineSegment.CursorTime = this.DescaleX(a.GetPosition(this).X);
                     a.Handled = true;
                 };
             this.MouseMove += (s, a) =>
                 {
                     if (a.LeftButton == MouseButtonState.Pressed)
                     {
-                        CursorPosition = this.DescaleX(a.GetPosition(this).X);
+                        this.TimelineSegment.CursorTime = this.DescaleX(a.GetPosition(this).X);
                         a.Handled = true;
                     }
                 };
+        }
+
+        /// <summary>
+        /// Gets or sets the timeline segment. This version overrides the base property, adding the event
+        /// that is fired when the cursor is moved.
+        /// </summary>
+        public override ITimelineSegment TimelineSegment
+        {
+            get
+            {
+                return base.TimelineSegment;
+            }
+
+            set
+            {
+                base.TimelineSegment = value;
+                base.TimelineSegment.OnCursorChange += (c) =>
+                {
+                    CursorPosition = c;
+                };
+            }
         }
 
         /// <summary>
@@ -77,7 +98,6 @@ namespace LoStar
             set
             {
                 this.cursorPosition = value;
-                this.TimelineSegment.CursorTime = value;
                 this.UpdateComponent();
             }
         }

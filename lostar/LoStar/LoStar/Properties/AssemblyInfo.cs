@@ -52,9 +52,27 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.293")]
-[assembly: AssemblyFileVersion("0.1.0.293")]
+[assembly: AssemblyVersion("0.1.0.308")]
+[assembly: AssemblyFileVersion("0.1.0.308")]
 
+////  "0.1.0.308"  Compiled 03.01.2016 12:46
+////  "0.1.0.307"  Compiled 03.01.2016 12:46
+////  "0.1.0.306"  Compiled 03.01.2016 12:44
+////  "0.1.0.305"  Compiled 03.01.2016 12:39
+//// Added Cursor movement event
+//// 
+
+////  "0.1.0.304"  Compiled 03.01.2016 12:03
+////  "0.1.0.303"  Compiled 03.01.2016 12:03
+////  "0.1.0.302"  Compiled 03.01.2016 11:48
+////  "0.1.0.301"  Compiled 03.01.2016 11:38
+////  "0.1.0.300"  Compiled 03.01.2016 11:18
+////  "0.1.0.299"  Compiled 03.01.2016 11:03
+////  "0.1.0.298"  Compiled 03.01.2016 10:59
+////  "0.1.0.297"  Compiled 03.01.2016 10:58
+////  "0.1.0.296"  Compiled 03.01.2016 10:57
+////  "0.1.0.295"  Compiled 03.01.2016 10:56
+////  "0.1.0.294"  Compiled 03.01.2016 10:55
 ////  "0.1.0.293"  Compiled 02.01.2016 22:21
 ////  "0.1.0.292"  Compiled 02.01.2016 22:19
 ////  "0.1.0.291"  Compiled 02.01.2016 22:19

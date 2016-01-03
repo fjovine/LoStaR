@@ -17,19 +17,19 @@
               Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightStopArrow.xaml}" BorderThickness="0" 
               ToolTip="Moves the cursor to the following meaningful point"/>
             <Separator />
-            <Button x:Name="LeftDArrow"
+            <Button x:Name="LeftDArrow" Click="LeftDArrow_Click"
               Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftDarrow.xaml}" BorderThickness="0"
               ToolTip="Scroll the window to the left (past) half of its duration" />
-            <Button x:Name="LeftArrow"
+            <Button x:Name="LeftArrow" Click="LeftArrow_Click"
               Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftArrow.xaml}" BorderThickness="0"
               ToolTip="Move the cursor to the left 1/40th of the window duration"/>
-            <Button x:Name="ZoomAll"
+            <Button x:Name="ZoomAll" Click="ZoomAll_Click"
               Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=home.xaml}" BorderThickness="0"
               ToolTip="Expands the window to show all the available duration"/>
-            <Button x:Name="RightArrow"
+            <Button x:Name="RightArrow" Click="RightArrow_Click"
               Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightArrow.xaml}" BorderThickness="0"
               ToolTip="Move the cursor to the right 1/40th of the window duration"/>
-            <Button x:Name="RightDArrow"
+            <Button x:Name="RightDArrow" Click="RightDArrow_Click"
               Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightDarrow.xaml}" BorderThickness="0" />
             <Separator />
             <Button x:Name="ZoomIn" Click="ZoomIn_Click"

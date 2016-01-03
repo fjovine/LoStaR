@@ -18,10 +18,21 @@ namespace LoStar
     public delegate void ZoomHandler();
 
     /// <summary>
+    /// Delegate used to manage the cursor movement.
+    /// </summary>
+    /// <param name="cursorPosition">New position of the cursor in seconds.</param>
+    public delegate void CursorHandler(double cursorPosition);
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="MainWindow" /> class.
     /// </summary>
     public partial class MainWindow : Window, ITimelineSegment
     {
+        /// <summary>
+        /// Local repository of the cursor time.
+        /// </summary>
+        private double cursorTime;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow" /> class.
         /// </summary>
@@ -79,6 +90,11 @@ namespace LoStar
         public event ZoomHandler OnZoom;
 
         /// <summary>
+        /// Event triggered by a cursor movement.
+        /// </summary>
+        public event CursorHandler OnCursorChange;
+
+        /// <summary>
         /// Gets or sets the minimum time in seconds for which data is available.
         /// </summary>
         public double MinTime
@@ -115,28 +131,34 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Gets the duration in second of the window.
+        /// </summary>
+        public double WindowDuration
+        {
+            get
+            {
+                return this.MaxShownTime - this.MinShownTime;
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the time position of the cursor on screen in seconds.
         /// </summary>
         public double CursorTime
         {
-            get;
-            set;
-        }
+            get
+            {
+                return this.cursorTime;
+            }
 
-        /// <summary>
-        /// Zooms in the timeline, i.e. shows a more detailed view.
-        /// </summary>
-        public void ZoomIn()
-        {
-            this.PerformZoom(0.5);
-        }
-
-        /// <summary>
-        /// Zooms out the timeline, i.e. shows a less detailed view.
-        /// </summary>
-        public void ZoomOut()
-        {
-            this.PerformZoom(-2);
+            set 
+            {
+                this.cursorTime = value;
+                if (this.OnCursorChange != null)
+                {
+                    this.OnCursorChange(value);
+                }
+            }
         }
 
         /// <summary>
@@ -153,13 +175,30 @@ namespace LoStar
         /// Computes the new extremes of the window so that the cursor stays where it is and the scale factor is changed according to the passed parameter.
         /// </summary>
         /// <param name="factor">Zoom factor used to compute the new extremes of the window.</param>
-        private void PerformZoom(double factor)
+        public void PerformZoom(double factor)
         {
             double deltaBefore = this.CursorTime - this.MinShownTime;
             double deltaAfter = this.MaxShownTime - this.CursorTime;
 
             this.MinShownTime += deltaBefore * factor;
             this.MaxShownTime -= deltaAfter * factor;
+            this.OnZoom();
+        }
+
+        /// <summary>
+        /// Scrolls the current window moving to the right or to the left the current
+        /// window.
+        /// The factor determines how the scroll is performed: a negative value scrolls leftwards (towards
+        /// the past) a positive value scrolls rightwards (towards the future).
+        /// </summary>
+        /// <param name="factor">Determines the scrolling percentage. It ranges from -1 to 1. 
+        /// -1 means that the window is scrolled completely to the left
+        /// +1 means that the window is scrolled completely to the right</param>
+        public void Scroll(double factor)
+        {
+            double scrollSize = this.WindowDuration * factor;
+            this.MinShownTime += scrollSize;
+            this.MaxShownTime += scrollSize;
             this.OnZoom();
         }
     }
