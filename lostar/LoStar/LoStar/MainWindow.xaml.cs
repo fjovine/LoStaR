@@ -8,6 +8,7 @@ namespace LoStar
 {
     using System;
     using System.Diagnostics;
+    using System.IO;
     using System.Threading;
     using System.Windows;
     using System.Windows.Media;
@@ -50,38 +51,39 @@ namespace LoStar
                     }
                 };
 
+            Capture capture = Capture.LoadFromStream(new StreamReader("capture.xml"));
             this.MinTime = 0;
-            this.MinShownTime = 1.35;
-            this.MaxShownTime = 2.1;
-            this.MaxTime = 5;
+            this.MaxTime = capture.MaxTime;
+            this.MinShownTime = 0;
+            this.MaxShownTime = this.MaxTime;
 
-            DigitalTimeline timeline = new DigitalTimeline();
-            timeline.InitialState = false;
-            for (double transition = 0; transition < 10; transition += 1)
+            DigitalStripe[] digitalStripes = new DigitalStripe[]
             {
-                timeline.Transitions.Add(transition);
-            }
+                this.Stripe0,
+                this.Stripe1,
+                this.Stripe2,
+                this.Stripe3,
+                this.Stripe4,
+                this.Stripe5,
+                this.Stripe6,
+                this.Stripe7,
+            };
 
-            this.TimeAxis.Timeline = timeline;
-            this.TimeAxis.TimelineSegment = this;
-
-            this.Stripe0.Caption = "Stripe 0";
-            this.Stripe0.Timeline = timeline;
-            this.Stripe0.TimelineSegment = this;
-
-            timeline = new DigitalTimeline();
-            for (double transition = 0; transition < 10; transition += 0.5)
+            for (int bit = 0; bit < 8; bit++)
             {
-                timeline.Transitions.Add(transition);
+                DigitalTimeline digitalTimeline = new DigitalTimeline(capture, bit);
+                if (bit == 0)
+                {
+                    this.TimeAxis.Timeline = digitalTimeline;
+                    this.TimeAxis.TimelineSegment = this;
+                    this.CursorCanvas.Timeline = digitalTimeline;
+                    this.CursorCanvas.TimelineSegment = this;
+                }
+
+                digitalStripes[bit].Caption = "Stripe " + bit;
+                digitalStripes[bit].Timeline = digitalTimeline;
+                digitalStripes[bit].TimelineSegment = this;
             }
-
-            this.Stripe1.Caption = "Stripe 1";
-            this.Stripe1.IsSelected = true;
-            this.Stripe1.Timeline = timeline;
-            this.Stripe1.TimelineSegment = this;
-
-            this.CursorCanvas.Timeline = timeline;
-            this.CursorCanvas.TimelineSegment = this;
         }
 
         /// <summary>

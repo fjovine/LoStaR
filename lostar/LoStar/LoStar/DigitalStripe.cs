@@ -72,7 +72,11 @@ namespace LoStar
         {
             bool isFirst = true;
             bool lastState = false;
+
+            // the duration of a pixel
+            double pixelWidth = this.TimelineSegment.WindowDuration / this.ActualWidth;
             double lastWhen = 0;
+            bool firstInPixel = false;
 
             if (this.IsSelected)
             {
@@ -95,24 +99,44 @@ namespace LoStar
                     }
                     else
                     {
-                        this.Children.Add(new Line()
+                        if (when - lastWhen < pixelWidth)
                         {
-                            X1 = ScaleX(lastWhen),
-                            X2 = ScaleX(when),
-                            Y1 = ScaleY(lastState),
-                            Y2 = ScaleY(lastState),
-                            Stroke = Brushes.Black,
-                            StrokeThickness = lastState ? 0.8 : 2.5
-                        });
-                        this.Children.Add(new Line()
+                            if (!firstInPixel)
+                            {
+                                this.Children.Add(new Line()
+                                {
+                                    X1 = ScaleX(when),
+                                    X2 = ScaleX(when),
+                                    Y1 = ScaleY(lastState),
+                                    Y2 = ScaleY(state),
+                                    Stroke = Brushes.LightGray,
+                                    StrokeThickness = 1
+                                });
+                                firstInPixel = true;
+                            }
+                        }
+                        else
                         {
-                            X1 = ScaleX(when),
-                            X2 = ScaleX(when),
-                            Y1 = ScaleY(lastState),
-                            Y2 = ScaleY(state),
-                            Stroke = Brushes.LightGray,
-                            StrokeThickness = 1
-                        });
+                            firstInPixel = false;
+                            this.Children.Add(new Line()
+                            {
+                                X1 = ScaleX(lastWhen),
+                                X2 = ScaleX(when),
+                                Y1 = ScaleY(lastState),
+                                Y2 = ScaleY(lastState),
+                                Stroke = Brushes.Black,
+                                StrokeThickness = lastState ? 0.8 : 2.5
+                            });
+                            this.Children.Add(new Line()
+                            {
+                                X1 = ScaleX(when),
+                                X2 = ScaleX(when),
+                                Y1 = ScaleY(lastState),
+                                Y2 = ScaleY(state),
+                                Stroke = Brushes.LightGray,
+                                StrokeThickness = 1
+                            });
+                        }
                     }
 
                     lastState = state;

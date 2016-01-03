@@ -10,3 +10,5 @@ The project is composed by three subprojects
 
 **lostar** - a WPF application working on Windows only that shows on a timeline the logic states.
 
+Example of LoStaR screen : three serial lines showing the dialog between a measurement board and a PC via s USB/Serial Adapter
+![MainScreen](./LostarScreen.png)

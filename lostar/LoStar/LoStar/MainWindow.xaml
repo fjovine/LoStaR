@@ -21,6 +21,12 @@
             <control:TimeAxisStripe x:Name ="TimeAxis"/>
             <control:DigitalStripe x:Name="Stripe0" />
             <control:DigitalStripe x:Name="Stripe1" />
+            <control:DigitalStripe x:Name="Stripe2" />
+            <control:DigitalStripe x:Name="Stripe3" />
+            <control:DigitalStripe x:Name="Stripe4" />
+            <control:DigitalStripe x:Name="Stripe5" />
+            <control:DigitalStripe x:Name="Stripe6" />
+            <control:DigitalStripe x:Name="Stripe7" />
         </StackPanel>
     </Grid>
   </DockPanel>

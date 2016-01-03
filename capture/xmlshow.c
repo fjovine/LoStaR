@@ -102,7 +102,7 @@ int main(int argc, char ** argv)
 	{		
 		PTRANSITION ptransition=&transitions[initial % TRANSITION_BUFFER_SIZE];
 		double sec_time = ptransition->sec + ptransition->usec / 1E6; 		
-		fprintf(xf, "\t\t<Transition time='%.6f' state='%d'/>\n",
+		fprintf(xf, "\t\t<Transition Time='%.6f' State='%d'/>\n",
 			sec_time,
 			ptransition->new_state & 0xFF
 			);

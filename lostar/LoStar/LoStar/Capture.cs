@@ -55,6 +55,17 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Gets the time of the last transition stored.
+        /// </summary>
+        public double MaxTime
+        {
+            get
+            {
+                return this.TransitionContainer[this.TransitionCount - 1].Time;
+            }
+        }
+
+        /// <summary>
         /// Loads the capture from an xml file that serializes it.
         /// </summary>
         /// <param name="reader">Stream from which the captured data is loaded.</param>
