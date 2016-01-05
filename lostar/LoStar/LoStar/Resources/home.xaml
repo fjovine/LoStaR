@@ -9,7 +9,6 @@
     <!--Unknown tag: metadata-->
     <!--Unknown tag: sodipodi:namedview-->
     <Canvas Name="g3">
-      <Ellipse xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="1.2" Canvas.Top="2.8" Width="60.2" Height="60.2" Name="circle5" Fill="#FFFFFFFF"/>
       <Rectangle xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Canvas.Left="19.025423" Canvas.Top="20.567797" Width="24.949152" Height="24.40678" Name="rect2986" Fill="#FF000000" StrokeThickness="5" Stroke="#FF000000" StrokeMiterLimit="4.5999999" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
     </Canvas>
   </Canvas>

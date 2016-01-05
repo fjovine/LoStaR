@@ -52,9 +52,22 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.315")]
-[assembly: AssemblyFileVersion("0.1.0.315")]
+[assembly: AssemblyVersion("0.1.0.326")]
+[assembly: AssemblyFileVersion("0.1.0.326")]
 
+////  "0.1.0.326"  Compiled 05.01.2016 11:51
+////  "0.1.0.325"  Compiled 05.01.2016 11:45
+////  "0.1.0.324"  Compiled 05.01.2016 11:45
+////  "0.1.0.323"  Compiled 05.01.2016 11:43
+////  "0.1.0.322"  Compiled 05.01.2016 11:42
+////  "0.1.0.321"  Compiled 05.01.2016 11:41
+////  "0.1.0.320"  Compiled 05.01.2016 11:40
+////  "0.1.0.319"  Compiled 05.01.2016 11:35
+////  "0.1.0.318"  Compiled 05.01.2016 11:26
+////  "0.1.0.317"  Compiled 05.01.2016 11:24
+//// Added CenterCursor tool on the toolbar
+
+////  "0.1.0.316"  Compiled 04.01.2016 12:12
 ////  "0.1.0.315"  Compiled 03.01.2016 18:52
 ////  "0.1.0.314"  Compiled 03.01.2016 18:51
 ////  "0.1.0.313"  Compiled 03.01.2016 18:41

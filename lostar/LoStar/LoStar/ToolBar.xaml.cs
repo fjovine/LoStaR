@@ -113,5 +113,21 @@ namespace LoStar
             this.TimelineSegment.CursorTime += this.TimelineSegment.WindowDuration / 40;
             this.TimelineSegment.PerformZoom(0);
         }
+
+        /// <summary>
+        /// Scrolls the window in order to place the cursor in the center of the window.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void CenterCursor_Click(object sender, RoutedEventArgs e)
+        {
+            double beforeCursor = this.TimelineSegment.CursorTime - this.TimelineSegment.MinShownTime;
+            double afterCursor = this.TimelineSegment.MaxShownTime - this.TimelineSegment.CursorTime;
+            double delta = (beforeCursor - afterCursor) / 2;
+
+            this.TimelineSegment.MinShownTime += delta;
+            this.TimelineSegment.MaxShownTime += delta;
+            this.TimelineSegment.PerformZoom(0);
+        }
     }
 }

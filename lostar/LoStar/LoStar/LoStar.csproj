@@ -109,6 +109,9 @@
     <EmbeddedResource Include="Resources\zoomOut.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\panCenter.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Page Include="ToolBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
