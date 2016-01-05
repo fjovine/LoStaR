@@ -54,6 +54,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AxisTickGenerator.cs" />
+    <Compile Include="IBrowsableTimeline.cs" />
+    <Compile Include="SelectableStripe.cs" />
     <Compile Include="CursorOverlay.cs" />
     <Compile Include="DigitalStripe.cs" />
     <Compile Include="DigitalTimeline.cs" />

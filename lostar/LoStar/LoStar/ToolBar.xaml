@@ -10,10 +10,10 @@
     </UserControl.Resources>
     <ToolBarTray>
         <ToolBar Height="28">
-            <Button x:Name="LeftSignificance"
+            <Button x:Name="LeftSignificance" Click="LeftSignificance_Click"
               Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftStopArrow.xaml}" BorderThickness="0" 
               ToolTip="Moves the cursor to the previous meaningful point"/>
-            <Button x:Name="RightSignificance"
+            <Button x:Name="RightSignificance" Click="RightSignificance_Click"
               Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightStopArrow.xaml}" BorderThickness="0" 
               ToolTip="Moves the cursor to the following meaningful point"/>
             <Separator />

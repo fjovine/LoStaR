@@ -75,6 +75,14 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Gets the selected <c>browsable </c> timeline, null if no digital stripe is selected.
+        /// </summary>
+        IBrowsableTimeline BrowsableTimeline
+        {
+            get;
+        }
+
+        /// <summary>
         /// Zooms the timeline around the cursor, i.e. keeping unchanged the
         /// visual position of the cursor.
         /// </summary>
@@ -97,5 +105,10 @@ namespace LoStar
         /// -1 means that the window is scrolled completely to the left
         /// +1 means that the window is scrolled completely to the right</param>
         void Scroll(double factor);
+
+        /// <summary>
+        /// Scrolls the window in order to place the cursor in the center of the window.
+        /// </summary>
+        void CenterCursor();
     }
 }

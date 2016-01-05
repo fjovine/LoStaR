@@ -121,13 +121,59 @@ namespace LoStar
         /// <param name="e">The parameter is not used.</param>
         private void CenterCursor_Click(object sender, RoutedEventArgs e)
         {
-            double beforeCursor = this.TimelineSegment.CursorTime - this.TimelineSegment.MinShownTime;
-            double afterCursor = this.TimelineSegment.MaxShownTime - this.TimelineSegment.CursorTime;
-            double delta = (beforeCursor - afterCursor) / 2;
+            this.TimelineSegment.CenterCursor();
+        }
 
-            this.TimelineSegment.MinShownTime += delta;
-            this.TimelineSegment.MaxShownTime += delta;
-            this.TimelineSegment.PerformZoom(0);
+        /// <summary>
+        /// Moves the cursor to the following event in the selects stripe.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void LeftSignificance_Click(object sender, RoutedEventArgs e)
+        {
+            IBrowsableTimeline currentBrowsableTimeline = this.TimelineSegment.BrowsableTimeline;
+            if (currentBrowsableTimeline != null)
+            {
+                double? priorEvent = currentBrowsableTimeline.GetNearestEventBefore(this.TimelineSegment.CursorTime);
+                if (priorEvent != null)
+                {
+                    this.TimelineSegment.CursorTime = (double)priorEvent;
+                    if (this.TimelineSegment.CursorTime < this.TimelineSegment.MinShownTime)
+                    {
+                        this.TimelineSegment.CenterCursor();
+                    }
+                    else
+                    {
+                        this.TimelineSegment.PerformZoom(0);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Moves the cursor to the previous event in the selects stripe.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void RightSignificance_Click(object sender, RoutedEventArgs e)
+        {
+            IBrowsableTimeline currentBrowsableTimeline = this.TimelineSegment.BrowsableTimeline;
+            if (currentBrowsableTimeline != null)
+            {
+                double? laterEvent = currentBrowsableTimeline.GetNearestEventAfter(this.TimelineSegment.CursorTime);
+                if (laterEvent != null)
+                {
+                    this.TimelineSegment.CursorTime = (double)laterEvent;
+                    if (this.TimelineSegment.CursorTime > this.TimelineSegment.MaxShownTime)
+                    {
+                        this.TimelineSegment.CenterCursor();
+                    }
+                    else
+                    {
+                        this.TimelineSegment.PerformZoom(0);
+                    }
+                }
+            }
         }
     }
 }

@@ -7,6 +7,7 @@
 namespace LoStar
 {
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -40,6 +41,16 @@ namespace LoStar
         private double cursorPosition;
 
         /// <summary>
+        /// Private copy of the enumeration of managed stripes
+        /// </summary>
+        private IEnumerable<SelectableStripe> managedStripes;
+
+        /// <summary>
+        /// Private copy of the container of the selectable stripes managed by the cursor overlay
+        /// </summary>
+        private UIElement selectableStripesContaner;
+
+        /// <summary>
         /// List of the auxiliary cursors.
         /// </summary>
         private List<AuxiliaryCursor> auxiliaryCursors = new List<AuxiliaryCursor>();
@@ -51,8 +62,44 @@ namespace LoStar
         {
             this.MouseDown += (s, a) =>
                 {
-                    this.TimelineSegment.CursorTime = this.DescaleX(a.GetPosition(this).X);
-                    a.Handled = true;
+                    if (a.ClickCount == 1)
+                    {
+                        this.TimelineSegment.CursorTime = this.DescaleX(a.GetPosition(this).X);
+                        a.Handled = true;
+                    }
+                    else
+                    {
+                        SelectableStripe hitStripe = null;
+
+                        Point pt = a.GetPosition(this.selectableStripesContaner);
+                        VisualTreeHelper.HitTest(
+                            this.selectableStripesContaner,
+                            null,
+                            (r) => 
+                            {
+                                if (r.VisualHit is SelectableStripe)
+                                {
+                                    hitStripe = (SelectableStripe)r.VisualHit;
+                                    return HitTestResultBehavior.Stop;
+                                }
+                                else
+                                {
+                                    return HitTestResultBehavior.Continue;
+                                }
+                            },
+                            new PointHitTestParameters(pt));
+                        if (hitStripe != null)
+                        {
+                            foreach (SelectableStripe managedStripe in this.managedStripes)
+                            {
+                                managedStripe.IsSelected = false;
+                            }
+
+                            hitStripe.IsSelected = true;
+                            this.SelectedStripe = hitStripe;
+                            this.TimelineSegment.PerformZoom(0);
+                        }
+                    }
                 };
             this.MouseMove += (s, a) =>
                 {
@@ -62,6 +109,42 @@ namespace LoStar
                         a.Handled = true;
                     }
                 };
+            this.MouseWheel += (s, a) =>
+                {
+                    this.TimelineSegment.PerformZoom(a.Delta > 0 ? 0.1 : -0.1);
+                };
+            this.SelectedStripe = null;
+        }
+
+        /// <summary>
+        /// Sets the enumeration of stripes that are covered and managed by the cursor overlay.
+        /// </summary>
+        public IEnumerable<SelectableStripe> ManagedStripes
+        {
+            set
+            {
+                this.managedStripes = value;
+            }
+        }
+
+        /// <summary>
+        /// Sets the container of the selectable stripes covered by the cursor
+        /// </summary>
+        public UIElement SelectableStripesContainer
+        {
+            set
+            {
+                this.selectableStripesContaner = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the selected stripe.
+        /// </summary>
+        public SelectableStripe SelectedStripe
+        {
+            get;
+            private set;
         }
 
         /// <summary>

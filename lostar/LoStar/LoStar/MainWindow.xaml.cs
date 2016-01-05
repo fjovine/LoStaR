@@ -84,6 +84,9 @@ namespace LoStar
                 digitalStripes[bit].Timeline = digitalTimeline;
                 digitalStripes[bit].TimelineSegment = this;
             }
+
+            this.CursorCanvas.ManagedStripes = digitalStripes;
+            this.CursorCanvas.SelectableStripesContainer = this.Stripes;
         }
 
         /// <summary>
@@ -164,6 +167,17 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Gets the <c>browsable</c> timeline corresponding to the selected stripe, or null if no stripe is selected.
+        /// </summary>
+        public IBrowsableTimeline BrowsableTimeline
+        {
+            get 
+            {
+                return this.CursorCanvas.SelectedStripe;
+            }
+        }
+
+        /// <summary>
         /// Shows all the timeline on the available data.
         /// </summary>
         public void ZoomAll()
@@ -182,9 +196,15 @@ namespace LoStar
             double deltaBefore = this.CursorTime - this.MinShownTime;
             double deltaAfter = this.MaxShownTime - this.CursorTime;
 
-            this.MinShownTime += deltaBefore * factor;
-            this.MaxShownTime -= deltaAfter * factor;
-            this.OnZoom();
+            double tentativeMin = this.MinShownTime + (deltaBefore * factor);
+            double tentativeMax = this.MaxShownTime - (deltaAfter * factor);
+
+            if (tentativeMin >= this.MinTime && tentativeMax <= this.MaxTime)
+            {
+                this.MinShownTime = tentativeMin;
+                this.MaxShownTime = tentativeMax;
+                this.OnZoom();
+            }
         }
 
         /// <summary>
@@ -202,6 +222,20 @@ namespace LoStar
             this.MinShownTime += scrollSize;
             this.MaxShownTime += scrollSize;
             this.OnZoom();
+        }
+
+        /// <summary>
+        /// Scrolls the window in order to place the cursor in the center of the window.
+        /// </summary>
+        public void CenterCursor()
+        {
+            double beforeCursor = this.CursorTime - this.MinShownTime;
+            double afterCursor = this.MaxShownTime - this.CursorTime;
+            double delta = (beforeCursor - afterCursor) / 2;
+
+            this.MinShownTime += delta;
+            this.MaxShownTime += delta;
+            this.PerformZoom(0);
         }
     }
 }

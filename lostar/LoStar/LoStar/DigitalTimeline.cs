@@ -10,7 +10,8 @@ namespace LoStar
     using System.Collections.Generic;
 
     /// <summary>
-    /// A Digital timeline describes when a single bit changes its state. Starting from the initial state, every state transition is stored with the time in seconds of
+    /// A Digital timeline describes when a single bit changes its state.
+    /// Starting from the initial state, every state transition is stored with the time in seconds of
     /// the transition.
     /// </summary>
     public class DigitalTimeline
@@ -193,6 +194,54 @@ namespace LoStar
             else
             {
                 return this.StateAt(index);
+            }
+        }
+
+        /// <summary>
+        /// Computes the previous or the following transition with respect to the passed time.
+        /// Returns null if there is no previous transition and an event before is asked
+        /// or if there is no following transition and an event after is asked
+        /// </summary>
+        /// <param name="timeSec">Time to be used as reference position.</param>
+        /// <param name="eventBefore">True if the previous transition must be returned.</param>
+        /// <returns>Previous or following transition in seconds or null if none available</returns>
+        public double? GetNearestTransition(double timeSec, bool eventBefore)
+        {
+            int index = this.Transitions.BinarySearch(timeSec);
+            Console.WriteLine("Index = " + index);
+            bool found = index >= 0;
+            if (index < 0)
+            {
+                index = ~index - 1;
+            }
+
+            Console.WriteLine("Index = " + index);
+            if (eventBefore)
+            {
+                if (index <= 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    if (found)
+                    {
+                        index--;
+                    }
+
+                    return this.Transitions[index];
+                }
+            }
+            else
+            {
+                if (index >= this.Transitions.Count - 1)
+                {
+                    return null;
+                }
+                else
+                {
+                    return this.Transitions[index + 1];
+                }
             }
         }
     }

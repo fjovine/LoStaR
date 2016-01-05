@@ -99,6 +99,25 @@ namespace LoStarTest
             Assert.AreEqual(expectedState, digitalTimeLine.StateAt(time));
         }
 
+        [TestCase(1.3,  1.1, true)]
+        [TestCase(1.3,  null, false)]
+        [TestCase(1.05, null, true)]
+        [TestCase(1.05, 1.1, false)]
+        [TestCase(1.15, 1.1, true)]
+        [TestCase(1.15, 1.3, false)]
+        [TestCase(1.35, 1.3, true)]
+        [TestCase(1.35, null, false)]
+        public void GetNearestTransition_ReturnsTheCorrectTransition_WhenATimeIsGiven(double time, double? expectedTime, bool previous)
+        {
+            DigitalTimeline digitalTimeLine = new DigitalTimeline(generateCapture(), 0);
+            digitalTimeLine.Transitions.ForEach((t) =>
+            {
+                Console.WriteLine("Time " + t);
+            });
+
+            Assert.AreEqual(expectedTime, digitalTimeLine.GetNearestTransition(time, previous));
+        }
+
         /// <summary>
         /// This Capture has two bits that have the following states
         /// (s) 1 0

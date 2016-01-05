@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file is NOT compatible with Silverlight-->
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+  <Canvas Name="Layer_1" Width="64" Height="64" Canvas.Left="0" Canvas.Top="0">
+    <Canvas.RenderTransform>
+      <TranslateTransform X="0.5" Y="-0.5"/>
+    </Canvas.RenderTransform>
+    <Canvas.Resources/>
+    <!--Unknown tag: metadata-->
+    <!--Unknown tag: sodipodi:namedview-->
+    <Canvas Name="g3">
+      <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3773" Fill="#FF000000" StrokeThickness="3.02893806" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+        <Path.Data>
+          <PathGeometry Figures="M 23.864407 37.694916 7.9471549 28.444068 23.917251 19.284747 z" FillRule="NonZero"/>
+        </Path.Data>
+        <Path.RenderTransform>
+          <MatrixTransform Matrix="0.80597877 0 0 1.3235847 28.891373 -4.3345737"/>
+        </Path.RenderTransform>
+      </Path>
+      <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path37731" Fill="#FF000000" StrokeThickness="3.02893806" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Round" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+        <Path.Data>
+          <PathGeometry Figures="M 23.864407 37.694916 7.9471549 28.444068 23.917251 19.284747 z" FillRule="NonZero"/>
+        </Path.Data>
+        <Path.RenderTransform>
+          <MatrixTransform Matrix="-0.80597877 0 0 1.3235847 34.244222 -4.3345737"/>
+        </Path.RenderTransform>
+      </Path>
+      <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3826" StrokeThickness="2" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Round" StrokeEndLineCap="Round">
+        <Path.Data>
+          <PathGeometry Figures="m 32.000001 8.271185 0 47.728815" FillRule="NonZero"/>
+        </Path.Data>
+        <Path.RenderTransform>
+          <TranslateTransform X="-0.5" Y="0.5"/>
+        </Path.RenderTransform>
+      </Path>
+    </Canvas>
+  </Canvas>
+</Viewbox>
