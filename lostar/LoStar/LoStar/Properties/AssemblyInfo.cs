@@ -52,8 +52,22 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.418")]
-[assembly: AssemblyFileVersion("0.1.0.418")]
+[assembly: AssemblyVersion("0.1.0.428")]
+[assembly: AssemblyFileVersion("0.1.0.428")]
+
+////  "0.1.0.428"  Compiled 06.01.2016 11:09
+//// Refactored TimeLine property from Stripe to DigitalStripe
+
+////  "0.1.0.427"  Compiled 06.01.2016 10:27
+////  "0.1.0.426"  Compiled 06.01.2016 10:26
+////  "0.1.0.425"  Compiled 06.01.2016 10:25
+////  "0.1.0.424"  Compiled 06.01.2016 10:25
+////  "0.1.0.423"  Compiled 06.01.2016 10:17
+////  "0.1.0.422"  Compiled 06.01.2016 10:15
+////  "0.1.0.421"  Compiled 06.01.2016 10:14
+////  "0.1.0.420"  Compiled 06.01.2016 10:13
+////  "0.1.0.419"  Compiled 06.01.2016 10:12
+//// Implemented ZoomInMax
 
 ////  "0.1.0.418"  Compiled 05.01.2016 22:35
 ////  "0.1.0.417"  Compiled 05.01.2016 22:29

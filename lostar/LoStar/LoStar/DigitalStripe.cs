@@ -26,6 +26,15 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Gets or sets the digitalTimeline that contains the time when the bit changes its state to be shown online
+        /// </summary>
+        public DigitalTimeline Timeline
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
         /// Fills the component with the waveform
         /// </summary>
         public override void Redraw()

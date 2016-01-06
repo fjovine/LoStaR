@@ -55,15 +55,6 @@ namespace LoStar
         }
 
         /// <summary>
-        /// Gets or sets the digitalTimeline that contains the time when the bit changes its state to be shown online
-        /// </summary>
-        public DigitalTimeline Timeline
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
         /// Method that must be implemented by a derived class to full the control with the requested graphic elements.
         /// </summary>
         public abstract void Redraw();

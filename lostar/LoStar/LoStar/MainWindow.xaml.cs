@@ -74,9 +74,7 @@ namespace LoStar
                 DigitalTimeline digitalTimeline = new DigitalTimeline(capture, bit);
                 if (bit == 0)
                 {
-                    this.TimeAxis.Timeline = digitalTimeline;
                     this.TimeAxis.TimelineSegment = this;
-                    this.CursorCanvas.Timeline = digitalTimeline;
                     this.CursorCanvas.TimelineSegment = this;
                 }
 

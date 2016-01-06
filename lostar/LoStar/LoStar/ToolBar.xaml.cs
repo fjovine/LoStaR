@@ -14,6 +14,8 @@ namespace LoStar
     /// </summary>
     public partial class ToolBar : UserControl
     {
+        private static readonly double MaxZoomSizeSeconds = 1000.0E-6;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolBar" /> class.
         /// </summary>
@@ -54,12 +56,20 @@ namespace LoStar
         }
 
         /// <summary>
-        /// Zooms to the maximum available zoom, i.e. making visible all the available data.
+        /// Zooms to the maximum available zoom.
+        /// The maximum zoom is chosen so that the whole window will show MaxZoomSizeSeconds microseconds.
+        /// The cursor will be left where it was.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
         private void ZoomInMax_Click(object sender, RoutedEventArgs e)
         {
+            double deltaBefore = this.TimelineSegment.CursorTime - this.TimelineSegment.MinShownTime;
+            double deltaAfter = this.TimelineSegment.MaxShownTime - this.TimelineSegment.CursorTime;
+
+            this.TimelineSegment.MinShownTime = this.TimelineSegment.CursorTime - deltaBefore * MaxZoomSizeSeconds / (deltaAfter + deltaBefore);
+            this.TimelineSegment.MaxShownTime = this.TimelineSegment.MinShownTime + MaxZoomSizeSeconds;
+            this.TimelineSegment.PerformZoom(0);
         }
 
         /// <summary>
