@@ -57,7 +57,7 @@ namespace LoStar
             this.MinShownTime = 0;
             this.MaxShownTime = this.MaxTime;
 
-            DigitalStripe[] digitalStripes = new DigitalStripe[]
+            SelectableStripe[] digitalStripes = new SelectableStripe[]
             {
                 this.Stripe0,
                 this.Stripe1,
@@ -67,7 +67,8 @@ namespace LoStar
                 this.Stripe5,
                 this.Stripe6,
                 this.Stripe7,
-                this.StripeUart
+                this.StripeUart,
+                this.SpanUart
             };
 
             for (int bit = 0; bit < 8; bit++)
@@ -79,14 +80,21 @@ namespace LoStar
                     this.CursorCanvas.TimelineSegment = this;
                 }
 
-                digitalStripes[bit].Caption = "Stripe " + bit;
-                digitalStripes[bit].Timeline = digitalTimeline;
-                digitalStripes[bit].TimelineSegment = this;
+                DigitalStripe stripe = (DigitalStripe)digitalStripes[bit];
+                stripe.Caption = "Stripe " + bit;
+                stripe.Timeline = digitalTimeline;
+                stripe.TimelineSegment = this;
             }
 
-            digitalStripes[8].Caption = "UART";
-            digitalStripes[8].Timeline = DigitalTimeline.GenerateTimelineUart(9600, 2.5, 1, 2, 3, 4, 5);
-            digitalStripes[8].TimelineSegment = this;
+            var serialTimeline = DigitalTimeline.GenerateTimelineUart(9600, 2.5, 1, 2, 3, 4, 5);
+            this.StripeUart.Caption = "UART";
+            this.StripeUart.Timeline = serialTimeline;
+            this.StripeUart.TimelineSegment = this;
+
+            UartTimeline uartTimeline = new UartTimeline(serialTimeline, 9600);
+            this.SpanUart.Caption = "SpanUart";
+            this.SpanUart.Timeline = uartTimeline;
+            this.SpanUart.TimelineSegment = this;
 
             this.CursorCanvas.ManagedStripes = digitalStripes;
             this.CursorCanvas.SelectableStripesContainer = this.Stripes;

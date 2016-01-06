@@ -12,7 +12,8 @@ namespace LoStar
     using System.Windows.Shapes;
 
     /// <summary>
-    /// Interaction logic for <c>Stripe.xaml</c>
+    /// A DigitalStripe is a selectable stripe that shows the waveform of a digital signal, i.e. shows
+    /// a rectangle waveform.
     /// </summary>
     public class DigitalStripe : SelectableStripe
     {
@@ -21,8 +22,6 @@ namespace LoStar
         /// </summary>
         public DigitalStripe()
         {
-            this.CaptionHeight = 15;
-            this.Height = 40;
         }
 
         /// <summary>
@@ -37,25 +36,15 @@ namespace LoStar
         /// <summary>
         /// Fills the component with the waveform
         /// </summary>
-        public override void Redraw()
+        /// <param name="pixelDuration">Duration of a single pixel on screen</param>
+        public override void RedrawContent(double pixelDuration)
         {
             bool isFirst = true;
             bool lastState = false;
 
             // the duration of a pixel
-            double pixelWidth = this.TimelineSegment.WindowDuration / this.ActualWidth;
             double lastWhen = 0;
             bool firstInPixel = false;
-
-            if (this.IsSelected)
-            {
-                var selectedCaption = new Rectangle() { Fill = Brushes.LightGray, Width = this.ActualWidth, Height = this.Margin.Top * 0.7 };
-                Canvas.SetLeft(selectedCaption, 0);
-                Canvas.SetTop(selectedCaption, -this.Margin.Top * 0.8);
-                this.Children.Add(selectedCaption);
-            }
-
-            this.AddText(0, -this.Margin.Top, this.Caption);
 
             this.Timeline.ForEach(
                 this.TimelineSegment.MinShownTime,
@@ -68,7 +57,7 @@ namespace LoStar
                     }
                     else
                     {
-                        if (when - lastWhen < pixelWidth)
+                        if (when - lastWhen < pixelDuration)
                         {
                             if (!firstInPixel)
                             {

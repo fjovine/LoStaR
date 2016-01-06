@@ -52,9 +52,47 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.478")]
-[assembly: AssemblyFileVersion("0.1.0.478")]
+[assembly: AssemblyVersion("0.1.0.512")]
+[assembly: AssemblyFileVersion("0.1.0.512")]
 
+////  "0.1.0.512"  Compiled 06.01.2016 23:47
+////  "0.1.0.511"  Compiled 06.01.2016 23:46
+////  "0.1.0.510"  Compiled 06.01.2016 23:45
+////  "0.1.0.509"  Compiled 06.01.2016 23:44
+////  "0.1.0.508"  Compiled 06.01.2016 23:30
+////  "0.1.0.507"  Compiled 06.01.2016 23:28
+////  "0.1.0.506"  Compiled 06.01.2016 23:23
+////  "0.1.0.505"  Compiled 06.01.2016 23:11
+////  "0.1.0.504"  Compiled 06.01.2016 23:10
+////  "0.1.0.503"  Compiled 06.01.2016 23:09
+////  "0.1.0.502"  Compiled 06.01.2016 23:08
+////  "0.1.0.501"  Compiled 06.01.2016 23:00
+////  "0.1.0.500"  Compiled 06.01.2016 22:57
+////  "0.1.0.499"  Compiled 06.01.2016 22:55
+////  "0.1.0.498"  Compiled 06.01.2016 22:55
+////  "0.1.0.497"  Compiled 06.01.2016 22:54
+////  "0.1.0.496"  Compiled 06.01.2016 22:53
+////  "0.1.0.495"  Compiled 06.01.2016 22:51
+////  "0.1.0.494"  Compiled 06.01.2016 22:51
+////  "0.1.0.493"  Compiled 06.01.2016 22:51
+////  "0.1.0.492"  Compiled 06.01.2016 22:50
+////  "0.1.0.491"  Compiled 06.01.2016 22:46
+////  "0.1.0.490"  Compiled 06.01.2016 22:46
+////  "0.1.0.489"  Compiled 06.01.2016 22:45
+////  "0.1.0.488"  Compiled 06.01.2016 22:43
+//// Added SpanStripe
+
+////  "0.1.0.487"  Compiled 06.01.2016 22:39
+////  "0.1.0.486"  Compiled 06.01.2016 22:38
+////  "0.1.0.485"  Compiled 06.01.2016 22:12
+////  "0.1.0.484"  Compiled 06.01.2016 22:12
+////  "0.1.0.483"  Compiled 06.01.2016 22:09
+//// Refactored Caption redraw logic from DigitalStripe to SelectableStripe
+
+////  "0.1.0.482"  Compiled 06.01.2016 22:08
+////  "0.1.0.481"  Compiled 06.01.2016 22:07
+////  "0.1.0.480"  Compiled 06.01.2016 22:05
+////  "0.1.0.479"  Compiled 06.01.2016 22:05
 ////  "0.1.0.478"  Compiled 06.01.2016 21:45
 ////  "0.1.0.477"  Compiled 06.01.2016 21:45
 ////  "0.1.0.476"  Compiled 06.01.2016 21:43

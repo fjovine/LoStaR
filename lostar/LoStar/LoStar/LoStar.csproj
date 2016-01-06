@@ -61,6 +61,7 @@
     <Compile Include="DigitalTimeline.cs" />
     <Compile Include="ITimelineSegment.cs" />
     <Compile Include="SpanInfo.cs" />
+    <Compile Include="SpanStripe.cs" />
     <Compile Include="SpanTimeline.cs" />
     <Compile Include="Stripe.cs" />
     <Compile Include="TimeAxisStripe.cs" />
