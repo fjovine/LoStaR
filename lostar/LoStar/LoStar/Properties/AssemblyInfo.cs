@@ -52,8 +52,62 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.428")]
-[assembly: AssemblyFileVersion("0.1.0.428")]
+[assembly: AssemblyVersion("0.1.0.478")]
+[assembly: AssemblyFileVersion("0.1.0.478")]
+
+////  "0.1.0.478"  Compiled 06.01.2016 21:45
+////  "0.1.0.477"  Compiled 06.01.2016 21:45
+////  "0.1.0.476"  Compiled 06.01.2016 21:43
+////  "0.1.0.475"  Compiled 06.01.2016 21:37
+////  "0.1.0.474"  Compiled 06.01.2016 21:37
+////  "0.1.0.473"  Compiled 06.01.2016 21:36
+////  "0.1.0.472"  Compiled 06.01.2016 21:34
+////  "0.1.0.471"  Compiled 06.01.2016 21:33
+////  "0.1.0.470"  Compiled 06.01.2016 21:30
+////  "0.1.0.469"  Compiled 06.01.2016 21:30
+////  "0.1.0.468"  Compiled 06.01.2016 21:29
+////  "0.1.0.467"  Compiled 06.01.2016 21:29
+////  "0.1.0.466"  Compiled 06.01.2016 21:27
+////  "0.1.0.465"  Compiled 06.01.2016 20:19
+////  "0.1.0.464"  Compiled 06.01.2016 20:19
+////  "0.1.0.463"  Compiled 06.01.2016 20:18
+////  "0.1.0.462"  Compiled 06.01.2016 20:11
+////  "0.1.0.461"  Compiled 06.01.2016 20:10
+////  "0.1.0.460"  Compiled 06.01.2016 20:07
+////  "0.1.0.459"  Compiled 06.01.2016 19:23
+////  "0.1.0.458"  Compiled 06.01.2016 19:23
+////  "0.1.0.457"  Compiled 06.01.2016 19:23
+////  "0.1.0.456"  Compiled 06.01.2016 19:20
+////  "0.1.0.455"  Compiled 06.01.2016 19:19
+////  "0.1.0.454"  Compiled 06.01.2016 19:09
+////  "0.1.0.453"  Compiled 06.01.2016 18:39
+//// UartTimeline sketched
+
+////  "0.1.0.452"  Compiled 06.01.2016 18:33
+////  "0.1.0.451"  Compiled 06.01.2016 17:02
+////  "0.1.0.450"  Compiled 06.01.2016 16:54
+////  "0.1.0.449"  Compiled 06.01.2016 16:53
+////  "0.1.0.448"  Compiled 06.01.2016 16:53
+////  "0.1.0.447"  Compiled 06.01.2016 16:52
+////  "0.1.0.446"  Compiled 06.01.2016 16:52
+////  "0.1.0.445"  Compiled 06.01.2016 16:49
+////  "0.1.0.444"  Compiled 06.01.2016 16:49
+////  "0.1.0.443"  Compiled 06.01.2016 16:48
+////  "0.1.0.442"  Compiled 06.01.2016 16:47
+////  "0.1.0.441"  Compiled 06.01.2016 16:36
+////  "0.1.0.440"  Compiled 06.01.2016 15:19
+////  "0.1.0.439"  Compiled 06.01.2016 15:16
+////  "0.1.0.438"  Compiled 06.01.2016 15:07
+////  "0.1.0.437"  Compiled 06.01.2016 15:06
+////  "0.1.0.436"  Compiled 06.01.2016 14:49
+////  "0.1.0.435"  Compiled 06.01.2016 13:19
+////  "0.1.0.434"  Compiled 06.01.2016 13:12
+////  "0.1.0.433"  Compiled 06.01.2016 13:11
+////  "0.1.0.432"  Compiled 06.01.2016 13:10
+////  "0.1.0.431"  Compiled 06.01.2016 13:08
+////  "0.1.0.430"  Compiled 06.01.2016 13:02
+////  "0.1.0.429"  Compiled 06.01.2016 13:01
+//// Added SpanInfo and SpanTimeline
 
 ////  "0.1.0.428"  Compiled 06.01.2016 11:09
 //// Refactored TimeLine property from Stripe to DigitalStripe

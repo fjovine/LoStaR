@@ -67,6 +67,7 @@ namespace LoStar
                 this.Stripe5,
                 this.Stripe6,
                 this.Stripe7,
+                this.StripeUart
             };
 
             for (int bit = 0; bit < 8; bit++)
@@ -82,6 +83,10 @@ namespace LoStar
                 digitalStripes[bit].Timeline = digitalTimeline;
                 digitalStripes[bit].TimelineSegment = this;
             }
+
+            digitalStripes[8].Caption = "UART";
+            digitalStripes[8].Timeline = DigitalTimeline.GenerateTimelineUart(9600, 2.5, 1, 2, 3, 4, 5);
+            digitalStripes[8].TimelineSegment = this;
 
             this.CursorCanvas.ManagedStripes = digitalStripes;
             this.CursorCanvas.SelectableStripesContainer = this.Stripes;

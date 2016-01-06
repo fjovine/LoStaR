@@ -33,6 +33,7 @@
                     <control:DigitalStripe x:Name="Stripe5" Background="LightCyan"/>
                     <control:DigitalStripe x:Name="Stripe6" />
                     <control:DigitalStripe x:Name="Stripe7" Background="LightCyan"/>
+                    <control:DigitalStripe x:Name="StripeUart" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>

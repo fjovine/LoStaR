@@ -115,7 +115,6 @@ namespace LoStar
         public void ForEachTick(Action<string, double> visitor)
         {
             int decimalsCount = (int)Math.Floor(Math.Log10(this.deltaTick));
-            Console.WriteLine("{0} - {1} - {2}", decimalsCount, this.deltaTick, Math.Log10(this.deltaTick));
             string format = "N";
             if (decimalsCount > 0) 
             {

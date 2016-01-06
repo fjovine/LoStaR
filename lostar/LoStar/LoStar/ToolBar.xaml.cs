@@ -14,6 +14,9 @@ namespace LoStar
     /// </summary>
     public partial class ToolBar : UserControl
     {
+        /// <summary>
+        /// Duration of the window when zoomed to the maximum scale.
+        /// </summary>
         private static readonly double MaxZoomSizeSeconds = 1000.0E-6;
 
         /// <summary>
@@ -67,7 +70,7 @@ namespace LoStar
             double deltaBefore = this.TimelineSegment.CursorTime - this.TimelineSegment.MinShownTime;
             double deltaAfter = this.TimelineSegment.MaxShownTime - this.TimelineSegment.CursorTime;
 
-            this.TimelineSegment.MinShownTime = this.TimelineSegment.CursorTime - deltaBefore * MaxZoomSizeSeconds / (deltaAfter + deltaBefore);
+            this.TimelineSegment.MinShownTime = this.TimelineSegment.CursorTime - ((deltaBefore * MaxZoomSizeSeconds) / (deltaAfter + deltaBefore));
             this.TimelineSegment.MaxShownTime = this.TimelineSegment.MinShownTime + MaxZoomSizeSeconds;
             this.TimelineSegment.PerformZoom(0);
         }

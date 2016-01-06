@@ -77,13 +77,59 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Factory method that creates a digital timeline storing the passed bytes as serial transition in UART format
+        /// at the passed baud rate. The first character is sent at deltaTime, the the others follow at the same
+        /// interval.
+        /// </summary>
+        /// <param name="baud">BaudRate to be generated.</param>
+        /// <param name="deltaTime">Time interval between the bytes generated.</param>
+        /// <param name="bytes">Bytes to be added to the timeline.</param>
+        /// <returns>A DigitalTimeline that simulates the transmission of the passed bytes.</returns>
+        public static DigitalTimeline GenerateTimelineUart(int baud, double deltaTime, params byte[] bytes)
+        {
+            DigitalTimeline result = new DigitalTimeline();
+
+            result.Transitions.Add(0);
+            result.InitialState = true;
+            double time = deltaTime;
+            double bitTime = 1.0 / baud;
+
+            foreach (byte by in bytes)
+            {
+                double currentTime = time;
+                time += deltaTime;
+                result.Transitions.Add(currentTime); // H->startBit
+
+                bool lineState = false;
+                for (int i = 0; i < 8; i++)
+                {
+                    currentTime += bitTime;
+                    if (((by & (1 << i)) != 0) != lineState)
+                    {
+                        result.Transitions.Add(currentTime);
+                        lineState = !lineState;
+                    }
+                }
+
+                // Stop bit
+                if (!lineState)
+                {
+                    result.Transitions.Add(currentTime + bitTime);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Iterator function that iterates through all the transitions that are inside the passed 
         /// interval, i.e. for which t in [fromSec, toSec].
         /// The extremes are contained.
         /// </summary>
         /// <param name="fromSec">Initial time of the interval in seconds.</param>
         /// <param name="toSec">Final time of the interval in seconds.</param>
-        /// <param name="visitor">Delegate called for each transition found</param>
+        /// <param name="visitor">Delegate called for each transition found having two parameters, 
+        /// the state of the line and the time when the transition to that state happened.</param>
         /// <returns>The initial state. When no transition happen during the selected interval, it is the constant logic 
         /// state of the line</returns>
         public bool ForEach(double fromSec, double toSec, Action<bool, double> visitor)
@@ -203,20 +249,18 @@ namespace LoStar
         /// or if there is no following transition and an event after is asked
         /// </summary>
         /// <param name="timeSec">Time to be used as reference position.</param>
-        /// <param name="eventBefore">True if the previous transition must be returned.</param>
+        /// <param name="isBefore">True if the previous transition must be returned.</param>
         /// <returns>Previous or following transition in seconds or null if none available</returns>
-        public double? GetNearestTransition(double timeSec, bool eventBefore)
+        public double? GetNearestTransition(double timeSec, bool isBefore)
         {
             int index = this.Transitions.BinarySearch(timeSec);
-            Console.WriteLine("Index = " + index);
             bool found = index >= 0;
             if (index < 0)
             {
                 index = ~index - 1;
             }
 
-            Console.WriteLine("Index = " + index);
-            if (eventBefore)
+            if (isBefore)
             {
                 if (index <= 0)
                 {

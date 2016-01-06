@@ -60,6 +60,8 @@
     <Compile Include="DigitalStripe.cs" />
     <Compile Include="DigitalTimeline.cs" />
     <Compile Include="ITimelineSegment.cs" />
+    <Compile Include="SpanInfo.cs" />
+    <Compile Include="SpanTimeline.cs" />
     <Compile Include="Stripe.cs" />
     <Compile Include="TimeAxisStripe.cs" />
     <Compile Include="TimeCursor.cs" />
@@ -67,6 +69,7 @@
       <DependentUpon>ToolBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Transition.cs" />
+    <Compile Include="UartTimeline.cs" />
     <Compile Include="XamlToUIElementConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

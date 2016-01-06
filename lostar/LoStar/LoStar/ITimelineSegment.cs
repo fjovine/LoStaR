@@ -110,6 +110,5 @@ namespace LoStar
         /// Scrolls the window in order to place the cursor in the center of the window.
         /// </summary>
         void CenterCursor();
-
     }
 }
