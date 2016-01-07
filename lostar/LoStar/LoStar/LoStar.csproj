@@ -54,6 +54,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AxisTickGenerator.cs" />
+    <Compile Include="GuiUtil.cs" />
     <Compile Include="IBrowsableTimeline.cs" />
     <Compile Include="SelectableStripe.cs" />
     <Compile Include="CursorOverlay.cs" />
@@ -71,6 +72,8 @@
     </Compile>
     <Compile Include="Transition.cs" />
     <Compile Include="UartTimeline.cs" />
+    <Compile Include="WindowsRegistry.cs" />
+    <Compile Include="WindowsRegistryEntry.cs" />
     <Compile Include="XamlToUIElementConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

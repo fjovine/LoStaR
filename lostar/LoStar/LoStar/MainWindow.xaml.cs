@@ -56,6 +56,12 @@ namespace LoStar
         /// </summary>
         public MainWindow()
         {
+            Rect rc = GuiUtil.LoadMainWindowPositionFromRegistry();
+            this.Left = rc.X;
+            this.Top = rc.Y;
+            this.Width = rc.Width;
+            this.Height = rc.Height;
+
             this.InitializeComponent();
 
             this.ToolBar.TimelineSegment = this;
@@ -348,6 +354,30 @@ namespace LoStar
             this.MinShownTime += delta;
             this.MaxShownTime += delta;
             this.PerformZoom(0);
+        }
+
+        /// <summary>
+        /// This method is used to store the changed size of the main window to the registry.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (this.WindowState == System.Windows.WindowState.Normal)
+            {
+                // The new size is stored only if the window is in Normal mode
+                GuiUtil.SaveMainWindowPositionInRegistry(this.Left, this.Top, this.ActualWidth, this.ActualHeight);
+            }
+        }
+
+        /// <summary>
+        /// This method is used to store the changed location of the main window to the registry.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void MainWindow_LocationChanged(object sender, EventArgs e)
+        {
+            GuiUtil.SaveMainWindowPositionInRegistry(this.Left, this.Top, this.ActualWidth, this.ActualHeight);
         }
     }
 }

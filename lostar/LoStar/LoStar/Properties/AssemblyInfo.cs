@@ -52,8 +52,36 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.574")]
-[assembly: AssemblyFileVersion("0.1.0.574")]
+[assembly: AssemblyVersion("0.1.0.594")]
+[assembly: AssemblyFileVersion("0.1.0.594")]
+
+////  "0.1.0.594"  Compiled 07.01.2016 22:02
+////  "0.1.0.593"  Compiled 07.01.2016 22:02
+////  "0.1.0.592"  Compiled 07.01.2016 22:01
+////  "0.1.0.591"  Compiled 07.01.2016 22:01
+////  "0.1.0.590"  Compiled 07.01.2016 21:50
+////  "0.1.0.589"  Compiled 07.01.2016 21:47
+////  "0.1.0.588"  Compiled 07.01.2016 21:45
+////  "0.1.0.587"  Compiled 07.01.2016 21:42
+////  "0.1.0.586"  Compiled 07.01.2016 21:25
+////  "0.1.0.585"  Compiled 07.01.2016 21:24
+////  "0.1.0.584"  Compiled 07.01.2016 21:23
+////  "0.1.0.583"  Compiled 07.01.2016 21:22
+////  "0.1.0.582"  Compiled 07.01.2016 21:20
+//// Added memorization of the windows size and position in the registry
+
+////  "0.1.0.581"  Compiled 07.01.2016 21:16
+////  "0.1.0.580"  Compiled 07.01.2016 21:14
+////  "0.1.0.579"  Compiled 07.01.2016 21:13
+////  "0.1.0.578"  Compiled 07.01.2016 21:12
+//// Started GuiUtil
+
+////  "0.1.0.577"  Compiled 07.01.2016 21:11
+////  "0.1.0.576"  Compiled 07.01.2016 21:10
+//// Added WindowsRegistryEntry class
+
+////  "0.1.0.575"  Compiled 07.01.2016 20:59
+//// Added access to the windows registry
 
 ////  "0.1.0.574"  Compiled 07.01.2016 19:37
 ////  "0.1.0.573"  Compiled 07.01.2016 19:36
