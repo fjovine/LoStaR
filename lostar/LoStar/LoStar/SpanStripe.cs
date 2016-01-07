@@ -7,6 +7,7 @@
 namespace LoStar
 {
     using System;
+    using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Media;
     using System.Windows.Shapes;
@@ -37,6 +38,15 @@ namespace LoStar
         /// Gets or sets the span timeline containing information on the spans to be shown.
         /// </summary>
         public SpanTimeline Timeline
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the delegate to interpret and draw the payload.
+        /// </summary>
+        public SpanDrawer PayloadDrawer
         {
             get;
             set;
@@ -82,18 +92,35 @@ namespace LoStar
                         Canvas.SetLeft(r, ScaleX(span.TimeStart));
                         Canvas.SetTop(r, top);
                         this.Children.Add(r);
+                        double posX = ScaleX((span.TimeStart + span.TimeEnd) / 2);
+                        if (this.PayloadDrawer != null)
+                        {
+                            PayloadDrawer(span, posX, height, this);
+                        }
                     }
                 });
         }
 
+        /// <summary>
+        /// Determines the nearest event before the passed time.
+        /// An event can be the beginning or the ending of a Span.
+        /// </summary>
+        /// <param name="time">Reference time to use for the search.</param>
+        /// <returns>The time of the nearest event before. Null if it does not exist.</returns>
         public override double? GetNearestEventBefore(double time)
         {
-            return null;
+            return this.Timeline.GetNearestEvent(time, true);
         }
 
+        /// <summary>
+        /// Determines the nearest event after the passed time.
+        /// An event can be the beginning or the ending of a Span.
+        /// </summary>
+        /// <param name="time">Reference time to use for the search.</param>
+        /// <returns>The time of the nearest event after. Null if it does not exist.</returns>
         public override double? GetNearestEventAfter(double time)
         {
-            return null;
+            return this.Timeline.GetNearestEvent(time, false);
         }
     }
 }

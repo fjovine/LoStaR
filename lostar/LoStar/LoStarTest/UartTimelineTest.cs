@@ -17,7 +17,7 @@ namespace LoStarTest
         {
             List<byte> foundData = new List<byte>();
 
-            DigitalTimeline synteticTimeline = DigitalTimeline.GenerateTimelineUart(9600, 1.5, expectedData);
+            DigitalTimeline synteticTimeline = DigitalTimeline.GenerateTimelineUart(9600, 1.5, 1.5, expectedData);
 
             UartTimeline usartTimeline = new UartTimeline(synteticTimeline, 9600);
 

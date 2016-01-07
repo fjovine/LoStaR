@@ -31,6 +31,24 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Gets the last span, null if there are no spans still defined.
+        /// </summary>
+        public SpanInfo Last
+        {
+            get
+            {
+                if (this.infos.Count > 0)
+                {
+                    return this.infos[this.infos.Count - 1];
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
         /// Clears the list of spans.
         /// </summary>
         public void Clear()
@@ -147,43 +165,74 @@ namespace LoStar
         /// <returns>Previous or following event in seconds or null if none available</returns>
         public double? GetNearestEvent(double timeSec, bool isBefore)
         {
-            if (timeSec < this.infos[0].TimeStart)
-            {
-                if (isBefore)
-                {
-                    return null;
-                }
-                else
-                {
-                    return this.infos[0].TimeStart;
-                }
-            }
-
-            if (timeSec > this.infos[this.infos.Count - 1].TimeEnd)
-            {
-                if (isBefore)
-                {
-                    return this.infos[this.infos.Count - 1].TimeEnd;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-
             int index = 0;
 
             SpanInfo result = this.SpanAt(timeSec, out index);
 
             if (result != null)
             {
-                // we are during a span
-                return isBefore ? result.TimeStart : result.TimeEnd;
+                if (isBefore)
+                {
+                    if (timeSec == result.TimeStart)
+                    {
+                        if (index <= 0)
+                        {
+                            return null;
+                        }
+                        else
+                        {
+                            return this.infos[index - 1].TimeEnd;
+                        }
+                    }
+                    else
+                    {
+                        return result.TimeStart;
+                    }
+                }
+                else
+                {
+                    if (timeSec == result.TimeEnd)
+                    {
+                        if (index >= this.infos.Count - 1)
+                        {
+                            return null;
+                        }
+                        else
+                        {
+                            return this.infos[index + 1].TimeStart;
+                        }
+                    }
+                    else
+                    {
+                        return result.TimeEnd;
+                    }
+                }
             }
             else
             {
                 // we are between spans
-                return isBefore ? this.infos[index].TimeEnd : this.infos[index + 1].TimeStart;
+                if (isBefore)
+                {
+                    if (index < 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return this.infos[index].TimeEnd;
+                    }
+                }
+                else
+                {
+                    if (index < this.infos.Count - 1)
+                    {
+                        return this.infos[index + 1].TimeStart;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
             }
         }
 
@@ -198,11 +247,10 @@ namespace LoStar
             index = this.infos.BinarySearch(new SpanInfo() { TimeStart = timeSec });
             if (index >= 0)
             {
-                // the Span has been found
                 return this.infos[index];
             }
 
-            // The element has not been found, it could be that the time is during the previous element            
+            // The element has not been found, it could be that the time is during the previous element
             index = ~index - 1;
             if (index < 0)
             {
@@ -210,7 +258,7 @@ namespace LoStar
             }
 
             SpanInfo result = this.infos[index];
-            if (result.TimeEnd > timeSec)
+            if (timeSec <= result.TimeEnd)
             {
                 return result;
             }

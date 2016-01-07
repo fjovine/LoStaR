@@ -82,16 +82,17 @@ namespace LoStar
         /// interval.
         /// </summary>
         /// <param name="baud">BaudRate to be generated.</param>
+        /// <param name="startTime">Time where the first byte will be sent.</param>
         /// <param name="deltaTime">Time interval between the bytes generated.</param>
         /// <param name="bytes">Bytes to be added to the timeline.</param>
         /// <returns>A DigitalTimeline that simulates the transmission of the passed bytes.</returns>
-        public static DigitalTimeline GenerateTimelineUart(int baud, double deltaTime, params byte[] bytes)
+        public static DigitalTimeline GenerateTimelineUart(int baud, double startTime, double deltaTime, params byte[] bytes)
         {
             DigitalTimeline result = new DigitalTimeline();
 
             result.Transitions.Add(0);
             result.InitialState = true;
-            double time = deltaTime;
+            double time = startTime;
             double bitTime = 1.0 / baud;
 
             foreach (byte by in bytes)

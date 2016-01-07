@@ -6,6 +6,8 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
+    using System.Collections.Generic;
+
     /// <summary>
     /// This timeline considers the passed digital timeline as the digital data transmitted to a UART
     /// (Universal Asynchronous Receiver Transmitter) and decodes each single character transmitted
@@ -37,9 +39,12 @@ namespace LoStar
                     digitalTimeline.Transitions[1];
 
                 double bitDuration = 1.0 / baud;
+                double whenLastByteEnded = double.NaN;
 
                 while (true)
                 {
+                    double byteDuration = ((this.serialBits + 2) * bitDuration) - (0.5 * bitDuration);
+
                     // Start bit, must be low
                     if (!digitalTimeline.StateAt(currentTime + (bitDuration / 2)))
                     {
@@ -57,16 +62,31 @@ namespace LoStar
                         if (digitalTimeline.StateAt(currentTime + (bitDuration / 2) + ((this.serialBits + 1) * bitDuration)))
                         {
                             // The stop bit is high, the byte can be stored.
-                            this.Append(new SpanInfo()
+                            if (double.IsNaN(whenLastByteEnded) || (currentTime - whenLastByteEnded) > 2 * bitDuration)
                             {
-                                TimeStart = currentTime,
-                                Duration = (this.serialBits + 2) * bitDuration,
-                                Payload = interpretedChar
-                            });
+                                // This is either the first span or the last byte ended earlier than two bits duration
+                                this.Append(new SpanInfo()
+                                {
+                                    TimeStart = currentTime,
+                                    Duration = byteDuration,
+                                    Payload = new List<byte>() { interpretedChar }
+                                });
+                            }
+                            else
+                            {
+                                // The former span ended within 2 bits duration from the start of the current
+                                // character, so it reopens the former span and adds
+                                SpanInfo lastSpan = this.Last;
+                                List<byte> payloadList = (List<byte>)lastSpan.Payload;
+                                payloadList.Add(interpretedChar);
+                                lastSpan.Duration = (currentTime + byteDuration) - lastSpan.TimeStart;
+                            }
+
+                            whenLastByteEnded = currentTime + byteDuration;
                         }
                     }
 
-                    currentTime += ((this.serialBits + 2) * bitDuration) + (0.25 * bitDuration);
+                    currentTime += byteDuration;
                     double? nextTransition = digitalTimeline.GetNearestTransition(currentTime, false);
                     if (nextTransition == null)
                     {

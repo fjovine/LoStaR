@@ -7,11 +7,14 @@
 namespace LoStar
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
+    using System.Text;
     using System.Threading;
     using System.Windows;
     using System.Windows.Media;
+    using System.Windows.Shapes;
 
     /// <summary>
     /// Delegate used to manage the Zoom event.
@@ -25,10 +28,24 @@ namespace LoStar
     public delegate void CursorHandler(double cursorPosition);
 
     /// <summary>
+    /// Delegate that draws the payload of the a SpanInfo.
+    /// </summary>
+    /// <param name="spanInfo">The span info to be drawn</param>
+    /// <param name="x">Time where the payload is to be drawn-</param>
+    /// <param name="h">Height of the stripe</param>
+    /// <param name="stripe">SpanStripe where the comment must be drawn</param>
+    public delegate void SpanDrawer(SpanInfo spanInfo, double x, double h, SpanStripe stripe);
+
+    /// <summary>
     /// Initializes a new instance of the <see cref="MainWindow" /> class.
     /// </summary>
     public partial class MainWindow : Window, ITimelineSegment
     {
+        /// <summary>
+        /// Baud rate used throughout the application
+        /// </summary>
+        private const int BaudRate = 9600;
+
         /// <summary>
         /// Local repository of the cursor time.
         /// </summary>
@@ -57,6 +74,51 @@ namespace LoStar
             this.MinShownTime = 0;
             this.MaxShownTime = this.MaxTime;
 
+            SpanDrawer uartSpanDrawer = (span, x, h, stripe) =>
+                {
+                    List<byte> payload = (List<byte>)span.Payload;
+                    StringBuilder hexCaption = new StringBuilder(3 * payload.Count);
+                    StringBuilder asciiCaption = new StringBuilder(2 + payload.Count);
+
+                    asciiCaption.Append("'");
+                    foreach (byte by in payload)
+                    {
+                        hexCaption.Append(by.ToString("X"));
+                        asciiCaption.Append((char)by);
+                    }
+
+                    asciiCaption.Append("'");
+                    double bitDuration = 1.0 / BaudRate;
+                    double bitTime = bitDuration / 2;
+
+                    // Draws the times at the center of each bit (start + data + stop)
+                    for (int i = 0; i < 10; i++, bitTime += bitDuration)
+                    {
+                        double where = stripe.ScaleX(span.TimeStart + bitTime);
+                        stripe.Children.Add(new Line()
+                        {
+                            X1 = where,
+                            X2 = where,
+                            Y1 = 0,
+                            Y2 = h / 4,
+                            Stroke = Brushes.Red,
+                            StrokeThickness = 1
+                        });
+                    }
+
+                    stripe.AddText(
+                        x,
+                        h / 4, 
+                        hexCaption.ToString(), 
+                        HorizontalAlignment.Center);
+                    stripe.AddText(
+                        x,
+                        h / 2, 
+                        asciiCaption.ToString(), 
+                        HorizontalAlignment.Center);
+                };
+
+            /*
             SelectableStripe[] digitalStripes = new SelectableStripe[]
             {
                 this.Stripe0,
@@ -84,9 +146,39 @@ namespace LoStar
                 stripe.Caption = "Stripe " + bit;
                 stripe.Timeline = digitalTimeline;
                 stripe.TimelineSegment = this;
-            }
+            }*/
 
-            var serialTimeline = DigitalTimeline.GenerateTimelineUart(9600, 2.5, 1, 2, 3, 4, 5);
+            this.TimeAxis.TimelineSegment = this;
+            this.CursorCanvas.TimelineSegment = this;
+
+            DigitalTimeline timeline0 = new DigitalTimeline(capture, 4);
+            this.Stripe0.Caption = "Stripe 0";
+            this.Stripe0.Timeline = timeline0;
+            this.Stripe0.TimelineSegment = this;
+
+            UartTimeline uartTimeline0 = new UartTimeline(timeline0, BaudRate);
+            this.Uart0.Caption = "Uart 0";
+            this.Uart0.Timeline = uartTimeline0;
+            this.Uart0.TimelineSegment = this;
+            this.Uart0.PayloadDrawer = uartSpanDrawer;
+
+            DigitalTimeline timeline1 = new DigitalTimeline(capture, 6);
+            this.Stripe1.Caption = "Stripe 1";
+            this.Stripe1.Timeline = timeline1;
+            this.Stripe1.TimelineSegment = this;
+
+            UartTimeline uartTimeline1 = new UartTimeline(timeline1, BaudRate);
+            this.Uart1.Caption = "Uart 1";
+            this.Uart1.Timeline = uartTimeline1;
+            this.Uart1.TimelineSegment = this;
+            this.Uart1.PayloadDrawer = uartSpanDrawer;
+
+            DigitalTimeline timeline2 = new DigitalTimeline(capture, 7);
+            this.Stripe2.Caption = "Stripe 2";
+            this.Stripe2.Timeline = timeline2;
+            this.Stripe2.TimelineSegment = this;
+
+            var serialTimeline = DigitalTimeline.GenerateTimelineUart(9600, 10, 0.002, 1, 2, 3, 4, 5);
             this.StripeUart.Caption = "UART";
             this.StripeUart.Timeline = serialTimeline;
             this.StripeUart.TimelineSegment = this;
@@ -96,7 +188,16 @@ namespace LoStar
             this.SpanUart.Timeline = uartTimeline;
             this.SpanUart.TimelineSegment = this;
 
-            this.CursorCanvas.ManagedStripes = digitalStripes;
+            this.CursorCanvas.ManagedStripes = new SelectableStripe[] 
+            {
+                this.Stripe0,
+                this.Uart0,
+                this.Stripe1,
+                this.Uart1,
+                this.Stripe2,
+                this.StripeUart,
+                this.SpanUart
+            };
             this.CursorCanvas.SelectableStripesContainer = this.Stripes;
         }
 
