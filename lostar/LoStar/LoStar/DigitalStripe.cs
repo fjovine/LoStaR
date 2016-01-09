@@ -39,7 +39,6 @@ namespace LoStar
         /// <param name="pixelDuration">Duration of a single pixel on screen</param>
         public override void RedrawContent(double pixelDuration)
         {
-            bool isFirst = true;
             bool lastState = false;
 
             // the duration of a pixel
@@ -51,40 +50,10 @@ namespace LoStar
                 this.TimelineSegment.MaxShownTime,
                 (state, when) =>
                 {
-                    if (isFirst)
+                    if (when - lastWhen < pixelDuration)
                     {
-                        isFirst = false;
-                    }
-                    else
-                    {
-                        if (when - lastWhen < pixelDuration)
+                        if (!firstInPixel)
                         {
-                            if (!firstInPixel)
-                            {
-                                this.Children.Add(new Line()
-                                {
-                                    X1 = ScaleX(when),
-                                    X2 = ScaleX(when),
-                                    Y1 = ScaleY(lastState),
-                                    Y2 = ScaleY(state),
-                                    Stroke = Brushes.LightGray,
-                                    StrokeThickness = 1
-                                });
-                                firstInPixel = true;
-                            }
-                        }
-                        else
-                        {
-                            firstInPixel = false;
-                            this.Children.Add(new Line()
-                            {
-                                X1 = ScaleX(lastWhen),
-                                X2 = ScaleX(when),
-                                Y1 = ScaleY(lastState),
-                                Y2 = ScaleY(lastState),
-                                Stroke = Brushes.Black,
-                                StrokeThickness = lastState ? 0.8 : 2.5
-                            });
                             this.Children.Add(new Line()
                             {
                                 X1 = ScaleX(when),
@@ -94,11 +63,35 @@ namespace LoStar
                                 Stroke = Brushes.LightGray,
                                 StrokeThickness = 1
                             });
+                            firstInPixel = true;
+                            lastWhen = when;
                         }
+                    }
+                    else
+                    {
+                        firstInPixel = false;
+                        this.Children.Add(new Line()
+                        {
+                            X1 = ScaleX(lastWhen),
+                            X2 = ScaleX(when),
+                            Y1 = ScaleY(lastState),
+                            Y2 = ScaleY(lastState),
+                            Stroke = Brushes.Black,
+                            StrokeThickness = lastState ? 0.8 : 2.5
+                        });
+                        this.Children.Add(new Line()
+                        {
+                            X1 = ScaleX(when),
+                            X2 = ScaleX(when),
+                            Y1 = ScaleY(lastState),
+                            Y2 = ScaleY(state),
+                            Stroke = Brushes.LightGray,
+                            StrokeThickness = 1
+                        });
+                        lastWhen = when;
                     }
 
                     lastState = state;
-                    lastWhen = when;
                 });
         }
 

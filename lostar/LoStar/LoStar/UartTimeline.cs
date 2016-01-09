@@ -27,7 +27,8 @@ namespace LoStar
         /// </summary>
         /// <param name="digitalTimeline">DigitalTimeline that contains the serial data to be decoded.</param>
         /// <param name="baud">Baud rate at which the serial data is sent.</param>
-        public UartTimeline(DigitalTimeline digitalTimeline, int baud)
+        /// <param name="invert">If true, the signal decode is inverted, i.e. marking is low instead of high.</param>
+        public UartTimeline(DigitalTimeline digitalTimeline, int baud, bool invert = false)
         {
             if (digitalTimeline.Transitions.Count > this.serialBits + 3)
             {
@@ -46,20 +47,20 @@ namespace LoStar
                     double byteDuration = ((this.serialBits + 2) * bitDuration) - (0.5 * bitDuration);
 
                     // Start bit, must be low
-                    if (!digitalTimeline.StateAt(currentTime + (bitDuration / 2)))
+                    if (!(invert ^ digitalTimeline.StateAt(currentTime + (bitDuration / 2))))
                     {
                         byte interpretedChar = 0;
 
                         for (int bit = 0; bit < this.serialBits; bit++)
                         {
-                            if (digitalTimeline.StateAt(currentTime + (bitDuration / 2) + ((bit + 1) * bitDuration)))
+                            if (invert ^ digitalTimeline.StateAt(currentTime + (bitDuration / 2) + ((bit + 1) * bitDuration)))
                             {
                                 // the bit is high, sets the corresponding bit
                                 interpretedChar |= (byte)(1 << bit);
                             }
                         }
 
-                        if (digitalTimeline.StateAt(currentTime + (bitDuration / 2) + ((this.serialBits + 1) * bitDuration)))
+                        if (invert ^ digitalTimeline.StateAt(currentTime + (bitDuration / 2) + ((this.serialBits + 1) * bitDuration)))
                         {
                             // The stop bit is high, the byte can be stored.
                             if (double.IsNaN(whenLastByteEnded) || (currentTime - whenLastByteEnded) > 2 * bitDuration)

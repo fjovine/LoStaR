@@ -184,15 +184,11 @@ namespace LoStar
             this.Stripe2.Timeline = timeline2;
             this.Stripe2.TimelineSegment = this;
 
-            var serialTimeline = DigitalTimeline.GenerateTimelineUart(9600, 10, 0.002, 1, 2, 3, 4, 5);
-            this.StripeUart.Caption = "UART";
-            this.StripeUart.Timeline = serialTimeline;
-            this.StripeUart.TimelineSegment = this;
-
-            UartTimeline uartTimeline = new UartTimeline(serialTimeline, 9600);
-            this.SpanUart.Caption = "SpanUart";
-            this.SpanUart.Timeline = uartTimeline;
-            this.SpanUart.TimelineSegment = this;
+            UartTimeline uartTimeline2 = new UartTimeline(timeline2, BaudRate, true);
+            this.Uart2.Caption = "Uart 2";
+            this.Uart2.Timeline = uartTimeline2;
+            this.Uart2.TimelineSegment = this;
+            this.Uart2.PayloadDrawer = uartSpanDrawer;
 
             this.CursorCanvas.ManagedStripes = new SelectableStripe[] 
             {
@@ -201,8 +197,6 @@ namespace LoStar
                 this.Stripe1,
                 this.Uart1,
                 this.Stripe2,
-                this.StripeUart,
-                this.SpanUart
             };
             this.CursorCanvas.SelectableStripesContainer = this.Stripes;
         }

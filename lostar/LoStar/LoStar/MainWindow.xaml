@@ -28,25 +28,12 @@
 
             <ScrollViewer Grid.Row="2" Grid.ZIndex="1" Grid.ColumnSpan="2">
                 <StackPanel x:Name="Stripes">
-                    <!--
-                    <control:DigitalStripe x:Name="Stripe0" />
-                    <control:DigitalStripe x:Name="Stripe1" Background="LightCyan"/>
-                    <control:DigitalStripe x:Name="Stripe2" />
-                    <control:DigitalStripe x:Name="Stripe3" Background="LightCyan"/>
-                    <control:DigitalStripe x:Name="Stripe4" />
-                    <control:DigitalStripe x:Name="Stripe5" Background="LightCyan"/>
-                    <control:DigitalStripe x:Name="Stripe6" />
-                    <control:DigitalStripe x:Name="Stripe7" Background="LightCyan"/>
-                    <control:DigitalStripe x:Name="StripeUart" />
-                    <control:SpanStripe x:Name="SpanUart" Background="LightCyan" />
-                    -->
                     <control:DigitalStripe x:Name="Stripe0" />
                     <control:SpanStripe x:Name="Uart0" />
                     <control:DigitalStripe x:Name="Stripe1" />
                     <control:SpanStripe x:Name="Uart1" />
                     <control:DigitalStripe x:Name="Stripe2" />
-                    <control:DigitalStripe x:Name="StripeUart" />
-                    <control:SpanStripe x:Name="SpanUart" Background="LightCyan" />
+                  <control:SpanStripe x:Name="Uart2" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>

@@ -52,9 +52,24 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.594")]
-[assembly: AssemblyFileVersion("0.1.0.594")]
+[assembly: AssemblyVersion("0.1.0.605")]
+[assembly: AssemblyFileVersion("0.1.0.605")]
 
+////  "0.1.0.605"  Compiled 09.01.2016 09:37
+////  "0.1.0.604"  Compiled 09.01.2016 09:36
+////  "0.1.0.603"  Compiled 09.01.2016 09:35
+////  "0.1.0.602"  Compiled 09.01.2016 09:17
+//// Added invert bin to UartTimeline constructor
+
+////  "0.1.0.601"  Compiled 09.01.2016 09:14
+////  "0.1.0.600"  Compiled 08.01.2016 22:57
+////  "0.1.0.599"  Compiled 08.01.2016 22:55
+////  "0.1.0.598"  Compiled 08.01.2016 22:44
+////  "0.1.0.597"  Compiled 08.01.2016 22:41
+////  "0.1.0.596"  Compiled 08.01.2016 22:38
+//// Corrected a but in the visualization of DigitalStripes
+
+////  "0.1.0.595"  Compiled 08.01.2016 22:38
 ////  "0.1.0.594"  Compiled 07.01.2016 22:02
 ////  "0.1.0.593"  Compiled 07.01.2016 22:02
 ////  "0.1.0.592"  Compiled 07.01.2016 22:01
