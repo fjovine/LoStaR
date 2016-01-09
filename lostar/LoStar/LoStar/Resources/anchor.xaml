@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This file is NOT compatible with Silverlight-->
+<Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
+  <Canvas Name="Layer_1" Width="64" Height="64" Canvas.Left="0" Canvas.Top="0">
+    <Canvas.RenderTransform>
+      <TranslateTransform X="0.5" Y="-0.5"/>
+    </Canvas.RenderTransform>
+    <Canvas.Resources>
+      <LinearGradientBrush xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="linearGradient3823" MappingMode="Absolute" StartPoint="24,5" EndPoint="24,41">
+        <LinearGradientBrush.GradientStops>
+          <GradientStopCollection>
+            <GradientStop Color="#FF59597D" Offset="0"/>
+            <GradientStop Color="#FF000000" Offset="1"/>
+          </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+        <LinearGradientBrush.Transform>
+          <TranslateTransform X="-1.2526625" Y="-4.0578183"/>
+        </LinearGradientBrush.Transform>
+      </LinearGradientBrush>
+      <LinearGradientBrush xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Key="linearGradient3817" MappingMode="RelativeToBoundingBox" StartPoint="0,0" EndPoint="1,1">
+        <LinearGradientBrush.GradientStops>
+          <GradientStopCollection>
+            <GradientStop Color="#FF59597D" Offset="0"/>
+            <GradientStop Color="#FF000000" Offset="1"/>
+          </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+      </LinearGradientBrush>
+    </Canvas.Resources>
+    <!--Unknown tag: metadata-->
+    <!--Unknown tag: sodipodi:namedview-->
+    <Canvas Name="g3">
+      <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3306" Fill="#FF000000" StrokeThickness="0.57409751" Stroke="#FF000000" StrokeMiterLimit="4" StrokeLineJoin="Miter" StrokeStartLineCap="Flat" StrokeEndLineCap="Flat">
+        <Path.Data>
+          <PathGeometry Figures="M 20.760615 50.199766 35.942247 22.647989 c 1.439637 -2.612668 0.447466 -12.605968 6.779406 -9.147088 6.331938 3.458883 -2.608343 8.039495 -4.04798 10.652164 L 23.492041 51.704842 c 3.457853 1.905352 15.491163 -2.907335 15.491163 -2.907335 l -0.825788 -2.635484 9.015744 0.535913 -6.294904 8.858918 -0.916284 -2.602613 c -19.905913 4.986254 -22.577223 3.37208 -28.70499 -15.504299 l -2.6650314 0.439664 3.7499544 -10.381305 5.735446 7.558142 -3.030111 0.85775 c 0 0 1.841751 11.829448 5.713375 14.275573 z" FillRule="evenodd"/>
+        </Path.Data>
+      </Path>
+    </Canvas>
+  </Canvas>
+</Viewbox>

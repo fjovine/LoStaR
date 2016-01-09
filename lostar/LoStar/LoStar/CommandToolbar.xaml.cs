@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ToolBar.xaml.cs" company="hiLab">
+// <copyright file="CommandToolbar.xaml.cs" company="hiLab">
 //     Copyright (c) Francesco Iovine.
 // </copyright>
 // <author>Francesco Iovine iovinemeccanica@gmail.com</author>
@@ -12,7 +12,7 @@ namespace LoStar
     /// <summary>
     /// Toolbar containing all the commands to be executed by the stripe container.
     /// </summary>
-    public partial class ToolBar : UserControl
+    public partial class CommandToolbar : UserControl
     {
         /// <summary>
         /// Duration of the window when zoomed to the maximum scale.
@@ -20,9 +20,9 @@ namespace LoStar
         private static readonly double MaxZoomSizeSeconds = 1000.0E-6;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ToolBar" /> class.
+        /// Initializes a new instance of the <see cref="CommandToolbar" /> class.
         /// </summary>
-        public ToolBar()
+        public CommandToolbar()
         {
             this.InitializeComponent();
         }

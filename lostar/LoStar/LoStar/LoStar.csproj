@@ -67,8 +67,8 @@
     <Compile Include="Stripe.cs" />
     <Compile Include="TimeAxisStripe.cs" />
     <Compile Include="TimeCursor.cs" />
-    <Compile Include="ToolBar.xaml.cs">
-      <DependentUpon>ToolBar.xaml</DependentUpon>
+    <Compile Include="CommandToolbar.xaml.cs">
+      <DependentUpon>CommandToolbar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Transition.cs" />
     <Compile Include="UartTimeline.cs" />
@@ -121,10 +121,13 @@
     <EmbeddedResource Include="Resources\panCenter.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Page Include="ToolBar.xaml">
+    <Page Include="CommandToolbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <EmbeddedResource Include="Resources\anchor.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

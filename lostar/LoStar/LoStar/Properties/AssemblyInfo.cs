@@ -52,9 +52,30 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.605")]
-[assembly: AssemblyFileVersion("0.1.0.605")]
+[assembly: AssemblyVersion("0.1.0.622")]
+[assembly: AssemblyFileVersion("0.1.0.622")]
 
+////  "0.1.0.622"  Compiled 09.01.2016 18:55
+////  "0.1.0.621"  Compiled 09.01.2016 18:54
+////  "0.1.0.620"  Compiled 09.01.2016 18:53
+//// AnchorToolbar added
+
+////  "0.1.0.619"  Compiled 09.01.2016 18:44
+////  "0.1.0.618"  Compiled 09.01.2016 18:33
+////  "0.1.0.617"  Compiled 09.01.2016 18:33
+////  "0.1.0.616"  Compiled 09.01.2016 18:30
+////  "0.1.0.615"  Compiled 09.01.2016 18:30
+////  "0.1.0.614"  Compiled 09.01.2016 18:28
+////  "0.1.0.613"  Compiled 09.01.2016 18:26
+////  "0.1.0.612"  Compiled 09.01.2016 18:23
+////  "0.1.0.611"  Compiled 09.01.2016 18:22
+////  "0.1.0.610"  Compiled 09.01.2016 18:21
+////  "0.1.0.609"  Compiled 09.01.2016 18:21
+////  "0.1.0.608"  Compiled 09.01.2016 18:20
+////  "0.1.0.607"  Compiled 09.01.2016 18:19
+//// Split Toolbar in separate toolbars
+
+////  "0.1.0.606"  Compiled 09.01.2016 18:18
 ////  "0.1.0.605"  Compiled 09.01.2016 09:37
 ////  "0.1.0.604"  Compiled 09.01.2016 09:36
 ////  "0.1.0.603"  Compiled 09.01.2016 09:35

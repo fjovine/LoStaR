@@ -9,7 +9,7 @@
         Title="MainWindow" 
         >
     <DockPanel>
-        <control:ToolBar x:Name="ToolBar" DockPanel.Dock ="Top" />
+        <control:CommandToolbar x:Name="ToolBar" DockPanel.Dock ="Top" />
         <Grid x:Name="StripeContainer">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
