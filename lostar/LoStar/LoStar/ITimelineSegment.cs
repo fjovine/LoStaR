@@ -75,9 +75,26 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Gets or sets an additional reference time called anchor
+        /// </summary>
+        double AnchorTime
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets the difference in seconds between the anchor and the cursor.
+        /// </summary>
+        double DeltaTime
+        {
+            get;
+        }
+
+        /// <summary>
         /// Gets the selected <c>browsable </c> timeline, null if no digital stripe is selected.
         /// </summary>
-        IBrowsableTimeline BrowsableTimeline
+        IBrowsableTimeline SelectedBrowsableTimeline
         {
             get;
         }

@@ -64,7 +64,13 @@ namespace LoStar
                 {
                     if (a.ClickCount == 1)
                     {
-                        this.TimelineSegment.CursorTime = this.DescaleX(a.GetPosition(this).X);
+                        double cursorTime = this.DescaleX(a.GetPosition(this).X);
+                        if (a.MiddleButton == MouseButtonState.Pressed)
+                        {
+                            this.TimelineSegment.AnchorTime = cursorTime;
+                        }
+
+                        this.TimelineSegment.CursorTime = cursorTime;
                         a.Handled = true;
                     }
                     else
@@ -265,7 +271,12 @@ namespace LoStar
             shownWidget.Points.Add(new Point(this.ActualWidth, endTopCursor));
             this.Children.Add(shownWidget);
 
-            // Draws the cursor and the axiliary cursors
+            // Draws the cursor, the anchor and the axiliary cursors
+            if (!double.IsNaN(this.TimelineSegment.AnchorTime))
+            {
+                this.Children.Add(timeCursor.GetCursor(this.TimelineSegment.AnchorTime, Brushes.Blue));
+            }
+
             this.Children.Add(timeCursor.GetCursor(this.cursorPosition, Brushes.Red));
             foreach (var cursor in this.auxiliaryCursors)
             {

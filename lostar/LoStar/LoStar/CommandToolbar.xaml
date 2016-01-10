@@ -8,16 +8,16 @@
     <UserControl.Resources>
         <control:XamlToUIElementConverter x:Key="xamlToUiConverter" />
     </UserControl.Resources>
-    <ToolBarTray >
+    <ToolBarTray Height="32" x:Name="Tray">
 
-        <ToolBar Height="28" >
+        <ToolBar Height="{Binding ElementName=Tray, Path=ActualHeight}" >
             <!-- Zoom toolbars-->
             <Button x:Name="LeftSignificance" Click="LeftSignificance_Click"
-      Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftStopArrow.xaml}" BorderThickness="0"
-      ToolTip="Moves the cursor to the previous meaningful point"/>
+              Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftStopArrow.xaml}" BorderThickness="0"
+              ToolTip="Moves the cursor to the previous meaningful point"/>
             <Button x:Name="RightSignificance" Click="RightSignificance_Click"
-      Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightStopArrow.xaml}" BorderThickness="0"
-      ToolTip="Moves the cursor to the following meaningful point"/>
+              Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=rightStopArrow.xaml}" BorderThickness="0"
+              ToolTip="Moves the cursor to the following meaningful point"/>
             <Separator />
             <Button x:Name="LeftDArrow" Click="LeftDArrow_Click"
       Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=leftDarrow.xaml}" BorderThickness="0"
@@ -48,12 +48,20 @@
       ToolTip="Scrolls the window to center the cursor on screen"/>
         </ToolBar>
 
-        <ToolBar Height="28">
-            <TextBox Width="80" HorizontalAlignment="Right" />
-            <Button x:Name="SetAnchor" Click="CenterCursor_Click"
-      Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=anchor.xaml}"  BorderThickness="0"
-      ToolTip="Scrolls the window to center the cursor on screen"/>
-            <TextBox Width="80" HorizontalAlignment="Right" />
+        <ToolBar Height="{Binding ElementName=Tray, Path=ActualHeight}">
+          <TextBox 
+            x:Name="CursorPosition"
+            Width="80"
+            HorizontalContentAlignment="Right" 
+            IsReadOnly="True"/>
+          <Button x:Name="SetAnchor" Click="SetAnchor_Click"
+            Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=anchor.xaml}"  BorderThickness="0"
+            ToolTip="Scrolls the window to center the cursor on screen"/>
+          <TextBox
+            x:Name="DeltaTime"
+            Width="80" 
+            HorizontalContentAlignment="Right" 
+            IsEnabled="False" />
         </ToolBar>
     </ToolBarTray>
 </UserControl>

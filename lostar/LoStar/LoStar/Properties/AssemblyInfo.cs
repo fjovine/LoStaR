@@ -52,9 +52,52 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.622")]
-[assembly: AssemblyFileVersion("0.1.0.622")]
+[assembly: AssemblyVersion("0.1.0.661")]
+[assembly: AssemblyFileVersion("0.1.0.661")]
 
+////  "0.1.0.661"  Compiled 10.01.2016 18:53
+////  "0.1.0.660"  Compiled 10.01.2016 18:51
+////  "0.1.0.659"  Compiled 10.01.2016 18:48
+////  "0.1.0.658"  Compiled 10.01.2016 18:48
+////  "0.1.0.657"  Compiled 10.01.2016 18:26
+//// Added Anchor and cursor toolbar
+
+////  "0.1.0.656"  Compiled 10.01.2016 17:35
+////  "0.1.0.655"  Compiled 10.01.2016 17:31
+////  "0.1.0.654"  Compiled 10.01.2016 17:31
+////  "0.1.0.653"  Compiled 10.01.2016 17:26
+////  "0.1.0.652"  Compiled 10.01.2016 17:19
+////  "0.1.0.651"  Compiled 10.01.2016 17:17
+////  "0.1.0.650"  Compiled 10.01.2016 17:17
+////  "0.1.0.649"  Compiled 10.01.2016 17:04
+////  "0.1.0.648"  Compiled 10.01.2016 16:53
+////  "0.1.0.647"  Compiled 10.01.2016 16:39
+////  "0.1.0.646"  Compiled 10.01.2016 16:29
+////  "0.1.0.645"  Compiled 10.01.2016 16:28
+////  "0.1.0.644"  Compiled 10.01.2016 16:26
+////  "0.1.0.643"  Compiled 10.01.2016 16:19
+////  "0.1.0.642"  Compiled 10.01.2016 16:13
+////  "0.1.0.641"  Compiled 10.01.2016 16:06
+////  "0.1.0.640"  Compiled 10.01.2016 16:02
+////  "0.1.0.639"  Compiled 10.01.2016 16:02
+////  "0.1.0.638"  Compiled 10.01.2016 15:55
+////  "0.1.0.637"  Compiled 10.01.2016 15:53
+////  "0.1.0.636"  Compiled 10.01.2016 15:53
+////  "0.1.0.635"  Compiled 10.01.2016 15:52
+////  "0.1.0.634"  Compiled 10.01.2016 15:50
+////  "0.1.0.633"  Compiled 10.01.2016 15:41
+////  "0.1.0.632"  Compiled 10.01.2016 15:19
+////  "0.1.0.631"  Compiled 10.01.2016 15:12
+////  "0.1.0.630"  Compiled 10.01.2016 15:11
+////  "0.1.0.629"  Compiled 10.01.2016 15:06
+////  "0.1.0.628"  Compiled 10.01.2016 14:58
+////  "0.1.0.627"  Compiled 10.01.2016 12:24
+////  "0.1.0.626"  Compiled 10.01.2016 12:23
+////  "0.1.0.625"  Compiled 10.01.2016 12:23
+////  "0.1.0.624"  Compiled 10.01.2016 12:22
+//// Adding Cursor ToolBar
+
+////  "0.1.0.623"  Compiled 10.01.2016 12:22
 ////  "0.1.0.622"  Compiled 09.01.2016 18:55
 ////  "0.1.0.621"  Compiled 09.01.2016 18:54
 ////  "0.1.0.620"  Compiled 09.01.2016 18:53

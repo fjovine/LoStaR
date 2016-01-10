@@ -63,9 +63,7 @@ namespace LoStar
             this.Height = rc.Height;
 
             this.InitializeComponent();
-
             this.ToolBar.TimelineSegment = this;
-
             this.StripeContainer.SizeChanged += (s, a) =>
                 {
                     if (this.OnZoom != null)
@@ -199,6 +197,7 @@ namespace LoStar
                 this.Stripe2,
             };
             this.CursorCanvas.SelectableStripesContainer = this.Stripes;
+            this.AnchorTime = double.NaN;
         }
 
         /// <summary>
@@ -279,9 +278,29 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Gets or sets the additional reference time called anchor.
+        /// </summary>
+        public double AnchorTime
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets the delta time between the cursor and the anchor.
+        /// </summary>
+        public double DeltaTime
+        {
+            get
+            {
+                return this.cursorTime - this.AnchorTime;
+            }
+        }
+
+        /// <summary>
         /// Gets the <c>browsable</c> timeline corresponding to the selected stripe, or null if no stripe is selected.
         /// </summary>
-        public IBrowsableTimeline BrowsableTimeline
+        public IBrowsableTimeline SelectedBrowsableTimeline
         {
             get 
             {

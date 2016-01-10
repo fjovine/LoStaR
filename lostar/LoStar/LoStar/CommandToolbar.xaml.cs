@@ -8,6 +8,7 @@ namespace LoStar
 {
     using System.Windows;
     using System.Windows.Controls;
+using System.Windows.Data;
 
     /// <summary>
     /// Toolbar containing all the commands to be executed by the stripe container.
@@ -20,11 +21,17 @@ namespace LoStar
         private static readonly double MaxZoomSizeSeconds = 1000.0E-6;
 
         /// <summary>
+        /// Backup private copy of the TimelineSegment property.
+        /// </summary>
+        private ITimelineSegment timelineSegment;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="CommandToolbar" /> class.
         /// </summary>
         public CommandToolbar()
         {
             this.InitializeComponent();
+            this.DataContext = this;
         }
 
         /// <summary>
@@ -32,8 +39,24 @@ namespace LoStar
         /// </summary>
         public ITimelineSegment TimelineSegment
         {
-            get;
-            set;
+            get
+            {
+                return this.timelineSegment;
+            }
+
+            set
+            {
+                this.timelineSegment = value;
+                this.timelineSegment.OnCursorChange += (cursor) =>
+                    {
+                        this.CursorPosition.Text = cursor.ToString("0.0000");
+                        if (!double.IsNaN(this.timelineSegment.AnchorTime))
+                        {
+                            this.DeltaTime.Text = this.TimelineSegment.DeltaTime.ToString("0.0000");
+                            this.DeltaTime.IsEnabled = true;
+                        }
+                    };
+            }
         }
 
         /// <summary>
@@ -144,7 +167,7 @@ namespace LoStar
         /// <param name="e">The parameter is not used.</param>
         private void LeftSignificance_Click(object sender, RoutedEventArgs e)
         {
-            IBrowsableTimeline currentBrowsableTimeline = this.TimelineSegment.BrowsableTimeline;
+            IBrowsableTimeline currentBrowsableTimeline = this.TimelineSegment.SelectedBrowsableTimeline;
             if (currentBrowsableTimeline != null)
             {
                 double? priorEvent = currentBrowsableTimeline.GetNearestEventBefore(this.TimelineSegment.CursorTime);
@@ -170,7 +193,7 @@ namespace LoStar
         /// <param name="e">The parameter is not used.</param>
         private void RightSignificance_Click(object sender, RoutedEventArgs e)
         {
-            IBrowsableTimeline currentBrowsableTimeline = this.TimelineSegment.BrowsableTimeline;
+            IBrowsableTimeline currentBrowsableTimeline = this.TimelineSegment.SelectedBrowsableTimeline;
             if (currentBrowsableTimeline != null)
             {
                 double? laterEvent = currentBrowsableTimeline.GetNearestEventAfter(this.TimelineSegment.CursorTime);
@@ -187,6 +210,17 @@ namespace LoStar
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Sets the anchor at the current position of the cursor.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void SetAnchor_Click(object sender, RoutedEventArgs e)
+        {
+            this.TimelineSegment.AnchorTime = this.TimelineSegment.CursorTime;
+            this.TimelineSegment.PerformZoom(0);
         }
     }
 }
