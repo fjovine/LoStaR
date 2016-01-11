@@ -50,6 +50,7 @@
     <Compile Include="CaptureTest.cs" />
     <Compile Include="DigitalTimelineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtocolTimelineTest.cs" />
     <Compile Include="SpanInfoTest.cs" />
     <Compile Include="SpanTimelineTest.cs" />
     <Compile Include="UartTimelineTest.cs" />

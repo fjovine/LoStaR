@@ -6,9 +6,10 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
+    using System;
     using System.Windows;
     using System.Windows.Controls;
-using System.Windows.Data;
+    using System.Windows.Data;
 
     /// <summary>
     /// Toolbar containing all the commands to be executed by the stripe container.
@@ -52,7 +53,13 @@ using System.Windows.Data;
                         this.CursorPosition.Text = cursor.ToString("0.0000");
                         if (!double.IsNaN(this.timelineSegment.AnchorTime))
                         {
-                            this.DeltaTime.Text = this.TimelineSegment.DeltaTime.ToString("0.0000");
+                            string formatString = "0.0000";
+                            if (Math.Abs(this.TimelineSegment.DeltaTime) < 0.001)
+                            {
+                                formatString = "0.000000";
+                            }
+
+                            this.DeltaTime.Text = this.TimelineSegment.DeltaTime.ToString(formatString);
                             this.DeltaTime.IsEnabled = true;
                         }
                     };
@@ -220,6 +227,34 @@ using System.Windows.Data;
         private void SetAnchor_Click(object sender, RoutedEventArgs e)
         {
             this.TimelineSegment.AnchorTime = this.TimelineSegment.CursorTime;
+            this.TimelineSegment.PerformZoom(0);
+        }
+
+        /// <summary>
+        /// Zooms the current window so that the time segment from anchor to cursor
+        /// is shown..
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void ZoomCenter_Click(object sender, RoutedEventArgs e)
+        {
+            if (double.IsNaN(this.TimelineSegment.AnchorTime))
+            {
+                return;
+            }
+
+            double delta = Math.Abs(this.TimelineSegment.DeltaTime);
+            if (this.TimelineSegment.AnchorTime < this.TimelineSegment.CursorTime)
+            {
+                this.TimelineSegment.MinShownTime = this.TimelineSegment.AnchorTime - (delta * 0.1);
+                this.TimelineSegment.MaxShownTime = this.TimelineSegment.CursorTime + (delta * 0.1);
+            }
+            else
+            {
+                this.TimelineSegment.MaxShownTime = this.TimelineSegment.AnchorTime + (delta * 0.1);
+                this.TimelineSegment.MinShownTime = this.TimelineSegment.CursorTime - (delta * 0.1);
+            }
+
             this.TimelineSegment.PerformZoom(0);
         }
     }

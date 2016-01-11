@@ -13,6 +13,7 @@ namespace LoStar
     using System.Text;
     using System.Threading;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Media;
     using System.Windows.Shapes;
 
@@ -31,10 +32,9 @@ namespace LoStar
     /// Delegate that draws the payload of the a SpanInfo.
     /// </summary>
     /// <param name="spanInfo">The span info to be drawn</param>
-    /// <param name="x">Time where the payload is to be drawn-</param>
-    /// <param name="h">Height of the stripe</param>
+    /// <param name="r">Button graphically representing the Span on the stripe</param>
     /// <param name="stripe">SpanStripe where the comment must be drawn</param>
-    public delegate void SpanDrawer(SpanInfo spanInfo, double x, double h, SpanStripe stripe);
+    public delegate void SpanDrawer(SpanInfo spanInfo, Button r, SpanStripe stripe);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MainWindow" /> class.
@@ -78,7 +78,7 @@ namespace LoStar
             this.MinShownTime = 0;
             this.MaxShownTime = this.MaxTime;
 
-            SpanDrawer uartSpanDrawer = (span, x, h, stripe) =>
+            SpanDrawer uartSpanDrawer = (span, button, stripe) =>
                 {
                     List<byte> payload = (List<byte>)span.Payload;
                     StringBuilder hexCaption = new StringBuilder(3 * payload.Count);
@@ -88,6 +88,7 @@ namespace LoStar
                     foreach (byte by in payload)
                     {
                         hexCaption.Append(by.ToString("X"));
+                        hexCaption.Append(' ');
                         asciiCaption.Append((char)by);
                     }
 
@@ -95,31 +96,9 @@ namespace LoStar
                     double bitDuration = 1.0 / BaudRate;
                     double bitTime = bitDuration / 2;
 
-                    // Draws the times at the center of each bit (start + data + stop)
-                    for (int i = 0; i < 10; i++, bitTime += bitDuration)
-                    {
-                        double where = stripe.ScaleX(span.TimeStart + bitTime);
-                        stripe.Children.Add(new Line()
-                        {
-                            X1 = where,
-                            X2 = where,
-                            Y1 = 0,
-                            Y2 = h / 4,
-                            Stroke = Brushes.Red,
-                            StrokeThickness = 1
-                        });
-                    }
-
-                    stripe.AddText(
-                        x,
-                        h / 4, 
-                        hexCaption.ToString(), 
-                        HorizontalAlignment.Center);
-                    stripe.AddText(
-                        x,
-                        h / 2, 
-                        asciiCaption.ToString(), 
-                        HorizontalAlignment.Center);
+                    button.Content = asciiCaption.ToString() + "\n" + hexCaption.ToString();
+                    button.ToolTip = hexCaption.ToString();
+                    // TODO Implement ToolTip action. Now it is shadowed by CursorOverlay
                 };
 
             /*

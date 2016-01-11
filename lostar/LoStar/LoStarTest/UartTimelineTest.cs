@@ -23,7 +23,8 @@ namespace LoStarTest
 
             usartTimeline.ForEach(0, 15, (si) =>
             {
-                foundData.Add((byte)si.Payload);
+                List<byte> val = (List<byte>)si.Payload;
+                foundData.Add(val[0]);
             });
             Assert.AreEqual(expectedData, foundData);
         }

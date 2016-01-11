@@ -82,20 +82,18 @@ namespace LoStar
                     }
                     else
                     {
-                        Rectangle r = new Rectangle() 
+                        Button b = new Button()
                         {
                             Width = ScaleX(span.TimeEnd) - ScaleX(span.TimeStart),
-                            Height = height
+                            Height = height,
+                            HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center
                         };
-                        r.StrokeThickness = 1;
-                        r.Stroke = Brushes.DarkBlue;
-                        Canvas.SetLeft(r, ScaleX(span.TimeStart));
-                        Canvas.SetTop(r, top);
-                        this.Children.Add(r);
-                        double posX = ScaleX((span.TimeStart + span.TimeEnd) / 2);
+                        Canvas.SetLeft(b, ScaleX(span.TimeStart));
+                        Canvas.SetTop(b, top);
+                        this.Children.Add(b);
                         if (this.PayloadDrawer != null)
                         {
-                            PayloadDrawer(span, posX, height, this);
+                            PayloadDrawer(span, b, this);
                         }
                     }
                 });

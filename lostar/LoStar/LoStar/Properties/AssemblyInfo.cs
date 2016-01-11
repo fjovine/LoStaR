@@ -52,15 +52,63 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.661")]
-[assembly: AssemblyFileVersion("0.1.0.661")]
+[assembly: AssemblyVersion("0.1.0.697")]
+[assembly: AssemblyFileVersion("0.1.0.697")]
 
+////  "0.1.0.697"  Compiled 11.01.2016 16:56
+////  "0.1.0.696"  Compiled 11.01.2016 16:55
+////  "0.1.0.695"  Compiled 11.01.2016 16:28
+////  "0.1.0.694"  Compiled 11.01.2016 16:27
+////  "0.1.0.693"  Compiled 11.01.2016 16:25
+////  "0.1.0.692"  Compiled 11.01.2016 16:18
+////  "0.1.0.691"  Compiled 11.01.2016 16:17
+////  "0.1.0.690"  Compiled 11.01.2016 16:15
+////  "0.1.0.689"  Compiled 11.01.2016 16:13
+////  "0.1.0.688"  Compiled 11.01.2016 16:12
+////  "0.1.0.687"  Compiled 11.01.2016 15:58
+////  "0.1.0.686"  Compiled 11.01.2016 15:55
+////  "0.1.0.685"  Compiled 11.01.2016 15:51
+////  "0.1.0.684"  Compiled 11.01.2016 15:39
+////  "0.1.0.683"  Compiled 11.01.2016 15:11
+////  "0.1.0.682"  Compiled 11.01.2016 15:10
+////  "0.1.0.681"  Compiled 11.01.2016 15:00
+////  "0.1.0.680"  Compiled 11.01.2016 14:59
+////  "0.1.0.679"  Compiled 11.01.2016 14:56
+//// Added ProtocolTimeline class
+
+////  "0.1.0.678"  Compiled 11.01.2016 14:50
+////  "0.1.0.677"  Compiled 11.01.2016 13:08
+////  "0.1.0.676"  Compiled 11.01.2016 12:50
+////  "0.1.0.675"  Compiled 11.01.2016 12:47
+////  "0.1.0.674"  Compiled 11.01.2016 12:45
+////  "0.1.0.673"  Compiled 11.01.2016 12:38
+////  "0.1.0.672"  Compiled 11.01.2016 12:37
+//// Added ZoomSegment tool
+
+////  "0.1.0.671"  Compiled 11.01.2016 08:23
+//// Added ZoomSegment too
+
+////  "0.1.0.670"  Compiled 11.01.2016 08:17
+//// Used Button as SpanStripe widget
+
+////  "0.1.0.669"  Compiled 11.01.2016 08:14
+////  "0.1.0.668"  Compiled 11.01.2016 08:14
+////  "0.1.0.667"  Compiled 11.01.2016 08:12
+////  "0.1.0.666"  Compiled 11.01.2016 08:07
+////  "0.1.0.665"  Compiled 11.01.2016 08:02
+////  "0.1.0.664"  Compiled 11.01.2016 08:01
+//// Modified content presentation of spans
+
+////  "0.1.0.663"  Compiled 11.01.2016 07:51
+//// Modified delta time format when less than 1 ms
+
+////  "0.1.0.662"  Compiled 11.01.2016 07:42
 ////  "0.1.0.661"  Compiled 10.01.2016 18:53
 ////  "0.1.0.660"  Compiled 10.01.2016 18:51
 ////  "0.1.0.659"  Compiled 10.01.2016 18:48
 ////  "0.1.0.658"  Compiled 10.01.2016 18:48
 ////  "0.1.0.657"  Compiled 10.01.2016 18:26
-//// Added Anchor and cursor toolbar
+//// Working Anchor and cursor toolbar
 
 ////  "0.1.0.656"  Compiled 10.01.2016 17:35
 ////  "0.1.0.655"  Compiled 10.01.2016 17:31

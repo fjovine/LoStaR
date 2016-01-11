@@ -49,6 +49,24 @@ namespace LoStar
         }
 
         /// <summary>
+        /// Gets the span info in the index position.
+        /// </summary>
+        /// <param name="index">Index of the position to be retrieved.</param>
+        /// <returns>The span info occupying the index position in the timeline.</returns>
+        public SpanInfo this[int index]
+        {
+            get
+            {
+                if (index >= this.infos.Count)
+                {
+                    return null;
+                }
+
+                return this.infos[index];
+            }
+        }
+
+        /// <summary>
         /// Clears the list of spans.
         /// </summary>
         public void Clear()

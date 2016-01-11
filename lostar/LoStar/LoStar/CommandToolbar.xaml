@@ -43,11 +43,13 @@
             <Button x:Name="ZoomInMax" Click="ZoomInMax_Click"
       Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomInMax.xaml}" BorderThickness="0"
       ToolTip="Zoom the window in to the maximum detail keeping the cursor in the same position on screen"/>
+            <Button x:Name="ZoomSegment" Click="ZoomCenter_Click"
+      Content ="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=zoomSegment.xaml}" BorderThickness="0"
+      ToolTip=""/>
             <Button x:Name="CenterCursor" Click="CenterCursor_Click"
       Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=panCenter.xaml}"  BorderThickness="0"
       ToolTip="Scrolls the window to center the cursor on screen"/>
         </ToolBar>
-
         <ToolBar Height="{Binding ElementName=Tray, Path=ActualHeight}">
           <TextBox 
             x:Name="CursorPosition"

@@ -56,6 +56,8 @@
     <Compile Include="AxisTickGenerator.cs" />
     <Compile Include="GuiUtil.cs" />
     <Compile Include="IBrowsableTimeline.cs" />
+    <Compile Include="ProtocolInfo.cs" />
+    <Compile Include="ProtocolTimeline.cs" />
     <Compile Include="SelectableStripe.cs" />
     <Compile Include="CursorOverlay.cs" />
     <Compile Include="DigitalStripe.cs" />
@@ -126,6 +128,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <EmbeddedResource Include="Resources\anchor.xaml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\zoomSegment.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
