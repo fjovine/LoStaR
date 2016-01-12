@@ -58,6 +58,9 @@
     <Compile Include="FixedSpaceTxtDocument.cs" />
     <Compile Include="GuiUtil.cs" />
     <Compile Include="IBrowsableTimeline.cs" />
+    <Compile Include="ProtocolControl.xaml.cs">
+      <DependentUpon>ProtocolControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProtocolInfo.cs" />
     <Compile Include="ProtocolTimeline.cs" />
     <Compile Include="SelectableStripe.cs" />
@@ -135,6 +138,10 @@
     <EmbeddedResource Include="Resources\zoomSegment.xaml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Page Include="ProtocolControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

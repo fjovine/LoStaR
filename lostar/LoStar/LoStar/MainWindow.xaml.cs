@@ -183,6 +183,8 @@ namespace LoStar
             protocolTimeline.Add("Uart 1", uartTimeline1);
             protocolTimeline.Add("Uart 2", uartTimeline2);
             protocolTimeline.TxtExport("Protocol.txt");
+
+            this.DecodedProtocol.Timeline = protocolTimeline;
         }
 
         /// <summary>
@@ -376,6 +378,19 @@ namespace LoStar
         private void MainWindow_LocationChanged(object sender, EventArgs e)
         {
             GuiUtil.SaveMainWindowPositionInRegistry(this.Left, this.Top, this.ActualWidth, this.ActualHeight);
+        }
+
+        /// <summary>
+        /// This method is used to show or hide the lateral panel with the configuration and protocol views
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void SideVisible_Click(object sender, RoutedEventArgs e)
+        {
+            this.SideView.Visibility =
+                (this.SideVisible.IsChecked == true) ?
+                Visibility.Visible :
+                Visibility.Collapsed;
         }
     }
 }

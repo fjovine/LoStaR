@@ -18,6 +18,11 @@ namespace LoStar
     public class ProtocolInfo
     {
         /// <summary>
+        /// bytes to be shown per payload line
+        /// </summary>
+        private readonly int bytesPerLine = 16;
+
+        /// <summary>
         /// Private field backing up the LineIdentifier property.
         /// </summary>
         private string lineIdentifier;
@@ -57,6 +62,89 @@ namespace LoStar
             get
             {
                 return this.spanInfo;
+            }
+        }
+
+        /// <summary>
+        /// Gets the payload organized in hex lines
+        /// </summary>
+        public List<string> HexPayload
+        {
+            get
+            {
+                List<byte> payload = (List<byte>)this.LineInfo.Payload;
+                List<string> result = new List<string>();
+                StringBuilder line = new StringBuilder(3 * this.bytesPerLine);
+                for (int i = 0; i < payload.Count; i++)
+                {
+                    byte current = payload[i];
+                    line.Append(current.ToHex());
+                    line.Append(' ');
+                    if (i % this.bytesPerLine == this.bytesPerLine - 1)
+                    {
+                        result.Add(line.ToString());
+                        line.Clear();
+                    }
+                }
+
+                if (line.Length > 0)
+                {
+                    result.Add(line.ToString());
+                }
+
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Gets the first line of the payload in hex
+        /// </summary>
+        public string HexPayloadFirstLine
+        {
+            get
+            {
+                return this.HexPayload[0];
+            }
+        }
+
+        /// <summary>
+        /// Gets the payload organized in <c>ASCII</c> lines
+        /// </summary>
+        public List<string> AsciiPayload
+        {
+            get 
+            {
+                List<byte> payload = (List<byte>)this.LineInfo.Payload;
+                List<string> result = new List<string>();
+                StringBuilder line = new StringBuilder(this.bytesPerLine);
+                for (int i = 0; i < payload.Count; i++)
+                {
+                    byte current = payload[i];
+                    line.Append(current.PrintPrintableOrPoint());
+                    if (i % this.bytesPerLine == this.bytesPerLine - 1)
+                    {
+                        result.Add(line.ToString());
+                        line.Clear();
+                    }
+                }
+
+                if (line.Length > 0)
+                {
+                    result.Add(line.ToString());
+                }
+
+                return result;
+            }
+        }
+
+        /// <summary>
+        /// Gets the first line of the payload in <c>ASCII</c>
+        /// </summary>
+        public string AsciiPayloadFirstLine
+        {
+            get
+            {
+                return this.AsciiPayload[0];
             }
         }
     }

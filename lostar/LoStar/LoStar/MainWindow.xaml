@@ -10,7 +10,7 @@
         >
     <DockPanel>
         <control:CommandToolbar x:Name="ToolBar" DockPanel.Dock ="Top" />
-        <Grid x:Name="StripeContainer">
+        <Grid x:Name="StripeContainer" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="50" />
                 <RowDefinition Height="50" />
@@ -20,13 +20,17 @@
                 <ColumnDefinition Width="{Binding ElementName=Stripes, Path=ActualWidth}"/>
                 <!-- This binding is used to align the cursor overlay and the timeaxis with the stripes considering the scrollbar-->
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <control:CursorOverlay  Grid.Row="0" Grid.RowSpan="3"
-                        x:Name="CursorCanvas"  
-                        Grid.ZIndex="2" />
-            <control:TimeAxisStripe x:Name ="TimeAxis" Grid.Row="1" Grid.ZIndex="1"/>
+                        x:Name="CursorCanvas"
+                        Grid.ZIndex="2"
+                        Margin="5,0,5,0"
+                        />
+            <control:TimeAxisStripe x:Name ="TimeAxis" Grid.Row="1" Grid.ZIndex="1"
+                                    Margin="5,0,5,0"/>
 
-            <ScrollViewer Grid.Row="2" Grid.ZIndex="1" Grid.ColumnSpan="2">
+            <ScrollViewer Grid.Row="2" Grid.ZIndex="1" Grid.ColumnSpan="2" Margin="5,0,5,0">
                 <StackPanel x:Name="Stripes">
                     <control:DigitalStripe x:Name="Stripe0" />
                     <control:SpanStripe x:Name="Uart0" />
@@ -36,6 +40,15 @@
                   <control:SpanStripe x:Name="Uart2" />
                 </StackPanel>
             </ScrollViewer>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3">
+                <CheckBox x:Name="SideVisible" Click="SideVisible_Click" IsChecked="true"/>
+                <TabControl x:Name="SideView" Width="Auto" Height="Auto">
+                    <TabItem Header="Config" Width="Auto"/>
+                    <TabItem Header="Protocol" Width="Auto">
+                      <control:ProtocolControl x:Name="DecodedProtocol"/>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>

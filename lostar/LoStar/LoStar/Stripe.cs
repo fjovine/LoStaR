@@ -33,7 +33,12 @@ namespace LoStar
                 this.UpdateComponent();
             };
 
-            // The transparent background i needed. If we do not this way, the events do not get routed correctly.
+            this.SizeChanged += (s, a) =>
+            {
+                this.UpdateComponent();
+            };
+
+            // The transparent background is needed. If we do not this way, the events do not get routed correctly.
             this.Background = Brushes.Transparent;
         }
 
