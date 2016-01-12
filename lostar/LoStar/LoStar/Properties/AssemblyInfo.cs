@@ -52,8 +52,54 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.697")]
-[assembly: AssemblyFileVersion("0.1.0.697")]
+[assembly: AssemblyVersion("0.1.0.735")]
+[assembly: AssemblyFileVersion("0.1.0.735")]
+
+////  "0.1.0.735"  Compiled 12.01.2016 15:40
+////  "0.1.0.734"  Compiled 12.01.2016 15:39
+////  "0.1.0.733"  Compiled 12.01.2016 15:34
+////  "0.1.0.732"  Compiled 12.01.2016 15:33
+////  "0.1.0.731"  Compiled 12.01.2016 15:30
+//// GUI Change cursor entering the value in the field and pressing enter
+
+////  "0.1.0.730"  Compiled 12.01.2016 15:27
+////  "0.1.0.729"  Compiled 12.01.2016 15:26
+////  "0.1.0.728"  Compiled 12.01.2016 15:15
+////  "0.1.0.727"  Compiled 12.01.2016 15:14
+////  "0.1.0.726"  Compiled 12.01.2016 15:13
+////  "0.1.0.725"  Compiled 12.01.2016 15:11
+////  "0.1.0.724"  Compiled 12.01.2016 15:09
+////  "0.1.0.723"  Compiled 12.01.2016 15:07
+////  "0.1.0.722"  Compiled 12.01.2016 15:04
+////  "0.1.0.721"  Compiled 12.01.2016 15:02
+////  "0.1.0.720"  Compiled 12.01.2016 15:01
+////  "0.1.0.719"  Compiled 12.01.2016 14:58
+////  "0.1.0.718"  Compiled 12.01.2016 14:40
+////  "0.1.0.717"  Compiled 12.01.2016 14:36
+////  "0.1.0.716"  Compiled 12.01.2016 14:23
+////  "0.1.0.715"  Compiled 12.01.2016 14:21
+////  "0.1.0.714"  Compiled 12.01.2016 14:15
+////  "0.1.0.713"  Compiled 12.01.2016 14:13
+//// Print only printable bytes
+
+////  "0.1.0.712"  Compiled 12.01.2016 14:12
+////  "0.1.0.711"  Compiled 12.01.2016 14:06
+////  "0.1.0.710"  Compiled 12.01.2016 13:55
+////  "0.1.0.709"  Compiled 12.01.2016 13:54
+////  "0.1.0.708"  Compiled 12.01.2016 13:53
+////  "0.1.0.707"  Compiled 12.01.2016 13:52
+////  "0.1.0.706"  Compiled 12.01.2016 13:51
+////  "0.1.0.705"  Compiled 12.01.2016 13:47
+////  "0.1.0.704"  Compiled 12.01.2016 13:45
+////  "0.1.0.703"  Compiled 12.01.2016 13:43
+////  "0.1.0.702"  Compiled 12.01.2016 13:42
+//// Printout of the ProtocolTimeline
+
+////  "0.1.0.701"  Compiled 12.01.2016 09:45
+////  "0.1.0.700"  Compiled 12.01.2016 09:45
+////  "0.1.0.699"  Compiled 12.01.2016 08:46
+////  "0.1.0.698"  Compiled 12.01.2016 08:33
+//// Added ProtocolTimeline text output
 
 ////  "0.1.0.697"  Compiled 11.01.2016 16:56
 ////  "0.1.0.696"  Compiled 11.01.2016 16:55

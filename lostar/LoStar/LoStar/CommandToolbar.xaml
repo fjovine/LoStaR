@@ -55,7 +55,7 @@
             x:Name="CursorPosition"
             Width="80"
             HorizontalContentAlignment="Right" 
-            IsReadOnly="True"/>
+            PreviewKeyDown="CursorPosition_PreviewKeyDown"/>
           <Button x:Name="SetAnchor" Click="SetAnchor_Click"
             Content="{Binding Converter={StaticResource xamlToUiConverter}, ConverterParameter=anchor.xaml}"  BorderThickness="0"
             ToolTip="Scrolls the window to center the cursor on screen"/>

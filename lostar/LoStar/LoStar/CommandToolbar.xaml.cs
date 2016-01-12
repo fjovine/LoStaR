@@ -10,6 +10,7 @@ namespace LoStar
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Data;
+    using System.Windows.Input;
 
     /// <summary>
     /// Toolbar containing all the commands to be executed by the stripe container.
@@ -256,6 +257,25 @@ namespace LoStar
             }
 
             this.TimelineSegment.PerformZoom(0);
+        }
+
+        /// <summary>
+        /// Sets the cursor when RETURN is pressed in the CursorPosition field.
+        /// </summary>
+        /// <param name="sender">The parameter is not used</param>
+        /// <param name="e"><c>KeyEventArgs</c> parameter to resolve the event</param>
+        private void CursorPosition_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                double newCursor = this.TimelineSegment.CursorTime;
+
+                if (double.TryParse(this.CursorPosition.Text, out newCursor)) 
+                {
+                    this.TimelineSegment.CursorTime = newCursor;
+                    this.TimelineSegment.CenterCursor();
+                }
+            }
         }
     }
 }

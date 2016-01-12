@@ -54,6 +54,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AxisTickGenerator.cs" />
+    <Compile Include="ByteExtensions.cs" />
+    <Compile Include="FixedSpaceTxtDocument.cs" />
     <Compile Include="GuiUtil.cs" />
     <Compile Include="IBrowsableTimeline.cs" />
     <Compile Include="ProtocolInfo.cs" />

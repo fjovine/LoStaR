@@ -177,6 +177,12 @@ namespace LoStar
             };
             this.CursorCanvas.SelectableStripesContainer = this.Stripes;
             this.AnchorTime = double.NaN;
+
+            ProtocolTimeline protocolTimeline = new ProtocolTimeline();
+            protocolTimeline.Add("Uart 0", uartTimeline0);
+            protocolTimeline.Add("Uart 1", uartTimeline1);
+            protocolTimeline.Add("Uart 2", uartTimeline2);
+            protocolTimeline.TxtExport("Protocol.txt");
         }
 
         /// <summary>
