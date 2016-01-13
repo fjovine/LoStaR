@@ -20,6 +20,7 @@
                 <ColumnDefinition Width="{Binding ElementName=Stripes, Path=ActualWidth}"/>
                 <!-- This binding is used to align the cursor overlay and the timeaxis with the stripes considering the scrollbar-->
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <control:CursorOverlay  Grid.Row="0" Grid.RowSpan="3"
@@ -40,15 +41,15 @@
                   <control:SpanStripe x:Name="Uart2" />
                 </StackPanel>
             </ScrollViewer>
-            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3">
-                <CheckBox x:Name="SideVisible" Click="SideVisible_Click" IsChecked="true"/>
-                <TabControl x:Name="SideView" Width="Auto" Height="Auto">
-                    <TabItem Header="Config" Width="Auto"/>
-                    <TabItem Header="Protocol" Width="Auto">
-                      <control:ProtocolControl x:Name="DecodedProtocol"/>
-                    </TabItem>
-                </TabControl>
-            </StackPanel>
+          <GridSplitter Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" HorizontalAlignment ="Stretch" />
+          <Grid Grid.Row="0" Grid.Column="3" Grid.RowSpan="3">
+            <TabControl x:Name="SideView" >
+              <TabItem Header="Config" Width="Auto"/>
+              <TabItem Header="Protocol" Width="Auto">
+                <control:ProtocolControl x:Name="DecodedProtocol"/>
+              </TabItem>
+            </TabControl>
+          </Grid>
         </Grid>
     </DockPanel>
 </Window>

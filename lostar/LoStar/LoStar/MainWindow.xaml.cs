@@ -185,6 +185,7 @@ namespace LoStar
             protocolTimeline.TxtExport("Protocol.txt");
 
             this.DecodedProtocol.Timeline = protocolTimeline;
+            this.DecodedProtocol.TimelineSegment = this;
         }
 
         /// <summary>
@@ -385,12 +386,12 @@ namespace LoStar
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void SideVisible_Click(object sender, RoutedEventArgs e)
+        /*private void SideVisible_Click(object sender, RoutedEventArgs e)
         {
             this.SideView.Visibility =
                 (this.SideVisible.IsChecked == true) ?
                 Visibility.Visible :
                 Visibility.Collapsed;
-        }
+        }*/
     }
 }
