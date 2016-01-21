@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
+    using Microsoft.Win32;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -72,7 +73,54 @@ namespace LoStar
                     }
                 };
 
-            Capture capture = Capture.LoadFromStream(new StreamReader("capture.xml"));
+            string[] commandLineArgs = Environment.GetCommandLineArgs();
+            string filename = "capture.xml";
+            if (commandLineArgs.Length > 1)
+            {
+                filename = commandLineArgs[2];
+                if (!File.Exists(filename))
+                {
+                    MessageBox.Show(string.Format("The file [{0}] does not exist"));
+                    Application.Current.Shutdown();
+                }
+            }
+            else
+            {
+                string lastInitialFolder = WindowsRegistry.Get(WindowsRegistryEntry.THELASTFOLDER);
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                if (!Directory.Exists(lastInitialFolder))
+                {
+                    // if the folder does not exist any more (flash pen extracted) then it defaults to the current folder.
+                    lastInitialFolder = null;
+                }
+
+                if (lastInitialFolder == null)
+                {
+                    // If the initial folder is not stored in the registry, gets the current folder
+                    fileDialog.InitialDirectory = System.AppDomain.CurrentDomain.BaseDirectory;
+                }
+                else
+                {
+                    // Otherwise that stored in the registry
+                    fileDialog.InitialDirectory = lastInitialFolder;
+                }
+
+                fileDialog.Title = "Select capture file";
+                fileDialog.Filter = "Capture file|*.xml";
+                fileDialog.Multiselect = false;
+                if (fileDialog.ShowDialog() == false)
+                {
+                    return;
+                }
+
+                // Stores the current folder in the registry for future reuse.
+                WindowsRegistry.Set(
+                    WindowsRegistryEntry.THELASTFOLDER,
+                    System.IO.Path.GetDirectoryName(fileDialog.FileName));
+                filename = fileDialog.FileName;
+            }
+
+            Capture capture = Capture.LoadFromStream(new StreamReader(filename));
             this.MinTime = 0;
             this.MaxTime = capture.MaxTime;
             this.MinShownTime = 0;

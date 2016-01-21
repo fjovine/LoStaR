@@ -52,8 +52,13 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.851")]
-[assembly: AssemblyFileVersion("0.1.0.851")]
+[assembly: AssemblyVersion("0.1.0.854")]
+[assembly: AssemblyFileVersion("0.1.0.854")]
+
+////  "0.1.0.854"  Compiled 21.01.2016 15:41
+////  "0.1.0.853"  Compiled 21.01.2016 15:25
+////  "0.1.0.852"  Compiled 21.01.2016 15:23
+//// Added capture file load from command line or from dialogbox
 
 ////  "0.1.0.851"  Compiled 13.01.2016 11:46
 ////  "0.1.0.850"  Compiled 13.01.2016 11:44
