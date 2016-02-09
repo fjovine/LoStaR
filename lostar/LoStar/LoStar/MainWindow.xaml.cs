@@ -6,7 +6,6 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
-    using Microsoft.Win32;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -17,6 +16,7 @@ namespace LoStar
     using System.Windows.Controls;
     using System.Windows.Media;
     using System.Windows.Shapes;
+    using Microsoft.Win32;
 
     /// <summary>
     /// Delegate used to manage the Zoom event.
@@ -46,6 +46,12 @@ namespace LoStar
         /// Baud rate used throughout the application
         /// </summary>
         private const int BaudRate = 9600;
+
+        /// <summary>
+        /// Position of the cursor when the last time the mouse was clicked.
+        /// It has been added to block frequent cursor movements always on the same time.
+        /// </summary>
+        private double lastCursorFired = double.NaN;
 
         /// <summary>
         /// Local repository of the cursor time.
@@ -137,7 +143,8 @@ namespace LoStar
                     {
                         hexCaption.Append(by.ToString("X"));
                         hexCaption.Append(' ');
-                        asciiCaption.Append((char)by);
+                        //asciiCaption.Append((char)by);
+                        asciiCaption.Append(by.PrintPrintableOrPoint());
                     }
 
                     asciiCaption.Append("'");
@@ -182,12 +189,12 @@ namespace LoStar
             this.TimeAxis.TimelineSegment = this;
             this.CursorCanvas.TimelineSegment = this;
 
-            DigitalTimeline timeline0 = new DigitalTimeline(capture, 4);
+            DigitalTimeline timeline0 = new DigitalTimeline(capture, 5);
             this.Stripe0.Caption = "Stripe 0";
             this.Stripe0.Timeline = timeline0;
             this.Stripe0.TimelineSegment = this;
 
-            UartTimeline uartTimeline0 = new UartTimeline(timeline0, BaudRate);
+            UartTimeline uartTimeline0 = new UartTimeline(timeline0, BaudRate, true);
             this.Uart0.Caption = "Uart 0";
             this.Uart0.Timeline = uartTimeline0;
             this.Uart0.TimelineSegment = this;
@@ -198,7 +205,7 @@ namespace LoStar
             this.Stripe1.Timeline = timeline1;
             this.Stripe1.TimelineSegment = this;
 
-            UartTimeline uartTimeline1 = new UartTimeline(timeline1, BaudRate);
+            UartTimeline uartTimeline1 = new UartTimeline(timeline1, BaudRate, true);
             this.Uart1.Caption = "Uart 1";
             this.Uart1.Timeline = uartTimeline1;
             this.Uart1.TimelineSegment = this;
@@ -209,7 +216,7 @@ namespace LoStar
             this.Stripe2.Timeline = timeline2;
             this.Stripe2.TimelineSegment = this;
 
-            UartTimeline uartTimeline2 = new UartTimeline(timeline2, BaudRate, true);
+            UartTimeline uartTimeline2 = new UartTimeline(timeline2, BaudRate);
             this.Uart2.Caption = "Uart 2";
             this.Uart2.Timeline = uartTimeline2;
             this.Uart2.TimelineSegment = this;
@@ -306,9 +313,10 @@ namespace LoStar
             set 
             {
                 this.cursorTime = value;
-                if (this.OnCursorChange != null)
+                if (this.OnCursorChange != null && this.lastCursorFired != value)
                 {
                     this.OnCursorChange(value);
+                    this.lastCursorFired = value;
                 }
             }
         }

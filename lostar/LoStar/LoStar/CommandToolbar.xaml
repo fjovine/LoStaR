@@ -9,7 +9,6 @@
         <control:XamlToUIElementConverter x:Key="xamlToUiConverter" />
     </UserControl.Resources>
     <ToolBarTray Height="32" x:Name="Tray">
-
         <ToolBar Height="{Binding ElementName=Tray, Path=ActualHeight}" >
             <!-- Zoom toolbars-->
             <Button x:Name="LeftSignificance" Click="LeftSignificance_Click"

@@ -7,12 +7,16 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
             <RowDefinition Height="*"/>
             <RowDefinition Height="5"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <StackPanel Grid.Row ="0" Grid.Column="0">
+          <CheckBox x:Name="IsSync" Content="Sync" />
+        </StackPanel>
         <DataGrid Name="ProtocolData" AutoGenerateColumns="False" Margin="2"
-              Grid.Row ="0"
+              Grid.Row ="1"
               Grid.Column="0"
               RowDetailsVisibilityMode="Collapsed"
               HeadersVisibility="Column"
@@ -38,9 +42,9 @@
             <DataGridTextColumn Binding="{Binding AsciiPayloadFirstLine}" Header="Ascii Payload" />
           </DataGrid.Columns>
         </DataGrid>
-        <GridSplitter Grid.Column="0" Grid.Row ="1" HorizontalAlignment="Stretch" />
+        <GridSplitter Grid.Column="0" Grid.Row ="2" HorizontalAlignment="Stretch" />
         <DataGrid Name="PayloadBrowser" AutoGenerateColumns="False" Margin="2"
-            Grid.Row ="2"
+            Grid.Row ="3"
             Grid.Column="0"
             RowDetailsVisibilityMode="Collapsed"
             HeadersVisibility="Column"

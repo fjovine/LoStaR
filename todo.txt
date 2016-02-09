@@ -1,0 +1,5 @@
+Things to do 
+- When sync is checked, the selection of a new line on protocol should move the cursor and center it
+- Add a save button on the toolbar of Protocol
+- Add a pulldown menu to select one or all of the available sources
+

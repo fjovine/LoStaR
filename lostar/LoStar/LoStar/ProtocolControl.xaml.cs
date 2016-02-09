@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Windows.Controls;
@@ -15,6 +16,16 @@ namespace LoStar
     /// </summary>
     public partial class ProtocolControl : UserControl
     {
+        /// <summary>
+        /// Local buffer of the TimelineSegment property.
+        /// </summary>
+        private ITimelineSegment timelineSegment;
+
+        /// <summary>
+        /// Local buffer of the Timeline property.
+        /// </summary>
+        private ProtocolTimeline protocolTimeline;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ProtocolControl" /> class.
         /// </summary>
@@ -28,17 +39,43 @@ namespace LoStar
         /// </summary>
         public ITimelineSegment TimelineSegment
         {
-            private get;
-            set;
+            private get 
+            {
+                return this.timelineSegment;
+            }
+
+            set
+            {
+                this.timelineSegment = value;
+                this.timelineSegment.OnCursorChange += (cp) =>
+                {
+                    if (this.IsSync.IsChecked == true)
+                    {
+                        Debug.WriteLine(">>> ProtocolControl " + cp);
+                        int index = this.Timeline.GetProtocolInfoFollowing(cp);
+                        Dispatcher.BeginInvoke(
+                            new Action(() =>
+                            {
+                                this.ProtocolData.SelectRowByIndex(index);
+                            }));
+                    }
+                };
+            }
         }
 
         /// <summary>
-        /// Sets the timeline to be represented by the control
+        /// Gets or sets the timeline to be represented by the control
         /// </summary>
         public ProtocolTimeline Timeline
         {
+            get
+            {
+                return this.protocolTimeline;
+            }
+
             set
             {
+                this.protocolTimeline = value;
                 this.ProtocolData.ItemsSource = value.Timeline;
             }
         }
@@ -51,19 +88,23 @@ namespace LoStar
         private void ProtocolData_RowChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             List<PayloadBrowserHelper> browserContent = new List<PayloadBrowserHelper>();
-            ProtocolInfo protocolInfo = (ProtocolInfo)e.AddedCells[0].Item;
-            List<byte> payload = (List<byte>)protocolInfo.LineInfo.Payload;
-            for (int address = 0; address < payload.Count; address += 16)
+            var addedCells = e.AddedCells;
+            if (addedCells.Count > 0)
             {
-                browserContent.Add(
-                    new PayloadBrowserHelper(address, payload, 16));
-            }
+                ProtocolInfo protocolInfo = (ProtocolInfo)addedCells[0].Item;
+                List<byte> payload = (List<byte>)protocolInfo.LineInfo.Payload;
+                for (int address = 0; address < payload.Count; address += 16)
+                {
+                    browserContent.Add(
+                        new PayloadBrowserHelper(address, payload, 16));
+                }
 
-            this.PayloadBrowser.ItemsSource = browserContent;
-            if (this.TimelineSegment != null)
-            {
-                this.TimelineSegment.CursorTime = protocolInfo.LineInfo.TimeStart;
-                this.TimelineSegment.PerformZoom(0);
+                this.PayloadBrowser.ItemsSource = browserContent;
+                if (this.TimelineSegment != null)
+                {
+                    this.TimelineSegment.CursorTime = protocolInfo.LineInfo.TimeStart;
+                    this.TimelineSegment.PerformZoom(0);
+                }
             }
         }
     }

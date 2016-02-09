@@ -52,9 +52,71 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.854")]
-[assembly: AssemblyFileVersion("0.1.0.854")]
+[assembly: AssemblyVersion("0.1.0.908")]
+[assembly: AssemblyFileVersion("0.1.0.908")]
 
+////  "0.1.0.908"  Compiled 09.02.2016 22:22
+////  "0.1.0.907"  Compiled 09.02.2016 22:21
+////  "0.1.0.906"  Compiled 09.02.2016 22:19
+////  "0.1.0.905"  Compiled 09.02.2016 22:09
+////  "0.1.0.904"  Compiled 09.02.2016 22:06
+////  "0.1.0.903"  Compiled 09.02.2016 21:57
+////  "0.1.0.902"  Compiled 09.02.2016 20:58
+////  "0.1.0.901"  Compiled 09.02.2016 20:19
+//// Protocol widget is now a rectangle button on any platform
+
+////  "0.1.0.900"  Compiled 09.02.2016 20:13
+////  "0.1.0.899"  Compiled 09.02.2016 20:12
+////  "0.1.0.898"  Compiled 09.02.2016 20:12
+////  "0.1.0.897"  Compiled 09.02.2016 19:56
+////  "0.1.0.896"  Compiled 09.02.2016 19:51
+////  "0.1.0.895"  Compiled 09.02.2016 19:34
+////  "0.1.0.894"  Compiled 09.02.2016 19:21
+////  "0.1.0.893"  Compiled 09.02.2016 19:16
+////  "0.1.0.892"  Compiled 09.02.2016 17:48
+////  "0.1.0.891"  Compiled 09.02.2016 17:47
+////  "0.1.0.890"  Compiled 09.02.2016 17:47
+////  "0.1.0.889"  Compiled 09.02.2016 17:46
+////  "0.1.0.888"  Compiled 09.02.2016 14:56
+////  "0.1.0.887"  Compiled 09.02.2016 14:55
+////  "0.1.0.886"  Compiled 09.02.2016 14:55
+////  "0.1.0.885"  Compiled 09.02.2016 14:53
+////  "0.1.0.884"  Compiled 09.02.2016 14:52
+////  "0.1.0.883"  Compiled 03.02.2016 20:59
+////  "0.1.0.882"  Compiled 03.02.2016 20:58
+//// Added Sync checkbox to select the protocol row when setting the cursor
+
+////  "0.1.0.881"  Compiled 03.02.2016 20:45
+////  "0.1.0.880"  Compiled 03.02.2016 20:12
+////  "0.1.0.879"  Compiled 03.02.2016 20:10
+////  "0.1.0.878"  Compiled 03.02.2016 20:10
+////  "0.1.0.877"  Compiled 03.02.2016 20:08
+////  "0.1.0.876"  Compiled 03.02.2016 19:57
+////  "0.1.0.875"  Compiled 03.02.2016 19:54
+////  "0.1.0.874"  Compiled 03.02.2016 19:52
+////  "0.1.0.873"  Compiled 03.02.2016 19:37
+////  "0.1.0.872"  Compiled 03.02.2016 19:36
+////  "0.1.0.871"  Compiled 03.02.2016 19:36
+////  "0.1.0.870"  Compiled 03.02.2016 19:01
+////  "0.1.0.869"  Compiled 03.02.2016 18:56
+////  "0.1.0.868"  Compiled 03.02.2016 18:52
+////  "0.1.0.867"  Compiled 03.02.2016 18:49
+////  "0.1.0.866"  Compiled 03.02.2016 18:44
+//// ProtocolControl observes the cursor change
+
+////  "0.1.0.865"  Compiled 03.02.2016 17:37
+////  "0.1.0.864"  Compiled 03.02.2016 17:35
+////  "0.1.0.863"  Compiled 03.02.2016 17:35
+////  "0.1.0.862"  Compiled 03.02.2016 17:35
+////  "0.1.0.861"  Compiled 03.02.2016 17:30
+////  "0.1.0.860"  Compiled 03.02.2016 17:11
+//// Dots for nonprintable chars on SpanDrawer
+
+////  "0.1.0.859"  Compiled 03.02.2016 10:42
+////  "0.1.0.858"  Compiled 03.02.2016 10:39
+////  "0.1.0.857"  Compiled 02.02.2016 21:16
+////  "0.1.0.856"  Compiled 02.02.2016 21:05
+////  "0.1.0.855"  Compiled 02.02.2016 20:57
 ////  "0.1.0.854"  Compiled 21.01.2016 15:41
 ////  "0.1.0.853"  Compiled 21.01.2016 15:25
 ////  "0.1.0.852"  Compiled 21.01.2016 15:23

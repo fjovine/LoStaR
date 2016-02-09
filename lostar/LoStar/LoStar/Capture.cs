@@ -61,7 +61,13 @@ namespace LoStar
         {
             get
             {
-                return this.TransitionContainer[this.TransitionCount - 1].Time;
+                int count = this.TransitionCount;
+                if (count > this.TransitionContainer.Count)
+                {
+                    count = this.TransitionContainer.Count;
+                }
+
+                return this.TransitionContainer[count - 1].Time;
             }
         }
 

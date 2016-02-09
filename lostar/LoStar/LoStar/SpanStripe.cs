@@ -7,8 +7,8 @@
 namespace LoStar
 {
     using System;
-    using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Markup;
     using System.Windows.Media;
     using System.Windows.Shapes;
 
@@ -18,6 +18,11 @@ namespace LoStar
     /// </summary>
     public class SpanStripe : SelectableStripe
     {
+        /// <summary>
+        /// Local buffer of the template decoded from xml code.
+        /// </summary>
+        private ControlTemplate guiTemplate = null;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SpanStripe" /> class.
         /// </summary>
@@ -88,6 +93,8 @@ namespace LoStar
                             Height = height,
                             HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center
                         };
+                        b.Template = this.GetTemplate();
+                        
                         Canvas.SetLeft(b, ScaleX(span.TimeStart));
                         Canvas.SetTop(b, top);
                         this.Children.Add(b);
@@ -119,6 +126,28 @@ namespace LoStar
         public override double? GetNearestEventAfter(double time)
         {
             return this.Timeline.GetNearestEvent(time, false);
+        }
+
+        /// <summary>
+        /// Lazy decoding of the template descriptor in xml for the widget use to signal the 
+        /// protocol on the timeline.
+        /// </summary>
+        /// <returns>The control template to be used by a Button object.</returns>
+        private ControlTemplate GetTemplate()
+        {
+            if (this.guiTemplate == null) 
+            {
+                this.guiTemplate = (ControlTemplate)XamlReader.Parse(@"
+                <ControlTemplate  xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'
+                                  xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'
+                                  TargetType='Button'>
+                    <Border CornerRadius='0' Background='Lightgray' BorderThickness='1' Padding='2' BorderBrush='Darkgray'>
+                        <ContentPresenter HorizontalAlignment='Center' VerticalAlignment='Center' />
+                    </Border>
+                </ControlTemplate>");
+            }
+
+            return this.guiTemplate;
         }
     }
 }

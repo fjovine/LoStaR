@@ -15,7 +15,7 @@ namespace LoStar
     /// <summary>
     /// This class represents the information regarding a protocol considered as the dialog between one or more digital lines.
     /// </summary>
-    public class ProtocolInfo
+    public class ProtocolInfo : IComparable
     {
         /// <summary>
         /// bytes to be shown per payload line
@@ -146,6 +146,24 @@ namespace LoStar
             {
                 return this.AsciiPayload[0];
             }
+        }
+
+        /// <summary>
+        /// Comparer of the ProtocolInfo that returns a negative, zero or positive number 
+        /// if the current spanInfo precedes, equals or is after that of the other object.
+        /// It returns -1 if the other object is not ProtocolInfo
+        /// </summary>
+        /// <param name="other">Object to be compared to.</param>
+        /// <returns>-1,0 or +1 if this is less, equal or more than other. The comparison is the start time of the span.</returns>
+        public int CompareTo(object other)
+        {
+            ProtocolInfo otherProtocolInfo = other as ProtocolInfo;
+            if (other == null)
+            {
+                return -1;
+            }
+
+            return this.spanInfo.CompareTo(otherProtocolInfo.spanInfo);
         }
     }
 }

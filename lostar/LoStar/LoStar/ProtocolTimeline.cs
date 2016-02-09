@@ -8,6 +8,7 @@ namespace LoStar
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Text;
@@ -230,6 +231,24 @@ namespace LoStar
             {
                 document.PrintAll(tw);
             }
+        }
+
+        /// <summary>
+        /// Lazy decoded of the xml code used as template for the protocol descriptor.
+        /// </summary>
+        /// <param name="time">Time in second when the protocol starts.</param>
+        /// <returns>The index of the protocol in the protocol index.</returns>
+        public int GetProtocolInfoFollowing(double time)
+        {
+            ProtocolInfo dummyInfo = new ProtocolInfo(string.Empty, new SpanInfo() { TimeStart = time });
+            int result = this.timeline.BinarySearch(dummyInfo);
+            if (result < 0)
+            {
+                result = ~result;
+            }
+
+            Debug.WriteLine("Indice " + result);
+            return result;
         }
 
         /// <summary>
