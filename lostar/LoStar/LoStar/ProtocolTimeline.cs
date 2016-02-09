@@ -40,6 +40,7 @@ namespace LoStar
         /// </summary>
         public ProtocolTimeline()
         {
+            this.LineIdentifiers = new SortedSet<string>();
         }
 
         /// <summary>
@@ -64,6 +65,12 @@ namespace LoStar
             }
         }
 
+        public SortedSet<string> LineIdentifiers
+        {
+            get;
+            private set;
+        }
+
         /// <summary>
         /// Gets the <c>ProtocolInfo</c> at the passed index.
         /// </summary>
@@ -86,6 +93,7 @@ namespace LoStar
         {
             this.timelineMap.Add(this.timelines.Count, identifier);
             this.timelines.Add(spanTimeline);
+            this.LineIdentifiers.Add(identifier);
         }
 
         /// <summary>
@@ -191,7 +199,7 @@ namespace LoStar
                             double deltaTime = protocolInfo.LineInfo.TimeStart - previousProtocolInfo.LineInfo.TimeStart;
                             return "r" + deltaTime.ToString("0.000000");
                         case 2:
-                            return firstLine ? protocolInfo.LineIdentifier : string.Empty;
+                            return firstLine ? "l" + protocolInfo.LineIdentifier : string.Empty;
                         case 3:
                             int start = relativeLine * bytesPerLine;
                             StringBuilder result = new StringBuilder(3 * bytesPerLine);

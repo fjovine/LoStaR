@@ -61,6 +61,33 @@ namespace LoStar
                 }
             }
 
+            // Checks wheter the position is inside the screen.
+            Rect virtualScreen = new Rect(SystemParameters.VirtualScreenLeft, SystemParameters.VirtualScreenTop, SystemParameters.VirtualScreenWidth, SystemParameters.VirtualScreenHeight);
+            if (!virtualScreen.Contains(result))
+            {
+                // The screen containing all the screens does not contain the stored coordinates. We move the rectangle inside the screen.
+                if (result.Width < virtualScreen.Width)
+                {
+                    double horizontalDiff = virtualScreen.Width - result.Width;
+                    result.X = horizontalDiff / 2;
+                }
+                else
+                {
+                    result.X= 10;
+                    result.Width = virtualScreen.Width - 20;
+                }
+
+                if (result.Height < virtualScreen.Height)
+                {
+                    double verticalDiff = virtualScreen.Height - result.Height;
+                    result.Y = verticalDiff / 2;
+                }
+                else
+                {
+                    result.Y = 10;
+                    result.Height = virtualScreen.Height - 20;
+                }
+            }
             return result;
         }
 

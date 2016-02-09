@@ -6,6 +6,7 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
+    using Microsoft.Win32;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
@@ -104,8 +105,28 @@ namespace LoStar
                 {
                     this.TimelineSegment.CursorTime = protocolInfo.LineInfo.TimeStart;
                     this.TimelineSegment.PerformZoom(0);
+                    if (this.IsSync.IsChecked == true)
+                    {
+                        this.timelineSegment.CenterCursor();
+                    }
                 }
             }
+        }
+
+        /// <summary>
+        /// Saves the current protocol as a text file.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void SaveProtocol_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "txt files (*.txt) | *.txt";
+            if (saveFileDialog.ShowDialog() == false)
+            {
+                return;
+            }
+            this.protocolTimeline.TxtExport(saveFileDialog.FileName);
         }
     }
 }

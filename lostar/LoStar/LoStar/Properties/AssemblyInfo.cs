@@ -52,8 +52,25 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.908")]
-[assembly: AssemblyFileVersion("0.1.0.908")]
+[assembly: AssemblyVersion("0.1.0.921")]
+[assembly: AssemblyFileVersion("0.1.0.921")]
+
+////  "0.1.0.921"  Compiled 09.02.2016 23:18
+////  "0.1.0.920"  Compiled 09.02.2016 23:15
+////  "0.1.0.919"  Compiled 09.02.2016 23:15
+////  "0.1.0.918"  Compiled 09.02.2016 23:00
+////  "0.1.0.917"  Compiled 09.02.2016 22:58
+////  "0.1.0.916"  Compiled 09.02.2016 22:56
+////  "0.1.0.915"  Compiled 09.02.2016 22:54
+////  "0.1.0.914"  Compiled 09.02.2016 22:48
+////  "0.1.0.913"  Compiled 09.02.2016 22:47
+////  "0.1.0.912"  Compiled 09.02.2016 22:43
+////  "0.1.0.911"  Compiled 09.02.2016 22:40
+////  "0.1.0.910"  Compiled 09.02.2016 22:32
+//// Added button to save the protocol in ASCII
+
+////  "0.1.0.909"  Compiled 09.02.2016 22:29
+//// If protocol is synced, the cursor of the current protocol string is centered
 
 ////  "0.1.0.908"  Compiled 09.02.2016 22:22
 ////  "0.1.0.907"  Compiled 09.02.2016 22:21
