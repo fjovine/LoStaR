@@ -65,6 +65,9 @@ namespace LoStar
             }
         }
 
+        /// <summary>
+        /// Gets the list of line identifiers, i.e. the identifiers of the UART decoded lines
+        /// </summary>
         public SortedSet<string> LineIdentifiers
         {
             get;

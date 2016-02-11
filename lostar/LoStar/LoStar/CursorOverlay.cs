@@ -253,6 +253,7 @@ namespace LoStar
         /// </summary>
         public override void Redraw()
         {
+            this.ClipToBounds = true;
             double endTopCursor = this.TopStripeHeight * (StartTopCursor + HeightTopCursor);
             double startTopCursor = this.TopStripeHeight * StartTopCursor;
             double scaledMin = this.AbsoluteScaleX(this.TimelineSegment.MinShownTime);

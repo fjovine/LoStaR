@@ -8,16 +8,19 @@
     <Grid>
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto" />
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="5"/>
-            <RowDefinition Height="*"/>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="*"/>
+          <RowDefinition Height="5"/>
+          <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row ="0" Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
           <CheckBox x:Name="IsSync" Content="Sync" Margin="0,3,5,0"/>
+          <CheckBox x:Name="ShowChannelSelection" Content="Channel select" Margin="3,3,5,0" IsChecked="True" Click="ShowChannelSelection_Click" />
           <Button x:Name="SaveProtocol" Content="Save" Click="SaveProtocol_Click" />
         </StackPanel>
-        <DataGrid Name="ProtocolData" AutoGenerateColumns="False" Margin="2"
-              Grid.Row ="1"
+      <TextBox x:Name="ChannelSelection" Text="Fico" Grid.Column="0" Grid.Row="1"/>
+      <DataGrid Name="ProtocolData" AutoGenerateColumns="False" Margin="2"
+              Grid.Row ="2"
               Grid.Column="0"
               RowDetailsVisibilityMode="Collapsed"
               HeadersVisibility="Column"
@@ -43,9 +46,9 @@
             <DataGridTextColumn Binding="{Binding AsciiPayloadFirstLine}" Header="Ascii Payload" />
           </DataGrid.Columns>
         </DataGrid>
-        <GridSplitter Grid.Column="0" Grid.Row ="2" HorizontalAlignment="Stretch" />
+        <GridSplitter Grid.Column="0" Grid.Row ="3" HorizontalAlignment="Stretch" />
         <DataGrid Name="PayloadBrowser" AutoGenerateColumns="False" Margin="2"
-            Grid.Row ="3"
+            Grid.Row ="4"
             Grid.Column="0"
             RowDetailsVisibilityMode="Collapsed"
             HeadersVisibility="Column"

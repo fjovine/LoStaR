@@ -52,8 +52,32 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("0.1.*")]
-[assembly: AssemblyVersion("0.1.0.921")]
-[assembly: AssemblyFileVersion("0.1.0.921")]
+[assembly: AssemblyVersion("0.1.0.941")]
+[assembly: AssemblyFileVersion("0.1.0.941")]
+
+////  "0.1.0.941"  Compiled 11.02.2016 20:26
+////  "0.1.0.940"  Compiled 11.02.2016 20:25
+////  "0.1.0.939"  Compiled 11.02.2016 20:23
+////  "0.1.0.938"  Compiled 11.02.2016 19:20
+////  "0.1.0.937"  Compiled 11.02.2016 19:20
+////  "0.1.0.936"  Compiled 11.02.2016 19:18
+//// Solved the bug that permitted the cursor to be drawn outside the CursorOverlay bound
+
+////  "0.1.0.935"  Compiled 11.02.2016 19:15
+////  "0.1.0.934"  Compiled 11.02.2016 19:14
+////  "0.1.0.933"  Compiled 11.02.2016 18:58
+////  "0.1.0.932"  Compiled 11.02.2016 18:56
+////  "0.1.0.931"  Compiled 11.02.2016 18:56
+////  "0.1.0.930"  Compiled 11.02.2016 18:49
+////  "0.1.0.929"  Compiled 11.02.2016 18:47
+////  "0.1.0.928"  Compiled 11.02.2016 18:45
+////  "0.1.0.927"  Compiled 11.02.2016 18:44
+////  "0.1.0.926"  Compiled 11.02.2016 18:40
+////  "0.1.0.925"  Compiled 11.02.2016 18:40
+////  "0.1.0.924"  Compiled 11.02.2016 18:37
+////  "0.1.0.923"  Compiled 11.02.2016 18:37
+////  "0.1.0.922"  Compiled 11.02.2016 18:07
+//// Add channel selection datagrid
 
 ////  "0.1.0.921"  Compiled 09.02.2016 23:18
 ////  "0.1.0.920"  Compiled 09.02.2016 23:15

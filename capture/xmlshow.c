@@ -114,7 +114,7 @@ int main(int argc, char ** argv)
 
   if (transition_count > TRANSITION_BUFFER_SIZE)
   {
-    initial = transition_count % TRANSITION_BUFFER_SIZE +1;
+    initial = transition_count % TRANSITION_BUFFER_SIZE;
     final = TRANSITION_BUFFER_SIZE;
   }
   for (int i =0; i<final; i++)

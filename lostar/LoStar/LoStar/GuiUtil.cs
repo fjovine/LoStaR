@@ -73,7 +73,7 @@ namespace LoStar
                 }
                 else
                 {
-                    result.X= 10;
+                    result.X = 10;
                     result.Width = virtualScreen.Width - 20;
                 }
 
@@ -88,6 +88,7 @@ namespace LoStar
                     result.Height = virtualScreen.Height - 20;
                 }
             }
+
             return result;
         }
 

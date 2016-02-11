@@ -6,11 +6,11 @@
 //-----------------------------------------------------------------------
 namespace LoStar
 {
-    using Microsoft.Win32;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Windows.Controls;
+    using Microsoft.Win32;
 
     /// <summary>
     /// Interaction logic for ProtocolControl
@@ -126,7 +126,21 @@ namespace LoStar
             {
                 return;
             }
+
             this.protocolTimeline.TxtExport(saveFileDialog.FileName);
+        }
+
+        /// <summary>
+        /// Handle the click message on the ShowChannelSelection checkbox showing or collapsing the ChannelSelection data grid.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void ShowChannelSelection_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            this.ChannelSelection.Visibility =
+                this.ShowChannelSelection.IsChecked == true ?
+                System.Windows.Visibility.Visible :
+                System.Windows.Visibility.Collapsed;
         }
     }
 }
